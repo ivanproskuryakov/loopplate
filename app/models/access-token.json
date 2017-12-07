@@ -1,0 +1,19 @@
+{
+  "name": "accessToken",
+  "plural": "accessTokens",
+  "base": "AccessToken",
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "mixins": {
+    "TimeStamp" : true
+  },
+  "acls": [],
+  "methods": {}
+}

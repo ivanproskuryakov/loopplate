@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title><%= title %></title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <meta name="description" content="<%= description %>">
+  <meta name="keywords" content="<%= keywords %>">
+
+  <% if (locals.og && title) { %>
+  <meta property="og:title" content="<%= title %>"/>
+  <meta property="twitter:title" content="<%= title %>" />
+  <% } %>
+  <% if (locals.og && description) { %>
+  <meta property="twitter:description" content="<%= description %>" />
+  <% } %>
+  <% if (locals.og && og.type) { %>
+  <meta property="og:type" content="<%= og.type %>"/>
+  <meta property="twitter:card" content="summary" />
+  <% } %>
+  <% if (locals.og && og.image) { %>
+  <meta property="og:image" content="<%= og.image %>"/>
+  <meta property="twitter:image" content="<%= og.image %>" />
+  <% } %>
+  <% if (locals.og && og.url) { %>
+  <meta property="og:url" content="<%= og.url %>"/>
+  <meta property="twitter:url" content="<%= og.url %>" />
+  <% } %>
+
+  <% if (locals.og && og.publishedTime) { %>
+  <meta property="article:published_time" content="<%= og.publishedTime %>"/>
+  <% } %>
+  <% if (locals.og && og.author) { %>
+  <meta property="article:author" content="<%= og.author %>"/>
+  <% } %>
+  <% if (locals.og && og.section) { %>
+  <meta property="article:section" content="<%= og.section %>"/>
+  <% } %>
+  <% if (locals.og && og.tag) { %>
+  <% og.tag.forEach(function(tag){ %>
+  <meta property="article:tag" content="<%= tag %>"/>
+  <% }); %>
+  <% } %>
+
+  <% if (locals.og && og.firstName) { %>
+  <meta property="profile:first_name" content="<%= og.firstName %>"/>
+  <% } %>
+  <% if (locals.og && og.lastName) { %>
+  <meta property="profile:last_name" content="<%= og.lastName %>"/>
+  <% } %>
+  <% if (locals.og && og.username) { %>
+  <meta property="profile:username" content="<%= og.username %>"/>
+  <% } %>
+
+</head>
+<body>
+</body>
+</html>

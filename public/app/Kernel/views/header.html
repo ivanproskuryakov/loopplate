@@ -1,0 +1,51 @@
+<div id="navigation-header">
+  <div class="account" ng-if="user">
+    <a class="navbar-brand" ng-click="toggleSidenav()">
+      <img ng-src="/images/logo.png" class="logo"/>
+    </a>
+
+    <md-button class="--primary --icon" ui-sref="stream">
+      <i class="material-icons">dashboard</i>
+      <span class="hide-xs">Stream</span>
+      <md-tooltip hide-xs md-direction="bottom" ng-if="!activity.isLiked">
+        Updates from the users you follow
+      </md-tooltip>
+    </md-button>
+    <md-button class="--secondary --icon" ui-sref="trending">
+      <i class="material-icons">whatshot</i>
+      <span hide-xs>Hot</span>
+
+      <md-tooltip hide-xs md-direction="bottom" ng-if="!activity.isLiked">
+        Most popular
+      </md-tooltip>
+    </md-button>
+    <md-button class="publish --secondary --icon" ui-sref="activityNew">
+      <i class="material-icons">create</i>
+      <span class="hide-xs">Write a Story</span>
+      <md-tooltip hide-xs md-direction="bottom" ng-if="!activity.isLiked">
+        Share your story with others
+      </md-tooltip>
+    </md-button>
+
+    <div class="user-account-header" ng-include="'/app/Kernel/views/nav-profile.html'"></div>
+
+    <quick-search></quick-search>
+  </div>
+
+  <div class="account" ng-if="!user">
+    <a class="navbar-brand" ng-click="toggleSidenav()">
+      <img ng-src="/images/logo.png" class="logo"/>
+    </a>
+
+    <md-button class="--primary --icon" ui-sref="trending">
+      <i class="material-icons">whatshot</i>
+      <span>Popular</span>
+    </md-button>
+
+    <quick-search></quick-search>
+    <div hide-xs class="user-account">
+      <md-button ui-sref="userRegister">Register</md-button>
+      <md-button ui-sref="userLogin"><i class="material-icons">account_circle</i> Sign In</md-button>
+    </div>
+  </div>
+</div>

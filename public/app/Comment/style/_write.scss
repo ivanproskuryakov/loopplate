@@ -1,0 +1,36 @@
+.write-comment {
+  position: relative;
+  padding-right: 0;
+  border-radius: 0;
+  clear: both;
+
+  .user-photo {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 0;
+    float: left;
+
+    .user-profile {
+      margin-right: 0;
+      border-radius: 1px;
+    }
+  }
+  .form-control {
+    height: 35px;
+    border: 0;
+    padding-top: 3px;
+
+    &.--userphoto {
+      margin-left: 30px;
+    }
+    label {
+      color: #bbb;
+    }
+    label,
+    input {
+      font-weight: 400;
+      border-color: #eee;
+    }
+  }
+}

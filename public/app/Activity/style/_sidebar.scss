@@ -1,0 +1,63 @@
+#activity-details {
+  #sidebar {
+    right: 0;
+    top: 0;
+    overflow: visible;
+    position: initial;
+    border: 0;
+    background: #fff;
+    height: inherit;
+    margin-bottom: 50px;
+
+      .heading {
+        color: #555;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        &.--first {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+    .related-resources {
+      .shortinfo {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #888;
+        min-height: initial;
+
+        a {
+          font-weight: 400;
+          color: #888;
+        }
+      }
+      .youtube {
+        width: 100%;
+        height: 360px;
+      }
+      .youtube,
+      .giphy,
+      .twitter-wrapper,
+      .gplus-wrapper {
+        margin-bottom: 10px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 992px) {
+  #activity-details {
+    #sidebar {
+      .related-resources {
+        .youtube {
+          width: 100vw;
+          margin-left: -10px;
+        }
+      }
+    }
+  }
+}
+

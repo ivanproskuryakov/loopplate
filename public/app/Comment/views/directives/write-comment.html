@@ -1,0 +1,14 @@
+<div class="write-comment">
+  <user-profile
+    user="$root.user"
+    img-size="25px"
+    ng-if="$root.user.avatar.location"
+    class="user-photo">
+  </user-profile>
+
+  <md-input-container class="md-block form-control" ng-class="$root.user.avatar.location ? '--userphoto' : ''">
+    <label>Add a public comment ...</label>
+    <input ng-model="comment.body"
+           ng-keyup="$event.keyCode == 13 && submit()">
+  </md-input-container>
+</div>

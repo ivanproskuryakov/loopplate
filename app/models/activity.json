@@ -1,0 +1,188 @@
+{
+  "name": "Activity",
+  "base": "PersistedModel",
+  "properties": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": false
+    },
+    "category": {
+      "type": "string",
+      "required": false
+    },
+    "tags": {
+      "type": [
+        {
+          "value": "string",
+          "rank": "number"
+        }
+      ],
+      "required": false,
+      "default": []
+    },
+    "source": {
+      "type": "string",
+      "required": false
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "timelineId": {
+      "type": "string",
+      "required": false
+    },
+    "achievements": {
+      "type": [
+        "string"
+      ],
+      "required": false,
+      "default": []
+    }
+  },
+  "hidden": [
+    "timelineId"
+  ],
+  "protected": [
+    "likedUserIds",
+    "views"
+  ],
+  "validations": [],
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": ""
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    },
+    "media": {
+      "type": "embedsMany",
+      "model": "MediaMeta",
+      "default": [],
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "likes": {
+      "type": "referencesMany",
+      "model": "user",
+      "foreignKey": "likedUserIds",
+      "options": {
+        "validate": true,
+        "forceId": false,
+        "unique": true
+      }
+    },
+    "views": {
+      "type": "embedsMany",
+      "model": "ActivityView",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "indexes": {
+    "name_index": {
+      "name": 1
+    },
+    "slug_index": {
+      "slug": 1
+    },
+    "category_index": {
+      "category": 1
+    },
+    "tags_index": {
+      "tags": 1
+    },
+    "createdAt_index": {
+      "createdAt": -1
+    },
+    "userId_index": {
+      "userId": 1
+    },
+    "source_index": {
+      "keys": {
+        "source": 1
+      },
+      "options": {
+        "unique": true,
+        "sparse": true
+      }
+    }
+  },
+  "mixins": {
+    "TimeStamp": true,
+    "Limit": true,
+    "Slug": {
+      "source": "name",
+      "unique": true
+    },
+    "HttpUser": {
+      "field": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "post"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "like"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "dislike"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getRelatedVideos"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getCategories"
+    }
+  ],
+  "methods": {}
+}

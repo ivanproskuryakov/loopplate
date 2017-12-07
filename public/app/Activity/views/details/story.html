@@ -1,0 +1,13 @@
+<div id="activity-details">
+  <div class="single-column --center">
+    <div ng-include="'/app/Activity/views/details/section/user.html'"></div>
+    <div ng-include="'/app/Activity/views/details/section/nav.html'"></div>
+    <article ng-include="'/app/Activity/views/details/section/story.html'"></article>
+    <div ng-include="'/app/Activity/views/details/section/sidebar.html'"></div>
+  </div>
+
+  <md-button ui-sref="activityCollection({userName: activity.user.username})"
+             class="page-close md-icon-button">
+    <md-icon>close</md-icon>
+  </md-button>
+</div>

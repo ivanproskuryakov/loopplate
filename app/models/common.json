@@ -1,0 +1,13 @@
+{
+  "name": "Common",
+  "plural": "Common",
+  "base": "Model",
+  "properties": {},
+  "hidden": [],
+  "validations": [],
+  "relations": {},
+  "mixins": {},
+  "acls": [
+  ],
+  "methods": {}
+}

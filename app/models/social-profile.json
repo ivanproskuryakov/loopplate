@@ -1,0 +1,31 @@
+{
+  "name": "SocialProfile",
+  "base": "PersistedModel",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "tags": {
+      "type": [
+        "string"
+      ],
+      "required": false
+    },
+    "networks": [
+      "object"
+    ]
+  },
+  "hidden": [],
+  "validations": [],
+  "relations": {},
+  "mixins": {
+    "TimeStamp": true
+  },
+  "acls": [],
+  "methods": {}
+}

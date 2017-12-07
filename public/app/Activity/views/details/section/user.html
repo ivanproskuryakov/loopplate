@@ -1,0 +1,18 @@
+<div class="userinfo">
+  <user-profile
+    mode="horizontal"
+    img-size="70px"
+    user="activity.user"
+  >
+  </user-profile>
+  <div class="short-info" ng-class="activity.user.avatar.location ? '--userphoto' : ''">
+    <span>{{activity.createdAt | date:'d MMM yyyy @ HH:mm'}}</span>
+
+    <span ng-if="activity.achievements">
+      <span ng-repeat="achievement in activity.achievements">
+        <span class="sep">&bull;</span>
+        {{achievement}}
+      </span>
+    </span>
+  </div>
+</div>

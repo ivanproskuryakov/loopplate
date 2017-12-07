@@ -1,0 +1,17 @@
+<div class="comments mod-{{mode}}">
+  <write-comment activity="activity"></write-comment>
+
+  <div class="comments-heading">
+    <i class="material-icons">forum</i>
+    <span>
+      {{commentsCount}}&nbsp;<ng-pluralize count="commentsCount" when="{1: 'comment', other: 'comments'}"/>
+    </span>
+  </div>
+
+  <div class="comments-collection">
+    <comment ng-repeat="comment in comments"
+             data="comment"
+             activity="activity">
+    </comment>
+  </div>
+</div>

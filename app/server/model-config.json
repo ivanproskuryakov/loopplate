@@ -1,0 +1,86 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../models",
+      "loopback-component-passport/lib/models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../models/mixins"
+    ]
+  },
+  "user": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "ACL": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "accessToken": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "userCredential": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "userIdentity": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "Activity": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Comment": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "SocialProfile": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "Email": {
+    "dataSource": "mailgun"
+  },
+  "Contact": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Log": {
+    "dataSource": null,
+    "public": true
+  },
+  "ActivityView": {
+    "dataSource": null,
+    "public": false
+  },
+  "Media": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "MediaMeta": {
+    "dataSource": null,
+    "public": false
+  },
+  "Cache": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "Common": {
+    "dataSource": null,
+    "public": true
+  }
+}

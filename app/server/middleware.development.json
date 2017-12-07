@@ -1,0 +1,12 @@
+{
+  "files": {
+    "loopback#static": {
+      "params": [
+        "$!../../public/",
+        {
+          "index": "index_development.html"
+        }
+      ]
+    }
+  }
+}

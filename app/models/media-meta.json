@@ -1,0 +1,32 @@
+{
+  "name": "MediaMeta",
+  "base": "Model",
+  "properties": {
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "string",
+      "required": false
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "main": {
+      "type": "boolean",
+      "required": false
+    }
+  },
+  "hidden": [],
+  "validations": [],
+  "relations": {},
+  "mixins": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,20 @@
+{
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "LoopbackBoilerplate-test",
+    "username": "",
+    "password": "",
+    "name": "mongo",
+    "connector": "mongodb"
+  },
+  "mailgun": {
+    "name": "MailgunEmail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "Mock"
+      }
+    ]
+  }
+}

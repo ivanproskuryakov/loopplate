@@ -1,0 +1,10 @@
+{
+  "domain": "staging.application.com",
+  "storage": {
+    "provider": "amazon",
+    "key": "",
+    "keyId": "",
+    "region": "",
+    "container": "app-staging"
+  }
+}

@@ -1,0 +1,8 @@
+<div class="tags">
+  <div ng-repeat="tag in data | limitTo:max">
+    <a ui-sref="searchTag({ q: tag.value })" class="tag">
+      #{{tag.value}}
+    </a>
+  </div>
+</div>
+

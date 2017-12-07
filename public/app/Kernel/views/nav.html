@@ -1,0 +1,27 @@
+<div ng-controller="NavigationCtrl">
+
+  <ng-switch on="appState">
+    <div ng-switch-when="activityNew">
+    </div>
+    <div ng-switch-when="activityDetails">
+    </div>
+    <div ng-switch-when="about">
+    </div>
+    <div ng-switch-when="userLogin">
+    </div>
+    <div ng-switch-when="userRegister">
+    </div>
+    <div ng-switch-when="userPasswordForgot">
+    </div>
+    <div ng-switch-when="userPasswordReset">
+    </div>
+
+    <div ng-switch-when="exception">
+    </div>
+
+    <div ng-switch-default>
+      <div ng-include="'/app/Kernel/views/header.html'"></div>
+      <div ng-include="'/app/Kernel/views/sidenav/general.html'"></div>
+    </div>
+  </ng-switch>
+</div>

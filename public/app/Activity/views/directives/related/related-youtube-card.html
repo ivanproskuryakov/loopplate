@@ -1,0 +1,11 @@
+<div class="shortinfo">
+  <a class="user-name"
+     ng-href="https://www.youtube.com/channel/{{item.snippet.channelId}}">
+    {{item.snippet.channelTitle}}
+  </a>
+  <span class="sep">&bull;</span>
+  <span am-time-ago="item.snippet.publishedAt"></span>
+</div>
+<iframe class="youtube" allowfullscreen frameborder="0"
+        ng-src="{{getTrustedEmbedUrl(item.id.videoId)}}">
+</iframe>

@@ -1,0 +1,9 @@
+<button class="like-button" ng-click="toggleLike()">
+  <i class="icon-heart"></i>
+  <md-tooltip hide-xs md-direction="right" ng-if="!activity.isLiked">Like the story</md-tooltip>
+  <md-tooltip hide-xs md-direction="right" ng-if="activity.isLiked">Remove Like</md-tooltip>
+
+  <span class="counter">
+    {{activity.likesCount ? activity.likesCount : ''}}
+  </span>
+</button>

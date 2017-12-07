@@ -1,0 +1,23 @@
+/node_modules
+/build/*
+/dist/*
+!/build/.gitkeep
+/typings/
+/logs/*
+!/logs/.gitkeep
+
+# Public
+/public/bower_components/*
+/public/build/*
+/public/app/loopback-services.js
+/public/app/templates.js
+/public/styles/styles.css
+/public/styles/maps/*
+
+/public/sitemap.xml
+
+# WebStorm
+.idea/workspace.xml
+
+# Other
+dump.rdb

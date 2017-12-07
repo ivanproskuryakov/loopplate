@@ -1,0 +1,41 @@
+<h1>Summary report for <%= moment(summary.from).format('DD/MM/YYYY') %></h1>
+<h2>Imported <%= summary.quantity %> Activities</h2>
+
+<h2>New Users(<%= summary.newUsers.length %>):</h2>
+<table>
+  <% for(var i = 0; i < summary.newUsers.length; i++) { %>
+    <tr>
+      <td style="text-align: left;"><%= summary.newUsers[i].username %></td>
+      <td style="text-align: right;"><%= summary.newUsers[i].email %></td>
+    </tr>
+  <% } %>
+</table>
+
+<h2>Categories(<%= summary.categories.length %>):</h2>
+<table>
+  <% for(var i = 0; i < summary.categories.length; i++) { %>
+    <tr>
+      <td style="text-align: left;"><%= summary.categories[i].category %></td>
+      <td style="text-align: right;"><b><%= summary.categories[i].quantity %></b></td>
+    </tr>
+  <% } %>
+</table>
+
+<h2>Users(<%= summary.users.length %>):</h2>
+<table>
+  <% for(var j = 0; j < summary.users.length; j++) { %>
+    <tr>
+      <td style="text-align: left;"><%= summary.users[j].username %></td>
+      <td style="text-align: right;"><b><%= summary.users[j].quantity %></b></td>
+
+      <% if(i == 50) {%>
+        <% break %>
+      <% } %>
+    </tr>
+  <% } %>
+</table>
+
+<br>
+<br>
+<h3>Total: <%= summary.total %></h3>
+<h3>Host: <%= host %></h3>

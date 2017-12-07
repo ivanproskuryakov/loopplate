@@ -1,0 +1,41 @@
+<div class="landing-page">
+  <div class="actions">
+    <div class="page-header mod-small">
+      Log In With
+    </div>
+
+    <div class="login-buttons">
+      <md-button class="btn-facebook" ng-click="oauthRedirect('facebook')">Facebook</md-button>
+      <md-button class="btn-google" ng-click="oauthRedirect('google')">Google</md-button>
+    </div>
+
+    <div class="or-separator">
+      <span>or</span>
+    </div>
+
+    <form name="form"
+          role="form"
+          class="form-centered"
+          ng-submit="login(email, password)">
+
+      <md-input-container class="md-block">
+        <label>E-mail</label>
+        <input ng-model="email" name="email" type="email" ng-required="true">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Password</label>
+        <input ng-model="password" name="password" type="password" ng-required="true">
+      </md-input-container>
+
+      <div class="login-buttons">
+        <md-button type="submit" class="md-primary md-raised">
+          <i class="material-icons">account_circle</i>Sign In
+        </md-button>
+        <md-button ui-sref="userRegister">New User</md-button>
+        <md-button ui-sref="userPasswordForgot">Forgot Password</md-button>
+      </div>
+
+    </form>
+  </div>
+  <div ng-include="'/app/Kernel/views/banner.html'"></div>
+</div>

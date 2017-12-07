@@ -1,0 +1,32 @@
+<div class="profile-upload">
+  <input type="file" ng-model="file" accept="image/*" class="select-file">
+
+  <md-button ng-click="selectFile()" class="md-default md-raised">
+    <i class="material-icons">image</i>
+    Upload Profile Image
+  </md-button>
+
+  <script type="text/ng-template" id="modal-upload-dialog.html">
+    <md-dialog aria-label="Mango (Fruit)" class="media-upload-dialog">
+      <md-dialog-content>
+        <div class="md-dialog-content">
+          <ui-cropper image="file"
+                      area-type="square"
+                      chargement="'Loading'"
+                      result-image="fileCropped"
+                      canvas-scalemode="true">
+          </ui-cropper>
+        </div>
+      </md-dialog-content>
+
+      <md-dialog-actions layout="row">
+        <md-button class="button-upload md-raised" ng-click="upload()">
+          Upload
+        </md-button>
+        <md-button class="button-cancel md-raised" ng-click="close()">
+          Cancel
+        </md-button>
+      </md-dialog-actions>
+    </md-dialog>
+  </script>
+</div>

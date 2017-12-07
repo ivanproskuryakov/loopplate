@@ -1,0 +1,32 @@
+{
+  "name": "Cache",
+  "plural": "Cache",
+  "base": "PersistedModel",
+  "properties": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "object",
+      "required": false
+    },
+    "createdAt": {
+      "type": "Date",
+      "required": true
+    }
+  },
+  "indexes": {
+    "key_index": {
+      "keys": {
+        "key": 1
+      },
+      "options": {
+        "unique": true
+      }
+    }
+  },
+  "validations": [],
+  "acls": [],
+  "methods": []
+}

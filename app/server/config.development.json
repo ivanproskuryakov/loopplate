@@ -1,0 +1,14 @@
+{
+  "domain": "dev.application.com",
+  "port": 8080,
+  "storage": {
+    "provider": "amazon",
+    "key": "amazonKey",
+    "keyId": "amazonKeyId",
+    "region": "",
+    "container": "app-development"
+  },
+  "logs": {
+    "transport": "console"
+  }
+}

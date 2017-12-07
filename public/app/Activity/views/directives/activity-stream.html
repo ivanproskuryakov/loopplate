@@ -1,0 +1,42 @@
+<div class="activity-stream">
+
+  <div infinite-scroll="load()" infinite-scroll-disabled="loader.isBusy || loader.reachedBottom">
+    <div ng-if="loader.currentPage == 1">
+      <div ng-if="!$root.user"
+           class="call-to-action"
+           ng-include="'/app/Activity/views/new-account.html'">
+      </div>
+    </div>
+    <div class="activity" ng-repeat="activity in loader.data">
+      <activity-card activity="activity"/>
+    </div>
+  </div>
+
+  <div ng-if="loader.reachedBottom && loader.currentPage == 1" class="stream-empty">
+    <div ng-if="type == 'user'">
+      This user has no updates, yet.
+      <br/>
+      <md-button ui-sref="trending" class="md-default md-raised">
+        <i class="material-icons">whatshot</i> Popular
+      </md-button>
+    </div>
+
+    <div ng-if="type == 'stream'">
+      No updates, since you are not following anyone.
+      <br/>
+      <md-button ui-sref="trending" class="md-default md-raised">
+        <i class="material-icons">whatshot</i> Popular
+      </md-button>
+    </div>
+  </div>
+
+  <div ng-if="!loader.reachedBottom && loader.isBusy">
+    <div class="clear" ng-show="loader.currentPage >= 1">
+      <md-button
+        class="load-more-stories md-default md-raised"
+        ng-click="loader.isBusy = false">
+        More
+      </md-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+@mixin triangle($side,$color,$size) {
+	@if $side == left {
+		border:$size+px solid transparent;
+		border-right:$size+px solid $color;
+	}
+	@if $side == right {
+		border:$size+px solid transparent;
+		border-left:$size+px solid $color;
+	}
+	@if $side == top {
+		border:$size+px solid transparent;
+		border-bottom:$size+px solid $color;
+	}
+	@if $side == bottom {
+		border:$size+px solid transparent;
+		border-top:$size+px solid $color;
+	}
+}
+
+@mixin bp($width,$direction:max) {
+	@if $direction == min {
+		@media screen and (min-width: $width) {
+			@content;
+		}
+	}
+	@else {
+		@media screen and (max-width: $width) {
+			@content;
+		}
+	}
+}
+
+@mixin transition($transition...) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+@mixin transition-property($property...) {
+  -moz-transition-property:    $property;
+  -o-transition-property:      $property;
+  -webkit-transition-property: $property;
+  transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+  -moz-transition-property:    $duration;
+  -o-transition-property:      $duration;
+  -webkit-transition-property: $duration;
+  transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+  -moz-transition-timing-function:    $timing;
+  -o-transition-timing-function:      $timing;
+  -webkit-transition-timing-function: $timing;
+  transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+  -moz-transition-delay:    $delay;
+  -o-transition-delay:      $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay:         $delay;
+}

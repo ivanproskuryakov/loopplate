@@ -1,0 +1,69 @@
+<div class="landing-page">
+  <div class="actions">
+
+    <div class="page-header mod-small">
+      New Account With
+    </div>
+
+    <div class="login-buttons">
+      <md-button class="btn-facebook" ng-click="oauthRedirect('facebook')">
+        Facebook
+      </md-button>
+      <md-button class="btn-google" ng-click="oauthRedirect('google')">
+        Google
+      </md-button>
+    </div>
+
+    <div class="or-separator">
+      <span>or</span>
+    </div>
+
+    <form name="form"
+          role="form"
+          autocomplete="off"
+          class="form-centered"
+          ng-submit="submitRegistration(form)">
+      <md-input-container class="md-block">
+        <label>Username</label>
+        <input ng-model="username" name="username" ng-required="true">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <input ng-model="email"
+               autocomplete="off"
+               name="email"
+               type="email"
+               required="true">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Password</label>
+        <input ng-model="password"
+               autocomplete="off"
+               name="password"
+               type="{{inputType}}"
+               minlength="4"
+               required="true">
+      </md-input-container>
+
+      <div class="show-password">
+        <md-checkbox type="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()">
+          Show password
+        </md-checkbox>
+        <p class="note">
+          We may use your email for updates and tips about our products and services.
+          You can unsubscribe for free at any time in your notification preferences.<br/>
+          By signing in, you agree to our <a ui-sref="terms">Terms of Use.</a>
+        </p>
+      </div>
+      <div class="login-buttons">
+        <md-button type="submit" class="md-primary md-raised">
+          <i class="material-icons">person_add</i>
+          Register
+        </md-button>
+        <md-button ui-sref="userLogin">Existing User</md-button>
+      </div>
+
+    </form>
+  </div>
+  <div ng-include="'/app/Kernel/views/banner.html'"></div>
+</div>

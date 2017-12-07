@@ -1,0 +1,20 @@
+.user-following {
+  .unfollow-user {
+
+    &:hover {
+      .label-following {
+        display: none;
+      }
+      .label-unfollow {
+        display: block;
+      }
+    }
+
+    .label-following {
+      display: block;
+    }
+    .label-unfollow {
+      display: none;
+    }
+  }
+}

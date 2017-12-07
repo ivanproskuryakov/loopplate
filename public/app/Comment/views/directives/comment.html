@@ -1,0 +1,36 @@
+<div class="comment" ng-class="data.replyTo ? 'mod-reply' : ''">
+  <user-profile user="data.user" shape="square" img-size="35px"></user-profile>
+
+  <div class="comment-body" ng-mouseenter="options.active=true" ng-mouseleave="options.active=false">
+
+    <div class="comment-heading">
+      <a class="user-name"
+         ui-sref="activityCollection({userName: data.user.username})">
+        {{data.user.username}}
+      </a>
+
+      <span class="time-at" am-time-ago="data.createdAt"></span>
+    </div>
+
+    <div class="comment-text">
+      <p>{{data.text}}</p>
+
+      <div class="reply-button btn btn-default" ng-show="options.active && !options.reply"
+           ng-click="writeReply(data)">
+        Reply
+      </div>
+
+      <write-comment activity="activity"
+                     on-reply="onReply"
+                     mode="collection"
+                     ng-show="options.reply">
+      </write-comment>
+    </div>
+  </div>
+
+  <!-- Replies -->
+  <comment ng-repeat="reply in data.replies"
+           data="reply"
+           activity="activity">
+  </comment>
+</div>

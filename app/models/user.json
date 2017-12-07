@@ -1,0 +1,231 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "properties": {
+    "username": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "default": "user"
+    },
+    "firstName": {
+      "type": "string",
+      "required": false
+    },
+    "lastName": {
+      "type": "string",
+      "required": false
+    },
+    "middleName": {
+      "type": "string",
+      "required": false
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": false
+    },
+    "gender": {
+      "type": "boolean",
+      "required": false
+    },
+    "country": {
+      "type": "string",
+      "required": false
+    },
+    "facebook": {
+      "type": "string",
+      "required": false
+    },
+    "youtube": {
+      "type": [
+        "object"
+      ],
+      "default": [],
+      "required": false
+    },
+    "instagram": {
+      "type": "string",
+      "required": false
+    },
+    "twitter": {
+      "type": "string",
+      "required": false
+    },
+    "website": {
+      "type": "string",
+      "required": false
+    },
+    "about": {
+      "type": "string",
+      "required": false
+    },
+    "updatedAt": {
+      "type": "date",
+      "required": false
+    },
+    "createdAt": {
+      "type": "date",
+      "required": false
+    },
+    "importedAt": {
+      "type": "date",
+      "required": false
+    }
+  },
+  "hidden": [
+    "rss",
+    "createdAt",
+    "importedAt",
+    "followers",
+    "followersIds",
+    "type"
+  ],
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "accessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "userIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "userCredential",
+      "foreignKey": "userId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "userId"
+    },
+    "activities": {
+      "type": "hasMany",
+      "model": "Activity",
+      "foreignKey": "userId"
+    },
+    "avatar": {
+      "type": "embedsOne",
+      "model": "MediaMeta"
+    },
+    "background": {
+      "type": "embedsOne",
+      "model": "MediaMeta"
+    },
+    "followers": {
+      "type": "referencesMany",
+      "model": "user",
+      "foreignKey": "followersIds",
+      "options": {
+        "validate": true,
+        "forceId": false,
+        "unique": true
+      }
+    }
+  },
+  "mixins": {
+    "TimeStamp": true,
+    "Slug": {
+      "source": "username",
+      "field": "username"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "passwordResetConfirm"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "requestWebsiteUserReset",
+      "accessType": "EXECUTE"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "publicProfile"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "activities"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "deleteAccount"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "requestAccountDelete"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "followSuggestions"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "follow"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "unfollow"
+    }
+  ],
+  "methods": {}
+}

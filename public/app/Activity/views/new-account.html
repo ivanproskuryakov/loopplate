@@ -1,0 +1,21 @@
+<div class="new-account">
+  <div class="page-header">
+    Log In With
+  </div>
+
+  <div class="login-buttons" ng-controller="UserCtrl">
+    <md-button class="btn-facebook" ng-click="oauthRedirect('facebook')">
+      Facebook
+    </md-button>
+    <md-button class="btn-google" ng-click="oauthRedirect('google')">
+      Google
+    </md-button>
+
+    <div class="or-separator --inverted">
+      <span>or</span>
+    </div>
+    <md-button ui-sref="userRegister">
+      Create a New Account
+    </md-button>
+  </div>
+</div>

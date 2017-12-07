@@ -1,0 +1,30 @@
+{
+  "name": "Contact",
+  "base": "PersistedModel",
+  "plural": "Contact",
+  "idInjection": true,
+  "properties": {
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "hidden": [],
+  "validations": [],
+  "relations": {},
+  "mixins": {},
+  "acls": [],
+  "methods": {}
+}

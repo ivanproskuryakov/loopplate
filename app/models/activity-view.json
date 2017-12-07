@@ -1,0 +1,22 @@
+{
+  "name": "ActivityView",
+  "base": "Model",
+  "properties": {
+    "ip": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "hidden": [],
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "mixins": {},
+  "acls": [],
+  "methods": {}
+}

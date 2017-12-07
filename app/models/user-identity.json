@@ -1,0 +1,19 @@
+{
+  "name": "userIdentity",
+  "plural": "userIdentities",
+  "base": "UserIdentity",
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "acls": [],
+  "methods": []
+}

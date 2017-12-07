@@ -1,0 +1,20 @@
+<div id="activity-content">
+  <h1 id="story"
+      class="post-heading"
+      ng-bind-html="activity.name">
+  </h1>
+  <tags ng-if="activity.tags"
+        data="activity.tags"
+        max="10">
+  </tags>
+  <img class="main-image"
+       ng-if="activityImagePath(activity)"
+       ng-src="{{activityImagePath(activity)}}"
+       alt="{{activity.name}}">
+
+  <div class="description"
+       ng-if="activity.description"
+       ng-bind-html="activity.description">
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+.profile-upload {
+  .select-file {
+    display: none;
+  }
+  .upload-button {
+    margin-right: 15px;
+  }
+}
+
+.media-upload-dialog {
+  md-dialog-actions {
+    margin-top: -10px;
+    .button-cancel {
+      float: left;
+    }
+    .button-cancel,
+    .button-upload {
+      margin-right: 16px;
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Log",
+  "base": "Model",
+  "properties": {
+    "message": {
+      "type": "string",
+      "required": true
+    },
+    "code": {
+      "type": "number",
+      "required": false
+    },
+    "stackTrace": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "hidden": [],
+  "validations": [],
+  "relations": {},
+  "mixins": {},
+  "acls": [
+  ],
+  "methods": {}
+}

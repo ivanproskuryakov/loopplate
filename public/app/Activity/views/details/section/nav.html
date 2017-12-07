@@ -1,0 +1,14 @@
+<div id="activity-nav">
+  <activity-like activity="activity"></activity-like>
+  <md-button ng-if="activity.source"
+             href="{{activity.source}}"
+             target="_blank"
+             class="next">
+    Source
+  </md-button>
+  <md-button ng-if="relatedActivity"
+             ui-sref="activityDetails({userName: relatedActivity.user.username, activitySlug: relatedActivity.slug})"
+             class="next">
+    Next <i class="material-icons">arrow_forward</i>
+  </md-button>
+</div>

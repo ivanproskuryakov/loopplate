@@ -1,0 +1,56 @@
+<div ng-if="mode == 'plain'" class="user-profile" ng-class="shape">
+  <img ng-src="{{user.avatar.location}}" width="{{imgSize}}" height="{{imgSize}}">
+</div>
+
+<div ng-if="mode == 'simple'" class="user-profile" ng-class="shape">
+  <a ui-sref="activityCollection({userName: user.username})">
+    <img ng-src="{{user.avatar.location}}" width="{{imgSize}}" height="{{imgSize}}">
+  </a>
+</div>
+
+<div ng-if="mode == 'dropdown'">
+  <div class="user-profile-dropdown">
+    <div class="user-profile" ng-class="shape">
+      <a ui-sref="activityCollection({userName: user.username})">
+        <img ng-src="{{user.avatar.location}}" width="{{imgSize}}" height="{{imgSize}}">
+      </a>
+    </div>
+
+    <div class="user-details-dropdown">
+      <div class="user-profile" ng-class="shape">
+        <a ui-sref="activityCollection({userName: user.username})">
+          <img ng-src="{{user.avatar.location}}">
+        </a>
+      </div>
+
+      <a class="details-user" ui-sref="activityCollection({userName: user.username})">
+        {{user.username}}
+      </a>
+      <span class="details-item">{{user.followersCount | megaNumber}} followers</span>
+      <span class="details-item">{{user.activitiesCount | megaNumber}} news</span>
+
+      <user-following user="user"></user-following>
+    </div>
+  </div>
+</div>
+
+<div ng-if="mode == 'horizontal'">
+  <div class="user-profile-horizontal" ng-class="size">
+    <div ng-if="user.avatar.location" class="user-profile" ng-class="shape">
+      <a ui-sref="activityCollection({userName: user.username})">
+        <img ng-src="{{user.avatar.location}}" width="{{imgSize}}" height="{{imgSize}}">
+      </a>
+    </div>
+
+    <div class="details">
+      <a class="details-user" ui-sref="activityCollection({userName: user.username})">
+        {{user.username}}
+      </a>
+      <div class="counters">
+        {{user.followersCount | megaNumber}} followers <br/>
+        {{user.activitiesCount | megaNumber}} news
+      </div>
+      <user-following user="user"></user-following>
+    </div>
+  </div>
+</div>

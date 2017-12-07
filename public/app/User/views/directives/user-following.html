@@ -1,0 +1,15 @@
+<div class="user-following" ng-if="canFollow()">
+  <button ng-if="!user.isFollowing" class="follow-user" ng-click="follow()">
+    <span class="label-follow">Follow</span>
+    <md-tooltip hide-xs md-direction="right">
+      Follow @{{user.username}} to see updates in your feed.
+    </md-tooltip>
+  </button>
+  <button ng-if="user.isFollowing" class="unfollow-user" ng-click="unfollow()">
+    <span class="label-following">Following</span>
+    <span class="label-unfollow">Unfollow</span>
+    <md-tooltip hide-xs md-direction="right">
+      Unfollow @{{user.username}}
+    </md-tooltip>
+  </button>
+</div>

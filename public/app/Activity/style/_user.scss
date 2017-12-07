@@ -1,0 +1,132 @@
+#activity-user {
+  background: #111;
+  text-align: center;
+  overflow: hidden;
+  width: 100vw !important;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0 10px;
+
+  .user-img-load {
+    position: absolute;
+    float: left;
+    right: 0;
+    bottom: 0;
+  }
+
+  .userinfo {
+    padding-top: 30px;
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 320px;
+    //width: 100%;
+
+    .details-user {
+      color: #fff;
+    }
+    .counters {
+      color: #aaa;
+    }
+  }
+  .user-summary {
+    float: left;
+    .counters {
+      width: 100%;
+      display: block;
+      float: left;
+      cursor: default;
+      margin-bottom: 10px;
+
+      .details-count {
+        color: #999;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      .details-heading {
+        color: #999;
+      }
+      .details-desc {
+        color: #999;
+        font-size: 12px;
+      }
+      .details-item {
+        color: inherit;
+        font-size: 16px;
+
+        &.mod-follow {
+          float: left;
+          margin-right: 20px;
+          border-right: 1px solid #eee;
+          padding-right: 20px;
+        }
+        &:last-child {
+          &.mod-follow {
+            border: 0;
+          }
+        }
+
+        .details-icon {
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+          line-height: 20px;
+          font-size: 16px;
+          text-align: center;
+        }
+      }
+    }
+
+    .user-about {
+      margin-bottom: 20px;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 400;
+      float: left;
+    }
+
+    .user-links {
+      display: block;
+      float: left;
+      margin-top: 10px;
+
+      .details-link {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        display: block;
+        color: #999;
+        text-decoration: underline;
+
+        &:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 1px;
+          height: 100%;
+          content: '';
+        }
+        &:first-of-type {
+          &:after {
+            display: none;
+          }
+        }
+        &.mod-social-link {
+          padding: 0;
+          margin: 0;
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      margin-top: 30px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div id="activity-user">
+  <user-profile
+    class="userinfo"
+    mode="horizontal"
+    user="profile">
+  </user-profile>
+
+  <image-uploader
+    class="user-img-load"
+    title="'Upload Profile Image'"
+    ng-show="canUpdateProfile">
+  </image-uploader>
+
+</div>
+
+<user-activities ng-if="profile" user="profile"></user-activities>

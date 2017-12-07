@@ -1,0 +1,18 @@
+<div class="related-resources" ng-cloak>
+  <md-progress-circular
+    class="md-hue-5 loading"
+    ng-show="busy"
+    md-diameter="40">
+  </md-progress-circular>
+
+  <h3 ng-if="!busy && data.length" class="heading">
+    {{type}}
+  </h3>
+
+  <div ng-repeat="item in data" class="related">
+    <div ng-if="type == 'youtube'" ng-include="'/app/Activity/views/directives/related/related-youtube-card.html'"></div>
+    <div ng-if="type == 'twitter'" ng-include="'/app/Activity/views/directives/related/related-twitter-card.html'"></div>
+    <div ng-if="type == 'gplus'" ng-include="'/app/Activity/views/directives/related/related-gplus-card.html'"></div>
+    <div ng-if="type == 'giphy'" ng-include="'/app/Activity/views/directives/related/related-giphy-card.html'"></div>
+  </div>
+</div>

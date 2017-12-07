@@ -1,0 +1,26 @@
+{
+  "domain": "test.application.com",
+  "port": 3000,
+  "storage": {
+    "provider": "mock",
+    "key": "",
+    "keyId": "",
+    "region": "",
+    "container": "mock-container"
+  },
+  "remoting": {
+    "errorHandler": {
+      "handleErrors": true,
+      "debug": true,
+      "log": false
+    }
+  },
+  "oauth": {
+    "yahoo": {
+      "disable": true
+    }
+  },
+  "logs": {
+    "transport": "mock"
+  }
+}

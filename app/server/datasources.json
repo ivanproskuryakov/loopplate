@@ -1,0 +1,28 @@
+{
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "LoopbackBoilerplate",
+    "username": "",
+    "password": "",
+    "name": "mongo",
+    "connector": "mongodb"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
+  "mailgun": {
+    "name": "MailgunEmail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "Mailgun",
+        "auth": {
+          "api_key": "key-4ed48e3b870bc826026134d77d48336e",
+          "domain": "application.com"
+        }
+      }
+    ]
+  }
+}

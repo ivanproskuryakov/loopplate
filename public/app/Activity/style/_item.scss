@@ -1,0 +1,136 @@
+.post-heading {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  a {
+    color: #111;
+    line-height: 1;
+    font-size: 25px;
+    font-weight: 500;
+    display: block;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.activity-plain-wrapper {
+  display: inline-block;
+  margin-top: 10px;
+  width: 100%;
+
+  .activity-plain {
+    background: #fafafa;
+    clear: both;
+    padding: 30px;
+    height: 300px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    * {
+      color: #666;
+      font-weight: 500;
+    }
+  }
+}
+
+.shortinfo {
+  width: 100%;
+  float: left;
+  color: #999;
+  font-weight: 400;
+  font-size: 12px;
+  min-height: 50px;
+
+  .info {
+    float: left;
+    margin-top: 5px;
+    display: grid;
+    span {
+      font-weight: 400;
+      color: #aaa;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+  }
+  .userinfo {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+// Tags
+.tags {
+  clear: both;
+  width: 100%;
+  float: left;
+
+  .tag {
+    float: left;
+    padding: 5px 8px 5px;
+    color: #eee;
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 4px;
+    margin-bottom: 2px;
+    background: #444;
+    cursor: pointer;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+      background: #000;
+    }
+  }
+}
+
+.follow-user,
+.unfollow-user {
+  line-height: 1 !important;
+  border-radius: 1px;
+  color: #fff;
+  background: #df0000;
+  padding: 5px 15px;
+  font-weight: 400;
+  opacity: 0.95;
+  float: left;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+    background: #a90000;
+  }
+  i {
+    font-size: 20px;
+  }
+  span {
+    cursor: pointer;
+    font-size: 12px;
+    vertical-align: bottom;
+    line-height: 1;
+    float: right;
+    display: block;
+    font-weight: 500;
+  }
+}
+
+.like-button {
+  margin-bottom: 10px;
+  background: 0;
+  cursor: pointer;
+  font-size: 22px;
+  color: #555;
+  @include transition(all 0.5s);
+
+  .counter {
+    color: #333;
+    font-size: 12px;
+    font-weight: 500;
+    vertical-align: text-bottom;
+    margin-left: -3px;
+  }
+  &:hover {
+    color: #222;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="page-header">
+  Account details
+</div>
+<form name="form" role="form" class="form-centered" ng-submit="updateAccount(form)">
+  <md-input-container class="md-block">
+    <label>Username</label>
+    <input ng-model="account.username" name="username">
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>First Name</label>
+    <input ng-model="account.firstName" name="firstName">
+  </md-input-container>
+  <md-input-container class="md-block">
+    <label>Middle Name</label>
+    <input ng-model="account.firstName" name="middleName">
+  </md-input-container>
+  <md-input-container class="md-block">
+    <label>Last Name</label>
+    <input ng-model="account.firstName" name="lastName">
+  </md-input-container>
+
+  <div class="pull-right">
+    <md-button type="submit" class="md-default md-raised">
+      Save
+    </md-button>
+  </div>
+</form>

@@ -1,0 +1,43 @@
+<html lang="en" xmlns:ng="http://angularjs.org">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title ng-bind="meta.title">application.com</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <meta name="description" ng-attr-content="{{meta.description}}">
+  <meta name="keywords" ng-attr-content="{{meta.keywords}}">
+
+  <meta property="og:title" ng-if="meta.og" ng-attr-content="{{meta.title}}"/>
+  <meta property="og:type" ng-if="meta.og.type" ng-attr-content="{{meta.og.type}}"/>
+  <meta property="og:url" ng-if="meta.og.url" ng-attr-content="{{meta.og.url}}"/>
+  <meta property="og:image" ng-if="meta.og.image" ng-attr-content="{{meta.og.image}}"/>
+
+  <meta property="article:published_time" ng-if="meta.og.publishedTime" ng-attr-content="{{meta.og.publishedTime}}"/>
+  <meta property="article:author" ng-if="meta.og.author" ng-attr-content="{{meta.og.author}}"/>
+  <meta property="article:section" ng-if="meta.og.section" ng-attr-content="{{meta.og.section}}"/>
+  <meta property="article:tag" ng-if="meta.og.tag" ng-repeat="tag in meta.og.tag" ng-attr-content="{{tag}}"/>
+
+  <meta property="profile:first_name" ng-if="meta.og.firstName" ng-attr-content="{{meta.og.firstName}}"/>
+  <meta property="profile:last_name" ng-if="meta.og.lastName" ng-attr-content="{{meta.og.lastName}}"/>
+  <meta property="profile:username" ng-if="meta.og.username" ng-attr-content="{{meta.og.username}}"/>
+
+  <meta property="twitter:card" ng-if="meta.og" content="summary"/>
+  <meta property="twitter:title" ng-if="meta.og" ng-attr-content="{{meta.title}}"/>
+  <meta property="twitter:description" ng-if="meta.og" ng-attr-content="{{meta.description}}"/>
+  <meta property="twitter:image" ng-if="meta.og.image" ng-attr-content="{{meta.og.image}"/>
+</head>
+<body id="app" ng-class="appState">
+
+<header ng-include="'/app/Kernel/views/nav.html'"></header>
+<div class="view content-wrapper" ui-view></div>
+
+<div id="page-is-loading" class="preloader">
+  <div class="text">Loading ...</div>
+</div>
+
+<link rel="stylesheet" href="/build/styles.css">
+<script data-main="/app/main" src="/bower_components/requirejs/require.js"></script>
+</body>
+</html>

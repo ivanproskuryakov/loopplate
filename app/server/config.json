@@ -1,0 +1,60 @@
+{
+  "restApiRoot": "/api",
+  "domain": "application.com",
+  "email": "service@application.com",
+  "host": "0.0.0.0",
+  "legacyExplorer": false,
+  "port": 80,
+  "cookieSecret": "fdw@ip5dtp+8x1%r6ss5ys9s+v(zdnrvq5)%f6=k-u15w-iwn6",
+  "remoting": {
+    "rest": {
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false,
+    "errorHandler": {
+      "handleErrors": true,
+      "debug": true,
+      "log": true
+    }
+  },
+  "oauth": {
+    "facebook": {
+      "clientId": "",
+      "clientSecret": ""
+    },
+    "google": {
+      "clientId": "",
+      "clientSecret": ""
+    },
+  },
+  "maxPageSize": 20,
+  "storage": {
+    "provider": "amazon",
+    "key": "",
+    "keyId": "",
+    "region": "",
+    "container": "app-production"
+  },
+  "google": {
+    "key": "~"
+  },
+  "logs": {
+    "transport": "sentry",
+    "options": {
+      "dsn": "~"
+    }
+  },
+  "meta": {
+    "title": "Product title - application.com",
+    "description": "Product title - application.com"
+  }
+}
