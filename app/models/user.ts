@@ -58,16 +58,6 @@ export = function (User) {
     'prototype.__get__credentials',
     'prototype.__updateById__credentials',
     /**
-     * User -> Comment
-     */
-    'prototype.__count__comments',
-    'prototype.__create__comments',
-    'prototype.__delete__comments',
-    'prototype.__destroyById__comments',
-    'prototype.__findById__comments',
-    'prototype.__get__comments',
-    'prototype.__updateById__comments',
-    /**
      * User -> Activity
      */
     'prototype.__count__activities',

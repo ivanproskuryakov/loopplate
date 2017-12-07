@@ -36,12 +36,6 @@ gulp.task('app:build', function (done) {
   );
 });
 
-gulp.task('deploy:cleanup', shell.task([
-  'node build/command/cleanup.js',
-  'node build/command/importRssUsers.js',
-  'node build/command/importSocialProfiles.js --file=social-staging.json'
-]));
-
 gulp.task('server:watch', function (done) {
   plugin.nodemon({
     script: 'build/server/server.js',

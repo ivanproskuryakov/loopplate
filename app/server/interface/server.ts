@@ -28,8 +28,6 @@ export interface Server {
   models: {
     Activity: ActivityDataAccessObject;
     user: UserDataAccessObject;
-    Comment: CommentDataAccessObject;
-    SocialProfile: SocialProfileDataAccessObject;
     accessToken: AccessTokenDataAccessObject;
     Email: EmailDataAccessObject;
     userIdentity: UserIdentityDataAccessObject;

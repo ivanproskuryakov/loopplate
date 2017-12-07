@@ -4,7 +4,6 @@ import {ServerError} from 'app/error/serverError';
 import {Server} from 'app/server/interface/server';
 import {User} from 'app/models/interface/user';
 import {Activity} from 'app/models/interface/activity';
-import {Comment} from 'app/models/interface/comment';
 import {EmailService} from 'app/service/emailService';
 import {ActivityService} from 'app/service/activityService';
 import {MediaService} from 'app/service/media/mediaService';
@@ -326,14 +325,12 @@ export class UserService {
   }
 
   /**
-   * Injects user
-   * it returns activity as json, so it should be called last
    * @static
    * @param {Server} app
-   * @param {Activity | Comment} instance
+   * @param {Activity} instance
    * @returns {Promise}
    */
-  public static injectUser(app: Server, instance: Activity | Comment): Promise<void> {
+  public static injectUser(app: Server, instance: Activity): Promise<void> {
 
     return UserService.getUser(app, null, instance.userId)
       .then<void>((profile: User) => {
@@ -346,11 +343,11 @@ export class UserService {
    * it returns activity as json, so it should be called last
    * @static
    * @param {Server} app
-   * @param {Activity | Comment} instance
+   * @param {Activity} instance
    * @param {User} currentUser
    * @returns {Promise}
    */
-  public static injectUserProfile<T extends Activity | Comment>(app: Server, instance: T, currentUser: User): Promise<void> {
+  public static injectUserProfile<T extends Activity>(app: Server, instance: T, currentUser: User): Promise<void> {
 
     return UserService.getUserProfile(
       app,
@@ -373,8 +370,7 @@ export class UserService {
     return UserService.getUserByToken(app, token)
       .then(user => {
 
-        return app.models.Comment.updateAll({userId: user.id}, {userId: null})
-          .then(() => app.models.Activity.destroyAll({userId: user.id}))
+        return app.models.Activity.destroyAll({userId: user.id})
           .then(() => new MediaService(app).deleteUserMedia(user))
           .then(() => app.models.userIdentity.destroyAll({userId: user.id}))
           .then(() => app.models.accessToken.destroyAll({userId: user.id}))

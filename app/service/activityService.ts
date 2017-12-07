@@ -10,12 +10,8 @@ import {ServerError} from 'app/error/serverError';
 import {Server} from 'app/server/interface/server';
 import {User} from 'app/models/interface/user';
 import {Activity} from 'app/models/interface/activity';
-import {ActivityType} from 'app/models/interface/activityType';
 import {MediaType} from 'app/models/interface/media';
 import {UserService} from 'app/service/userService';
-import {CommentService} from 'app/service/commentService';
-import {TagsAnalyzer} from 'app/service/analysis/tagsAnalyzer';
-import {MetaExtractor} from 'app/import/extractor/metaExtractor';
 
 /**
  * ActivityService
@@ -158,7 +154,6 @@ export class ActivityService {
       .all([
         ActivityService.injectProperties(activityJson, currentUser),
         UserService.injectUserProfile(app, activityJson, currentUser),
-        CommentService.injectComments(app, activityJson, currentUser)
       ])
       .then(() => activityJson);
   }
@@ -246,43 +241,6 @@ export class ActivityService {
   public static getActivityRelatedUrl(app: Server, activity: Activity, resource: string): string {
 
     return `http://${app.get('domain')}/u/${activity.user.username}/a/${activity.slug}/${resource}`;
-  }
-
-  /**
-   * @param {Server} app
-   * @returns {Promise<number>}
-   */
-  public static removeUnusedRssActivities(app: Server): Promise<number> {
-    let minDate = moment().subtract(30, 'days').endOf('day').toDate();
-    let activityQuery = {
-      where: {
-        type: 'rss',
-        createdAt: {lte: minDate},
-        'achievements.0': {exists: false},
-        'likedUserIds.0': {exists: false}
-      },
-      fields: ['id']
-    };
-
-    return app.models.Activity.find(activityQuery)
-      .then(activities => {
-        let activityIds = activities.map(x => x.id);
-        let commentQuery = {
-          where: {
-            activityId: {in: activityIds}
-          },
-          fields: ['activityId']
-        };
-
-        return app.models.Comment.find(commentQuery)
-          .then(comments => {
-            let commentActivityIds = comments.map(x => x.activityId);
-
-            return _.differenceBy(activityIds, commentActivityIds, x => x.toString());
-          });
-      })
-      .then(ids => app.models.Activity.destroyAll({id: {in: ids}}))
-      .then(result => result.count);
   }
 
   /**

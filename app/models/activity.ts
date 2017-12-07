@@ -33,27 +33,6 @@ export = function (Activity) {
     'prototype.updateAttributes',
     'prototype.patchAttributes',
     /**
-     * Activity -> Comments
-     */
-    'prototype.__count__comments',
-    'prototype.__create__comments',
-    'prototype.__delete__comments',
-    'prototype.__destroyById__comments',
-    'prototype.__findById__comments',
-    'prototype.__get__comments',
-    'prototype.__updateById__comments',
-    /**
-     * Activity -> Likes
-     */
-    'prototype.__exists__likes',
-    'prototype.__create__likes',
-    'prototype.__delete__likes',
-    'prototype.__destroyById__likes',
-    'prototype.__findById__likes',
-    'prototype.__updateById__likes',
-    'prototype.__link__likes',
-    'prototype.__unlink__likes',
-    /**
      * Activity -> User
      */
     'prototype.__get__user'

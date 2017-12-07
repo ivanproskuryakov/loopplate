@@ -24,9 +24,6 @@ export interface Activity {
   likedUserIds?: string[];
   likes?: db.ReferencesManyRelation<User>;
 
-  commentsCount?: number;
-  comments?: db.DataAccessObject<db.DataObject<Comment>>;
-
   viewsCount?: number;
   views?: [{ ip: string, userId?: string }];
 

@@ -28,13 +28,13 @@
   },
   "oauth": {
     "facebook": {
-      "clientId": "",
-      "clientSecret": ""
+      "clientId": "~",
+      "clientSecret": "~"
     },
     "google": {
-      "clientId": "",
-      "clientSecret": ""
-    },
+      "clientId": "~",
+      "clientSecret": "~"
+    }
   },
   "maxPageSize": 20,
   "storage": {

@@ -4,7 +4,6 @@ import * as App from 'app/server/server';
 
 import {User} from 'app/models/interface/user';
 import {Activity} from 'app/models/interface/activity';
-import {Comment} from 'app/models/interface/comment';
 
 export class Cleanup {
 
@@ -16,8 +15,7 @@ export class Cleanup {
   public start(): Promise<void> {
     return this
       .createUsers()
-      .then(users => this.createActivities(users))
-      .then(activities => this.createComments(activities));
+      .then(users => this.createActivities(users));
   }
 
   /**
@@ -97,46 +95,6 @@ export class Cleanup {
         }));
   }
 
-
-  /**
-   * creates comments
-   * @returns {Promise<Comment[]>}
-   */
-  public createComments(activities: Activity[]): Promise<Comment[]> {
-
-    return this.recreate('Comment')
-      .then(() => new Promise((resolve, reject) => {
-        let DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
-
-        App.models.Comment.create([{
-          createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS * 4)),
-          text: faker.lorem.sentences(),
-          userId: activities[0].userId,
-          activityId: activities[0].id
-        }, {
-          createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS * 3)),
-          text: faker.lorem.sentences(),
-          userId: activities[0].userId,
-          activityId: activities[0].id
-        }, {
-          createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS * 2)),
-          text: faker.lorem.sentences(),
-          userId: activities[0].userId,
-          activityId: activities[1].id
-        }, {
-          createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS)),
-          text: faker.lorem.sentences(),
-          userId: activities[0].userId,
-          activityId: activities[2].id
-        }], (err: Error, comments: Comment[]) => {
-          if (err) {
-            return reject(err);
-          }
-
-          resolve(comments);
-        });
-      }));
-  }
 
   /**
    * creates or recreates collection
