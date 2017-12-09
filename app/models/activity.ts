@@ -52,11 +52,11 @@ export = function (Activity) {
     message: 'Media is not valid'
   });
 
-  // Activity.observe('after save', function (ctx, next) {
-  //   ActivityEvent.onActivitySaved(Activity.app, ctx)
-  //     .then(() => next())
-  //     .catch(next);
-  // });
+  Activity.observe('after save', function (ctx, next) {
+    ActivityEvent.onActivitySaved(Activity.app, ctx)
+      .then(() => next())
+      .catch(next);
+  });
 
   Activity.afterRemote('findById', function (ctx, result, next) {
     ActivityEvent.onRemoteFindById(Activity.app, ctx)

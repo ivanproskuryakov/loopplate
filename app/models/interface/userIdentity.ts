@@ -1,10 +1,6 @@
-import {db} from 'loopback';
-/**
- * User
- *
- * @author Nika Nikabadze
- */
-export interface UserIdentity {
+import {PersistedModel} from 'loopback';
+
+export interface UserIdentity extends PersistedModel{
   id?: any;
   createdAt?: Date;
   updatedAt?: Date;
@@ -12,8 +8,4 @@ export interface UserIdentity {
   provider: string;
   authScheme: string;
   externalId: string;
-}
-
-export interface UserIdentityDataAccessObject extends db.DataAccessObject<UserIdentity> {
-
 }

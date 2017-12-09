@@ -2,22 +2,12 @@ import {Promise} from 'es6-promise';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import * as bluebird from 'bluebird';
-import {Server} from 'app/server/interface/server';
 import {UserService} from 'app/service/userService';
 import {Activity} from 'app/models/interface/activity';
 import {User} from 'app/models/interface/user';
-import {
-  SummaryReportInterface,
-  CategoryReportInterface,
-  UserReportInterface
-} from 'app/service/summary/summaryReportInterface';
+import {SummaryReportInterface} from 'app/service/summary/summaryReportInterface';
+import * as App from 'app/server/server';
 
-/**
- * sends summary info about system functionality:
- * like how many news were imported in past 24 hours
- * @class SummaryReporter
- * @author Nika Nikabadze
- */
 export class SummaryReporter {
 
   /**
@@ -31,14 +21,6 @@ export class SummaryReporter {
    * @type {string}
    */
   public static readonly SUMMARY_EMAIL_TEMPLATE = 'app/templates/email/summary-email.ejs';
-
-
-  /**
-   * @constructor
-   * @param {Server} app
-   */
-  constructor(private app: Server) {
-  }
 
   /**
    * sends today's summary
@@ -117,14 +99,14 @@ export class SummaryReporter {
       }
     };
 
-    return this.app.models.Activity
+    return app.models.Activity
       .find(filter)
       .then(activities => bluebird.map(
         activities,
         (activity: Activity) => {
           let activityJson = activity.toJSON ? activity.toJSON() : activity;
 
-          return UserService.injectUser(this.app, activityJson)
+          return UserService.injectUser(App, activityJson)
             .then(() => activityJson);
         },
         {concurrency: 10})
@@ -145,7 +127,7 @@ export class SummaryReporter {
       }
     };
 
-    return this.app.models.user
+    return App.models.user
       .find(filter)
       .then(result => {
         return result;
@@ -157,8 +139,7 @@ export class SummaryReporter {
    * @returns {Promise<number>}
    */
   private getTotalActivities(): Promise<number> {
-
-    return this.app.models.Activity.count();
+    return App.models.Activity.count();
   }
 
   /**
@@ -169,16 +150,16 @@ export class SummaryReporter {
   private sendEmail(summary: SummaryReportInterface): Promise<void> {
 
     return new Promise<void>((resolve, reject) => {
-      let template = this.app.loopback.template(SummaryReporter.SUMMARY_EMAIL_TEMPLATE);
+      let template = App.loopback.template(SummaryReporter.SUMMARY_EMAIL_TEMPLATE);
       let html = template({
         summary,
-        host: `http://${this.app.get('domain')}`,
+        host: `http://${App.get('domain')}`,
         moment
       });
 
-      this.app.models.Email.send({
-        to: this.app.get('email'),
-        from: this.app.get('email'),
+      App.models.Email.send({
+        to: App.get('email'),
+        from: App.get('email'),
         subject: SummaryReporter.SUMMARY_EMAIL_SUBJECT,
         html: html
       }, function (err: Error) {

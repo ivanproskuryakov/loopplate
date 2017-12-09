@@ -200,25 +200,8 @@ gulp.task('backend:symlink', [], function (done) {
   done();
 });
 
-gulp.task('backend:lint:watch', function () {
-  gulp.watch(appCodeGlob, ['backend:lint']);
-});
-
-gulp.task('backend:lint', function (done) {
-  tsLint([appCodeGlob], done);
-});
-
 gulp.task('backend:clean', function (done) {
   clean([appBuildDir + '/**/*', '!.gitkeep'], done);
-});
-
-gulp.task('backend:compile', function (done) {
-  tsCompile(
-    [appCodeGlob],
-    appBuildDir,
-    appSourceDir,
-    done
-  );
 });
 
 gulp.task('backend:files', function () {
@@ -238,6 +221,16 @@ gulp.task('backend:build', function (done) {
     done
   );
 });
+
+gulp.task('backend:compile', function (done) {
+  tsCompile(
+    [appCodeGlob],
+    appBuildDir,
+    appSourceDir,
+    done
+  );
+});
+
 
 gulp.task('backend:watch:code', function () {
   const watcher = gulp.watch(appCodeRelativeGlob, ['backend:compile']);

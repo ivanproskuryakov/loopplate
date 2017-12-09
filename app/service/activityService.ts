@@ -1,12 +1,9 @@
 import {Promise} from 'es6-promise';
-import {join} from 'path';
 import {Request} from 'express';
 import * as bluebird from 'bluebird';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 let isbot = require('isbot');
 
-import {ServerError} from 'app/error/serverError';
 import {Server} from 'app/server/interface/server';
 import {User} from 'app/models/interface/user';
 import {Activity} from 'app/models/interface/activity';
@@ -200,28 +197,7 @@ export class ActivityService {
     });
   }
 
-
   /**
-   * returns main media location
-   * @param {Activity} activity
-   * @param {MediaType} mediaType
-   * @returns {string}
-   */
-  public static getMainMediaUrl(activity: Activity, mediaType: MediaType): string {
-    let media = activity.media
-      .filter(m => m.type === mediaType && m.main);
-
-    if (media.length === 0) {
-
-      return null;
-    } else {
-
-      return media[0].location;
-    }
-  }
-
-  /**
-   * returns full url to activity
    * @param {Server} app
    * @param {Activity} activity
    * @returns {string}
@@ -231,62 +207,5 @@ export class ActivityService {
     return `http://${app.get('domain')}/u/${activity.user.username}/a/${activity.slug}`;
   }
 
-  /**
-   * returns full url to activity's related resources
-   * @param {Server} app
-   * @param {Activity} activity
-   * @param {string} resource
-   * @returns {string}
-   */
-  public static getActivityRelatedUrl(app: Server, activity: Activity, resource: string): string {
 
-    return `http://${app.get('domain')}/u/${activity.user.username}/a/${activity.slug}/${resource}`;
-  }
-
-  /**
-   * @returns {string[]}
-   */
-  public static getCategories(): string[] {
-    let path = join(__dirname, '../../data/categories.json');
-
-    let json = require(path);
-
-    return json.map(x => x.name);
-  }
-
-  /**
-   * @param payload
-   * @returns {Promise<void>}
-   */
-  private static validateActivity(payload: any): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-
-      if (!payload) {
-        return reject(ServerError('payload is required', 422));
-      }
-
-      let type = <ActivityType>payload.type;
-      let isNameSet = type === 'text' && !payload.name;
-      let isSourceNeeded = type === 'link' && !payload.source;
-      let isMediaNeeded = type === 'image' && (payload.media || []).length === 0;
-
-      if (!type) {
-        return reject(ServerError('type is required', 422));
-      }
-
-      if (isNameSet) {
-        return reject(ServerError('title is required', 422)); // for \'text\' type activity
-      }
-
-      if (isSourceNeeded) {
-        return reject(ServerError('link source is required', 422)); // for \'link\' type activity
-      }
-
-      if (isMediaNeeded) {
-        return reject(ServerError('media is required', 422)); // for \'image\' type activity
-      }
-
-      resolve();
-    });
-  }
 }

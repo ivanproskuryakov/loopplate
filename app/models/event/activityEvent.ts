@@ -38,9 +38,9 @@ export class ActivityEvent {
     return app.models.user
       .findOne({where: {username: where.username}})
       .then(user => {
-        if (!user) {
 
-          return Promise.reject(ServerError('User not found', 404));
+        if (!user) {
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         delete where.username;
@@ -82,12 +82,13 @@ export class ActivityEvent {
    */
   public static onRemoteFind(app: Server, ctx: any): Promise<void> {
 
-    return bluebird.map(
-      ctx.result,
-      (activity: Activity) => ActivityService.activityCollectionInjections(app, activity, ctx.req.user),
-      {concurrency: 3}
-    )
-      .then<void>(result => {
+    return bluebird
+      .map(
+        ctx.result,
+        (activity: Activity) => ActivityService.activityCollectionInjections(app, activity, ctx.req.user),
+        {concurrency: 3}
+      )
+      .then(result => {
         ctx.result = result;
       });
   }

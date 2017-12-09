@@ -58,14 +58,14 @@ export class UserService {
                               confirmation: string): Promise<User> {
     if (password !== confirmation) {
 
-      return Promise.reject(ServerError('Passwords do not match', 400));
+      return Promise.reject(new ServerError('Passwords do not match', 400));
     }
 
     return app.models.accessToken.findById(token)
       .then(token => {
         if (!token) {
 
-          return Promise.reject(ServerError('Token not found', 404));
+          return Promise.reject(new ServerError('Token not found', 404));
         }
 
         return app.models.user.findById(token.userId);
@@ -73,7 +73,7 @@ export class UserService {
       .then(user => {
         if (!user) {
 
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         return user.updateAttribute('password', password);
@@ -98,7 +98,7 @@ export class UserService {
       .then(user => {
         if (!user) {
 
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         return app.models.accessToken.create({
@@ -175,7 +175,7 @@ export class UserService {
     return app.models.user.findOne(filter)
       .then((user: User) => {
         if (!user) {
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         return Promise.resolve(user);
@@ -201,7 +201,7 @@ export class UserService {
       .then(user => {
         if (!user) {
 
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         filter = filter || {};
@@ -225,7 +225,7 @@ export class UserService {
       .then(token => {
         if (!token) {
 
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         return app.models.user.findById(token.userId);
@@ -243,14 +243,14 @@ export class UserService {
     return app.models.accessToken.findById(token)
       .then(accessToken => {
         if (!accessToken) {
-          return Promise.reject(ServerError('Token not found', 404));
+          return Promise.reject(new ServerError('Token not found', 404));
         }
 
         return app.models.user.findById(accessToken.userId);
       })
       .then(user => {
         if (!user) {
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         return user;
@@ -281,21 +281,6 @@ export class UserService {
       });
   }
 
-  /**
-   * get a list of users who is followed by {@link user}
-   * @param {Server} app loopback
-   * @param {User} user
-   */
-  public static getUserFollowings(app: Server, user: User): Promise<User[]> {
-
-    return app.models.user.find({
-      where: {
-        followersIds: {
-          inq: [user.id.toString()]
-        }
-      }
-    });
-  }
 
   /**
    * get count of activities published by {@link user}
@@ -305,23 +290,6 @@ export class UserService {
   public static getUserActivityCount(app: Server, user: User): Promise<number> {
 
     return app.models.Activity.count({userId: user.id});
-  }
-
-  /**
-   * Injects count of followers for a single user
-   * @static
-   * @param {Server} app
-   * @param {User} user
-   * @returns {Promise}
-   */
-  public static injectFollowersCount(app: Server, user: User): Promise<void> {
-
-    return app.models.user.findById(user.id, {
-      fields: ['followersIds']
-    })
-      .then(result => {
-        user.followersCount = result.followersIds.length;
-      });
   }
 
   /**

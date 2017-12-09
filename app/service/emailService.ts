@@ -135,7 +135,7 @@ export class EmailService {
     return app.models.user.findById(id)
       .then(user => {
         if (!user) {
-          return Promise.reject(ServerError('User not found', 404));
+          return Promise.reject(new ServerError('User not found', 404));
         }
 
         // create a temporary token

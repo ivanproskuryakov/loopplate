@@ -67,7 +67,7 @@ export class Passport {
     });
 
     this.app.get('/auth/account/failure', function (req, res, next) {
-      return next(ServerError('Authorization Error', 401));
+      return next(new ServerError('Authorization Error', 401));
     });
   }
 
