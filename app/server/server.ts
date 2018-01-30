@@ -1,6 +1,6 @@
-import {Server} from 'app/server/interface/server';
 import * as loopback from 'loopback';
 import * as boot from 'loopback-boot';
+import {Server} from 'app/server/interface/server';
 
 let App:Server = loopback();
 
