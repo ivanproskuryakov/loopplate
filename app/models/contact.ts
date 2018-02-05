@@ -1,8 +1,3 @@
-// Copyright IBM Corp. 2015. All Rights Reserved.
-// Node module: loopback-getting-started-intermediate
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {ContactEvent} from 'app/models/event/contactEvent';
 import {RestEvent} from 'app/models/event/restEvent';
 
@@ -36,7 +31,7 @@ export = function (Contact) {
    * send email after create
    */
   Contact.observe('after save', function (ctx, next) {
-    ContactEvent.onSaved(Contact.app, ctx)
+    ContactEvent.onSaved(ctx)
       .then(() => next())
       .catch(next);
   });

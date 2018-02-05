@@ -1,0 +1,109 @@
+.activityCollection,
+.activityDetails {
+  .content-wrapper {
+    width: 100% !important;
+  }
+}
+
+.content-wrapper {
+  min-height: 100%;
+  padding-top: $navbar-height;
+  background: #fff;
+
+  .page-header {
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 2px;
+    margin-bottom: 20px;
+
+    .link {
+      display: block;
+      &:hover {
+        .text {
+          color: $gray-dark;
+        }
+      }
+    }
+    .primary {
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 22px;
+      margin-right: 30px;
+      color: #666;
+      &.mod-inactive {
+        color: #333;
+        border-bottom: 1px solid #ff5500;
+        padding-bottom: 5px;
+      }
+    }
+    .secondary {
+      float: right;
+    }
+  }
+
+  .single-column {
+    position: relative;
+    width: 700px;
+    &.mod-center {
+      margin: 0 auto;
+      clear: both;
+    }
+  }
+
+  .static-content {
+    padding: 0;
+    text-align: justify;
+
+    .title {
+      display: block;
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      font-size: 22px;
+    }
+    .txt {
+      text-align: left;
+      border: 0;
+      background: 0;
+      white-space: pre-wrap;
+    }
+    .date-at {
+      text-align: right;
+      margin-bottom: 10px;
+      color: #666;
+      font-size: 12px;
+    }
+  }
+
+  .oauth-buttons {
+    text-align: center;
+    .btn-facebook {
+      background: #3b79d0;
+      color: #fff;
+    }
+    .btn-google {
+      background: #F44336;
+      color: #fff;
+    }
+  }
+
+  // Mobiles ========================================================================
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
+  }
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .single-column {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 479px) {
+    .single-column {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .single-column {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "results": [
+    {
+      "deliciousTags": [
+        "sports",
+        "soccer",
+        "football",
+        "corgi"
+      ],
+      "feedId": "feed/http://www.101greatgoals.com/feed/",
+      "title": "101 Great Goals",
+      "language": "en",
+      "lastUpdated": 1491256920000,
+      "subscribers": 6858,
+      "velocity": 414.2,
+      "score": 1104.86,
+      "website": "http://www.101greatgoals.com",
+      "coverage": 0.06,
+      "coverageScore": 10.59,
+      "estimatedEngagement": 712,
+      "hint": "soccer",
+      "curated": true,
+      "featured": true,
+      "scheme": "TEXT:BASELINE:CURATED_SEARCH",
+      "contentType": "article",
+      "description": "No matter where you are in the world, we allow you to stay up to date with all the latest goals from around the world. Have you seen the latest great goal?",
+      "iconUrl": "http://storage.googleapis.com/site-assets/YX4t968orZ5n0p4qq8mE_eKwi98FP9eaHxRFESUzNO0_sicon-1541394cfe1",
+      "partial": false,
+      "visualUrl": "http://storage.googleapis.com/site-assets/YX4t968orZ5n0p4qq8mE_eKwi98FP9eaHxRFESUzNO0_svisual-1541394cfe1",
+      "art": 168.02
+    },
+    {
+      "deliciousTags": [
+        "soccer",
+        "sports",
+        "football"
+      ],
+      "feedId": "feed/http://rss.cnn.com/rss/si_soccer.rss",
+      "title": "Sports Illustrated - Soccer",
+      "language": "en",
+      "lastUpdated": 1401772740000,
+      "subscribers": 5448,
+      "velocity": 0.01,
+      "score": 1103.45,
+      "website": "http://sportsillustrated.cnn.com/soccer/?eref=si_soccer?asd=qwerty",
+      "coverage": 0,
+      "coverageScore": 0,
+      "hint": "soccer",
+      "curated": true,
+      "featured": true,
+      "scheme": "TEXT:BASELINE:CURATED_SEARCH",
+      "contentType": "article",
+      "description": "SI.com is the league leader in original in-depth coverage of professional, local, college and international sports. And we're updated continuously, delivering the level of rich in-depth coverage Sports Illustrated fans demand, at the speed of CNN.",
+      "coverUrl": "http://storage.googleapis.com/site-assets/OWU2QdFsyS7yKAXk6X6j7Th2zBTTVIpbTbEVK95sYCs_cover-154143d1ca9",
+      "iconUrl": "http://storage.googleapis.com/site-assets/OWU2QdFsyS7yKAXk6X6j7Th2zBTTVIpbTbEVK95sYCs_icon-154143d1ca9",
+      "partial": true,
+      "visualUrl": "http://storage.googleapis.com/site-assets/OWU2QdFsyS7yKAXk6X6j7Th2zBTTVIpbTbEVK95sYCs_visual-154143d1ca9",
+      "coverColor": "323232",
+      "art": 0
+    }
+  ]
+}

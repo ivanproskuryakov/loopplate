@@ -1,0 +1,14 @@
+<form id="quick-search" ng-class="$root.user ? 'mod-user' : ''">
+  <a class="trigger-search">
+    <i class="material-icons search-icon">search</i>
+    <i class="material-icons close-icon">close</i>
+  </a>
+  <div class="search-form">
+    <input type="text"
+           class="form-control quicksearch-input"
+           placeholder="Type and hit enter ..."
+           ng-model="$root.searchQuery"
+           ng-keyup="triggerSearchEvent($event.keyCode)"
+    >
+  </div>
+</form>

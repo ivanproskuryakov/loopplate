@@ -1,0 +1,19 @@
+<md-dialog aria-label="Mango (Fruit)" class="modal-dialog new-activity-modal">
+  <md-button class="modal-close md-icon-button" ng-click="close()">
+    <md-icon>close</md-icon>
+  </md-button>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <textarea class="activity-body"
+                ng-model="activityBody"
+                placeholder="Write here..."
+      ></textarea>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button ng-click="save()" class="save-activity">
+      Publish
+    </button>
+  </md-dialog-actions>
+</md-dialog>
+</md-dialog>

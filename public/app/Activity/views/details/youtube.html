@@ -1,0 +1,20 @@
+<div id="activity-details"
+     md-swipe-right="showActivityPage('Comments')"
+     md-swipe-left="showActivityPage('Twitter')"
+>
+  <div class="single-column">
+    <div ng-include="'/app/Activity/views/details/section/user.html'"></div>
+    <nav ng-include="'/app/Activity/views/details/section/heading.html'"></nav>
+
+    <related-resource
+      activity="activity"
+      type="'youtube'">
+    </related-resource>
+  </div>
+
+  <nav ng-include="'/app/Activity/views/details/section/actions.html'"></nav>
+  <nav ng-include="'/app/Activity/views/details/section/sidenav.html'"></nav>
+  <div ng-include="'/app/Activity/views/details/section/comments.html'"></div>
+
+  <md-progress-linear class="progress" md-mode="determinate" ng-value="40"></md-progress-linear>
+</div>

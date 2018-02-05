@@ -5,41 +5,39 @@ define(['app'], function (app) {
     'ActivityDetailsCtrl', [
       '$location',
       '$scope',
+      '$anchorScroll',
       '$rootScope',
       '$stateParams',
       '$state',
       'metaService',
       'Activity',
-      '$anchorScroll',
       function ($location,
                 $scope,
+                $anchorScroll,
                 $rootScope,
                 $stateParams,
                 $state,
                 metaService,
-                Activity,
-                $anchorScroll) {
+                Activity) {
 
         $anchorScroll();
 
+        $scope.showActivityPage = function (page) {
+          $state.transitionTo('activityDetails'+page, {
+            userName: $scope.activity.user.username,
+            activitySlug: $stateParams.activitySlug
+          });
+        };
+
+
+        var displayLikesCount = 10;
+        $scope.activeTab = 'activity';
+
         loadActivity()
           .then(function () {
-            loadRelatedActivity();
+            loadActivityLikes($scope.activity.id);
           });
 
-
-        function loadRelatedActivity() {
-          Activity
-            .getRelatedResource({
-              id: $scope.activity.id,
-              resource: 'activity',
-              quantity: 3
-            })
-            .$promise
-            .then(function (response) {
-              $scope.relatedActivity = _.shuffle(response)[0];
-            });
-        }
 
         function loadActivity() {
           return Activity.findOne({
@@ -53,7 +51,20 @@ define(['app'], function (app) {
             .$promise
             .then(function (response) {
               $scope.activity = response;
+
               metaService.setActivity($scope.activity);
+            });
+        }
+
+        function loadActivityLikes(id) {
+          return Activity.likes({
+            id: id,
+            filter: {
+              limit: displayLikesCount
+            }
+          }).$promise
+            .then(function (response) {
+              $scope.likes = response;
             });
         }
 
@@ -61,7 +72,12 @@ define(['app'], function (app) {
           if (data.activityId !== $scope.activity.id) {
             return;
           }
+
+          if ($scope.likes.length < displayLikesCount) {
+            $scope.likes.push($rootScope.user);
+          }
         });
+
         $scope.$on('dislike', function (ev, data) {
           if (data.activityId !== $scope.activity.id) {
             return;
@@ -75,26 +91,10 @@ define(['app'], function (app) {
           }
         });
 
-        var fixImagesInDescription = function (source, description) {
-          // todo: Important - finish with broken images
-          var a = document.createElement('a');
-          a.href = source;
-
-          var hostname = a.hostname;
-          var $description = $(description);
-
-          $description.find('img').each(function () {
-            var $this = $(this);
-            var src = $this.attr('src');
-
-            if (src.indexOf(hostname) === -1) {
-              src = hostname + src;
-            }
-
-            $this.attr('src', src);
+        $scope.close = function () {
+          $state.transitionTo('activityCollection', {
+            userName: $scope.activity.user.username
           });
-
-          return description;
         };
 
       }

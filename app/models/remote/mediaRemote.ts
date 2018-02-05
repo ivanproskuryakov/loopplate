@@ -1,4 +1,4 @@
-import {MediaService} from 'app/service/media/mediaService';
+import {MediaService} from 'app/models/service/media/mediaService';
 
 export function Attach(Media) {
 
@@ -22,7 +22,7 @@ export function Attach(Media) {
    * @param {function} cb callback
    */
   Media.post = function (req: any, res: any, cb: (err: Error, result?: any) => void) {
-    new MediaService(Media.app)
+    new MediaService()
       .create(req, res)
       .then(media => {
         res.set('Location', media.location);

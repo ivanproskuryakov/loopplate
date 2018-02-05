@@ -61,10 +61,11 @@ require.config({
   deps: [
     './templates',
     './loopback-services',
-    './Kernel/Kernel',
+    './Layout/Layout',
     './Exception/Exception',
     './User/User',
     './Activity/Activity',
+    './Comment/Comment',
     './Media/Media',
     'bootstrap'
   ],

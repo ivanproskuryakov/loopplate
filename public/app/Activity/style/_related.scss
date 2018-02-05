@@ -1,0 +1,23 @@
+.related-resources {
+
+  .shortinfo {
+    margin-bottom: 5px;
+    min-height: auto;
+  }
+  .noting-found {
+    color: #555;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  .youtube {
+    width: 100%;
+    height: 420px;
+  }
+  .youtube,
+  .giphy,
+  .twitter-wrapper,
+  .gplus-wrapper {
+    margin-bottom: 30px !important;
+    max-width: 100%;
+  }
+}

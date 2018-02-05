@@ -2,7 +2,6 @@ import {Request} from 'express';
 
 /**
  * Events related to rest for all model
- * @author Nika Nikabadze
  */
 export class RestEvent {
 

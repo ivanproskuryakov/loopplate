@@ -8,11 +8,22 @@
     "experimentalDecorators": true,
     "declaration": true,
     "preserveConstEnums": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
     // "noUnusedParameters": true
+    "types": [
+      "mocha-typescript"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
   "exclude": [
+    "build",
     "node_modules",
-    "build"
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "app/types/loopback-crud.d.ts"
   ]
 }

@@ -1,6 +1,18 @@
 .trending-activities {
   margin-top: -30px;
 
+  .nav-categories {
+    position: fixed;
+    width: 100%;
+    top: 50px;
+    z-index: 1;
+    left: 0;
+    border-bottom: 1px solid #f9f9f9;
+    background: #fff;
+    a {
+      font-weight: 500;
+    }
+  }
   .trending-item {
     position: relative;
     clear: both;
@@ -22,10 +34,12 @@
       .trending-users,
       .trending-tags {
         margin-top: 10px;
+        width: 70%;
       }
       .trending-users {
         margin-bottom: 10px;
         float: left;
+        width: 70%;
         margin-top: 10px;
 
         .trending-user {

@@ -1,11 +1,11 @@
 {
   "restApiRoot": "/api",
-  "domain": "application.com",
-  "email": "service@application.com",
+  "domain": "loopplate.com",
+  "email": "service@loopplate.com",
   "host": "0.0.0.0",
   "legacyExplorer": false,
   "port": 80,
-  "cookieSecret": "fdw@ip5dtp+8x1%r6ss5ys9s+v(zdnrvq5)%f6=k-u15w-iwn6",
+  "cookieSecret": "change~this~text",
   "remoting": {
     "rest": {
       "normalizeHttpPath": false,
@@ -34,27 +34,53 @@
     "google": {
       "clientId": "~",
       "clientSecret": "~"
+    },
+    "yahoo": {
+      "clientId": "~",
+      "clientSecret": "~"
     }
   },
   "maxPageSize": 20,
   "storage": {
     "provider": "amazon",
-    "key": "",
-    "keyId": "",
+    "key": "~",
+    "keyId": "~",
     "region": "",
-    "container": "app-production"
+    "container": "loopplate-live"
+  },
+  "getstream": {
+    "apiKey": "~",
+    "apiSecret": "~",
+    "appId": "16574"
   },
   "google": {
+    "key": "~"
+  },
+  "twitter": {
+    "key": "~",
+    "secret": "~",
+    "accessToken": "~",
+    "accessTokenSecret": "~"
+  },
+  "instagram": {
+    "clientId": "~",
+    "clientSecret": "~"
+  },
+  "gettyimages": {
+    "key": "~",
+    "secret": "~"
+  },
+  "giphy": {
     "key": "~"
   },
   "logs": {
     "transport": "sentry",
     "options": {
-      "dsn": "~"
+      "dsn": "https://~:~@sentry.io/~"
     }
   },
   "meta": {
-    "title": "Product title - application.com",
-    "description": "Product title - application.com"
+    "title": "Loopplate - Loopback Node.js framework boilerplate - loopplate.com",
+    "description": "Loopplate - Loopback Node.js framework boilerplate - loopplate.com"
   }
 }

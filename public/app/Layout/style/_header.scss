@@ -1,0 +1,150 @@
+.navbar-brand {
+  margin-left: 0;
+  color: #fff;
+  position: relative;
+  padding: 10px;
+  float: left;
+  height: 44px;
+  margin-top: -4px;
+  border-radius: 2px;
+  margin-right: 5px;
+
+  .logo {
+    height: 40px;
+    width: 40px;
+    margin-top: -10px;
+  }
+  .logo-text {
+    padding-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    float: right;
+    margin-top: 0px;
+    color: #fff;
+    small {
+      font-size: 10px;
+      right: 10px;
+      position: absolute;
+      top: 30px;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+}
+
+.profile-dropdown {
+  user-profile {
+    position: relative;
+    display: block;
+    float: left;
+    margin-top: 7px;
+    margin-left: -3px;
+    margin-right: 14px;
+  }
+  md-menu-item > .md-button p {
+    line-height: 3.1;
+    font-weight: 400;
+  }
+  md-menu-item > a.md-button {
+    padding-top: 2px;
+  }
+}
+
+#navigation-header {
+  max-width: 1200px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .menu-sidebar {
+    height: 36px;
+    width: 36px;
+    float: left;
+    margin-right: 10px;
+
+    &:hover {
+      .logo {
+        display: none;
+      }
+      .sidebar-button {
+        display: block;
+      }
+    }
+    .logo {
+      height: 100%;
+      width: 100%;
+      background: #df0000;
+      border-radius: 2px;
+      padding: 2px;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    .sidebar-button {
+      display: none;
+      background: #df0000;
+      margin: 0;
+      color: #fff !important;
+      min-width: 0;
+      &:hover {
+        background: #b20000;
+      }
+      i {
+        margin: 0;
+      }
+    }
+  }
+
+  .md-button {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #666;
+  }
+  .user-account {
+    float: right;
+  }
+  .user-account-header {
+    float: right;
+    position: relative;
+    cursor: pointer;
+    .username {
+      float: left;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 0px 0 15px;
+      font-weight: 500;
+      font-size: 14px;
+      color: #09c;
+    }
+    .trigger {
+      &:focus {
+        outline: none !important;
+      }
+    }
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+  .activity-new {
+    display: inline-block;
+  }
+  &.mod-user {
+    .new-activity {
+      margin-right: 40px;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 992px) {
+  #navigation-header {
+    .logo-text {
+      display: none;
+    }
+    .user-account-header .username {
+      display: none;
+    }
+  }
+}

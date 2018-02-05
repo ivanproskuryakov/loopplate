@@ -6,8 +6,8 @@
       {
         "type": "Mailgun",
         "auth": {
-          "api_key": "key-4ed48e3b870bc826026134d77d48336e",
-          "domain": "sandbox00e761ca5c764b2484885672050cbf14.mailgun.org"
+          "api_key": "~",
+          "domain": "~"
         }
       }
     ]

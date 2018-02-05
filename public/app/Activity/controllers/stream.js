@@ -5,10 +5,25 @@ define(['app'], function (app) {
     'StreamCtrl', [
       '$location',
       '$scope',
-      '$rootScope',
+      'User',
+      'ModelPageLoader',
       function ($location,
                 $scope,
-                $rootScope) {
+                User,
+                ModelPageLoader) {
+        $scope.type = 'stream';
+
+        $scope.load = function () {
+          if (!$scope.loader) {
+            $scope.loader = ModelPageLoader.create(
+              User.stream,
+              null
+            );
+          }
+
+          return $scope.loader.nextPage();
+        };
+
       }
     ]);
 });

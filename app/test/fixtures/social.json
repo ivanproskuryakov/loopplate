@@ -1,0 +1,60 @@
+{
+  "test1": {
+    "networks": [
+      {
+        "network": "facebook",
+        "page": "1121716401184538",
+        "username": "loopplate.test@gmail.com",
+        "password": "Test12349876~~",
+        "access_token": "EAAPuiDAPPf0BAAjMziqdG5A9kMKobEoLxfJsksbTy3UJEpfoF9gMWDc8xzZBOdVZBK38pYj7Qv8DTSjp7qAhRFC2fQe2sEruZBttHd2lhVwf91w0VvVOZBcslAObpaCc0kxswHEZCsaEkHTwITDXxWSjC8tNEU0dK52KAv3wUyEZB32Dn1Q5yg"
+      },
+      {
+        "network": "twitter",
+        "account": "@loopplate_test",
+        "username": "loopplate.test@gmail.com",
+        "password": "Test12349876~~",
+        "consumer_key": "uRqbRwJOKoDoSLWcfTgRwkY07",
+        "consumer_secret": "oLIVCSPtCrHBQU3CUcVw0rVJOcXXyA1BhwKHG5hXYJ1HdPlDCM",
+        "access_token_key": "757858020449812480-JEhAe6Vs6Ip53pU9TSlbNldnVSBwwv5",
+        "access_token_secret": "9OwXiLofQ17K9quVUvuRBqWr4vZdvwV7uUhrXGDaYMTbi"
+      },
+      {
+        "network": "facebook",
+        "page": "313107245699156",
+        "username": "loopplate.test@gmail.com",
+        "password": "Test12349876~~",
+        "access_token": "EAAPuiDAPPf0BAFz1kgjumUNf7QRVHhvu4wZB8kKJkFAhwO7pcM1GffLU80gCRJZBtmlZBNIj6Ddqu2Vpj506DVeJkXcI5rW4aiszfV1h1R52yJOj9rTOX2O75LeZAcV9GGFeZC7DAeMUMLhaEu8VXbbQDW7hzZCEtchUJg10mE6ZAchFRx8y1Qh"
+      },
+      {
+        "network": "tumblr",
+        "username": "loopplate.test@gmail.com",
+        "password": "Test12349876~~",
+        "blog": "loopplatetest.tumblr.com",
+        "consumer_key": "X23qTjdELgORFGWHG8XbFPRcjJQrcPt0k2ph9xbPoWf7oK1QwT",
+        "consumer_secret": "DqKIDeN5p87d3Rko8bFFY4z6eAhQ8d8o6AWgKcG7fZSfoZNzEo",
+        "access_token_key": "7apvYNp5POKN7iMGp9xRxDeAuQJZLkDWS6ERNltCohPb88S8Mi",
+        "access_token_secret": "mm9eYZarnsAb2HFovoEh15UctUU1K11jXo7CdYux3EZFUGhdAA"
+      },
+      {
+        "network": "pinterest",
+        "username": "loopplate.test@gmail.com",
+        "password": "Test12349876~~",
+        "board": "730357333258928596",
+        "access_token": "AUKURlan9zR72PXJC3TwzJF4JB0gFGToOvQF7B5DRpvhBKAsaAAAAAA"
+      }
+    ],
+    "category": "football"
+  },
+  "test2": {
+    "networks": [
+      {
+        "network": "facebook",
+        "page": "1746818632243856",
+        "username": "loopplate.test@gmail.com",
+        "password": "Test12349876~~",
+        "access_token": "EAAPuiDAPPf0BAGNGndriaNLGrdonZBzj9Ka4KNA0TGvPrHvjdwIyJnh9ywd8wZBTyqaP9ipbGIGIFYW7bRZAn1SZAZBXWsJQDHo5VzZBGcxL3JChKgLD6lXFtFiQB2XinU1wimrY6jEjPZAZAfel7ZCRsTdomg5DNF6ZBZCGblyrBkLBZCcYBXGjhVjs"
+      }
+    ],
+    "category": "football"
+  }
+}

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 local_directory=$PWD
-db_name="dbname"
-host="productname.com"
+db_name="loopplate"
+host="loopplate.com"
 
 ssh -p 22 root@${host} "cd /tmp && mongodump -o ${db_name} && tar -czvf db.tar.gz /tmp/${db_name}"
 scp -r root@${host}:/tmp/db.tar.gz "${local_directory}/db.tar.gz"

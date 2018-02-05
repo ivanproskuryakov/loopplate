@@ -3,7 +3,7 @@ import * as cookieParser from 'cookie-parser';
 import slug = require('slug');
 import {Server} from 'app/server/interface/server';
 import {ServerError} from 'app/error/serverError';
-import {User} from 'app/models/interface/user';
+import {User} from 'app/interface/user/user';
 
 export class Passport {
 

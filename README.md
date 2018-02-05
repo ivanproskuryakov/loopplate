@@ -88,11 +88,8 @@ pm2-start stop
 http://pm2.keymetrics.io/docs/usage/signals-clean-restart/
 
 ### X. Dev/prod parity
-Manifest tells to have production, development, test, environments similar as possible, 
-there are not differences in code which re 
-
-config.json is the root settings file, config.development.json extends settings it.
-See http://loopback.io/doc/en/lb3/Environment-specific-configuration.html
+Backup production database to your local frequently manually or using `mongodump_mongorestore.sh`, 
+since manifest tells us to have identical production, development and environments.
 
 ### XI. Logs
 On production logs go to sentry.io, development sends logs to console, test environment do not output any logs(mock).

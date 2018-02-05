@@ -1,0 +1,4 @@
+username,category,name,url,
+test1.com,,test 1,http://www.test1.com/rss.xml
+test2.com,category 2,test 2,http://www.test2.com/rss.xml
+test2.com,football,youtube playlist channel,https://www.youtube.com/feeds/videos.xml

@@ -1,10 +1,8 @@
 import {Logger} from 'app/helper/logHelper';
-import {Log} from 'app/models/interface/log';
+import {Log} from 'app/interface/log';
 import * as _ from 'lodash';
 
 export function Attach(Log) {
-
-
   /**
    * override Log post route: / - POST
    */

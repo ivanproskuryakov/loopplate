@@ -37,12 +37,22 @@ define(['app'], function (app) {
 
           var state = $injector.get('$state');
           var $mdToast = $injector.get('$mdToast');
+          var $mdDialog = $injector.get('$mdDialog');
           var message = response.statusText;
 
           // authentication error
           if (response.status === 401 ||
             (response.status === 422 &&
             _.property('data.error.details.messages.userId')(response))) {
+
+            $mdDialog
+              .show({
+                controller: 'ModalAuthCtrl',
+                templateUrl: '/app/User/views/modal-auth-dialog.html',
+                clickOutsideToClose: true,
+                fullscreen: false,
+              });
+
             message = 'Please login or create a new account';
           } else if (response.status === 422) {
             // ignore validation error

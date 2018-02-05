@@ -1,6 +1,6 @@
 import {CronJob} from 'cron';
 import {join} from 'path';
-import {SitemapService} from 'app/service/sitemap/sitemapService';
+import {SitemapService} from 'app/service/sitemapService';
 
 new CronJob({
   cronTime: '0 0 3 * * *',

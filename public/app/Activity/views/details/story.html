@@ -1,13 +1,15 @@
-<div id="activity-details">
-  <div class="single-column --center">
+<div id="activity-details"
+     md-swipe-right="showActivityPage('Giphy')"
+     md-swipe-left="showActivityPage('Comments')"
+>
+  <div class="single-column">
     <div ng-include="'/app/Activity/views/details/section/user.html'"></div>
-    <div ng-include="'/app/Activity/views/details/section/nav.html'"></div>
     <article ng-include="'/app/Activity/views/details/section/story.html'"></article>
-    <div ng-include="'/app/Activity/views/details/section/sidebar.html'"></div>
   </div>
 
-  <md-button ui-sref="activityCollection({userName: activity.user.username})"
-             class="page-close md-icon-button">
-    <md-icon>close</md-icon>
-  </md-button>
+  <nav ng-include="'/app/Activity/views/details/section/actions.html'"></nav>
+  <nav ng-include="'/app/Activity/views/details/section/sidenav.html'"></nav>
+  <div ng-include="'/app/Activity/views/details/section/comments.html'"></div>
+
+  <md-progress-linear class="progress" md-mode="determinate" ng-value="20"></md-progress-linear>
 </div>

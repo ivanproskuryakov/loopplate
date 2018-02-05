@@ -1,60 +1,34 @@
 #activity-details {
   min-height: 100vh;
-  margin-top: -30px;
-
-  #activity-nav {
-    background: #fafafa;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    height: 45px;
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 20px;
-
-    .like-button {
-      margin-left: 13px;
-      margin-top: 11px;
-      float: left;
-      padding: 0 20px;
-    }
-    .next {
-      color: #777;
-      float: left;
-      font-weight: 500;
-      font-size: 16px;
-      text-transform: uppercase;
-      margin-top: 5px;
-      margin-left: 5px;
-    }
-  }
 
   .single-column {
+    margin-left: 100px;
+
     .userinfo {
       display: inline-block;
-      margin-bottom: 20px;
       position: relative;
       width: 100%;
+      margin-bottom: 60px;
+      margin-top: 60px;
     }
     .short-info {
       float: left;
       color: #777;
       font-size: 12px;
+      margin-top: 10px;
       cursor: default;
       line-height: 1.4;
       clear: both;
-      margin-top: 5px;
 
       &.--userphoto {
         position: absolute;
-        top: 55px;
+        top: 57px;
         left: 80px;
         margin-top: 0;
       }
       a {
         color: #09c;
-        font-weight: 500;
-        text-transform: uppercase;
+        text-decoration: underline;
       }
       .sep {
         vertical-align: middle;
@@ -86,25 +60,23 @@
       }
       .description {
         display: inline-block;
+        font-size: 16px;
         padding-right: 0;
-        font-size: 14px;
-        line-height: 1.3;
+        line-height: 1.5;
         overflow: hidden;
         max-width: 100%;
         padding-bottom: 0;
         margin-top: 20px;
-        color: #444;
+        color: #888;
         width: 100%;
-        font-weight: 400;
         margin-bottom: 20px;
-        text-align: justify;
+        font-weight: 400;
 
         * {
-          font-size: 14px;
-          line-height: 1.2;
           font-weight: 400;
-          text-align: justify;
+          color: #888;
         }
+
         img {
           max-width: 100%;
           height: auto !important;
@@ -130,52 +102,136 @@
           border-left: 2px solid #09c;
         }
         p {
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
       }
       .title {
         margin-top: 20px;
         clear: both;
       }
+
+      .read-full-story {
+        margin: 50px auto;
+        display: block;
+        width: 400px;
+        text-align: center;
+        color: #09c;
+      }
     }
+  }
+
+  #comments {
+    display: inline-block;
+    width: 300px;
+    position: fixed;
+    border-left: 1px solid #eee;
+    right: 100px;
+    top: 207px;
+    padding-left: 20px;
+  }
+
+  .actions {
+    position: fixed;
+    top: 208px;
+    left: 35px;
+    a {
+      color: #999;
+      font-weight: 400;
+      font-size: 13px;
+      &:hover {
+        color: #222;
+      }
+      &.active {
+        color: #222;
+        font-weight: 500;
+      }
+    }
+    .like-button {
+      margin-bottom: 10px;
+    }
+    .related {
+      font-size: 13px;
+      color: #555;
+      li {
+        margin-top: 15px;
+      }
+    }
+  }
+  .activity-details-like {
+    display: none;
+  }
+
+  .progress {
+    position: fixed;
+    height: 5px;
+    left: 0;
+    width: 100%;
+    background: #ddd;
+    bottom: 0;
   }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 992px) {
   #activity-details {
-    .page-close {
-      right: 2px;
-      left: inherit;
-    }
     .single-column {
       margin: 0;
+    }
+    .actions {
+      display: none;
+    }
+    .activity-details-like {
+      position: absolute;
+      top: 18px;
+      right: 50px;
+      display: block;
+      padding: 0 15px;
+    }
+    #comments {
+      display: none;
+      &.mod-mobile {
+        display: block;
+        position: static;
+        width: 100%;
+        padding-left: 0;
+        border: 0;
+      }
+    }
+  }
+}
 
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  #activity-details {
+    .single-column {
       .userinfo {
         margin-bottom: 10px;
-      }
-
-      #activity-nav {
-        width: 100vw;
-        margin-left: -10px;
-        margin-bottom: 0;
         margin-top: 10px;
       }
       #activity-content {
         border-left: 0;
         padding: 0;
-        margin-top: 10px;
+        margin-top: 20px;
         margin-left: 0;
 
         .post-heading {
+          margin-top: 10px;
           border: 0;
           margin-left: 0;
           padding-left: 0;
-          font-size: 26px;
+          font-size: 16px;
+        }
+        .description {
+          border: 0;
+          margin-left: 0;
+          padding-left: 0;
+          font-size: 14px;
         }
         .main-image {
           max-width: inherit;
           width: 100vw;
           margin-left: -10px;
+        }
+        .read-full-story {
+          width: 100%;
         }
       }
     }

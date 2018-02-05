@@ -1,4 +1,4 @@
-import {UserService} from 'app/service/userService';
+import {UserService} from 'app/models/service/user/userService';
 
 /**
  * Attach current user to req object
@@ -13,7 +13,7 @@ export = function (app) {
    */
   function middleware(req, res, next) {
 
-    UserService.getUserFromRequest(app, req)
+    UserService.getUserFromRequest(req)
       .then(user => {
         req.user = user.toJSON();
 

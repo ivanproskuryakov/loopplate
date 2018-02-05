@@ -36,17 +36,6 @@ gulp.task('app:build', function (done) {
   );
 });
 
-gulp.task('server:watch', function (done) {
-  plugin.nodemon({
-    script: 'build/server/server.js',
-    ignore: ['build/test/*'],
-    ext: '*',
-    watch: ['build/'],
-    env: {'NODE_ENV': 'development'},
-    delay: '300'
-  });
-});
-
 gulp.task('app:watch', ['app:build'], function (done) {
   // first time build all by app:build,
   // then compile/copy by changing
@@ -58,6 +47,18 @@ gulp.task('app:watch', ['app:build'], function (done) {
       'server:watch'
     ], done);
 });
+
+gulp.task('server:watch', function (done) {
+  plugin.nodemon({
+    script: 'build/server/server.js',
+    ignore: ['build/test/*'],
+    ext: '*',
+    watch: ['build/'],
+    env: {'NODE_ENV': 'development'},
+    delay: '300'
+  });
+});
+
 
 //////////////////////////////////////////////
 // Frontend tasks
@@ -204,6 +205,10 @@ gulp.task('backend:clean', function (done) {
   clean([appBuildDir + '/**/*', '!.gitkeep'], done);
 });
 
+gulp.task('backend:compile', function (done) {
+  tsCompile([appCodeGlob], appBuildDir, appSourceDir, done);
+});
+
 gulp.task('backend:files', function () {
   // copy fixtures and other non ts files
   // from app directory to build directory
@@ -222,18 +227,8 @@ gulp.task('backend:build', function (done) {
   );
 });
 
-gulp.task('backend:compile', function (done) {
-  tsCompile(
-    [appCodeGlob],
-    appBuildDir,
-    appSourceDir,
-    done
-  );
-});
-
-
 gulp.task('backend:watch:code', function () {
-  const watcher = gulp.watch(appCodeRelativeGlob, ['backend:compile']);
+  const watcher = gulp.watch([appCodeRelativeGlob], ['backend:compile']);
 
   watcher.on('change', function (event) {
     // if a file is deleted, forget about it
@@ -292,31 +287,6 @@ function getPathFromSourceToBuild(file, source, destination) {
 }
 
 /**
- * Typescript Linter
- * @param  {Array}    path - array of paths to lint
- * @param  {Function} done - callback when complete
- */
-function tsLint(path, done) {
-  const program = tslint.Linter.createProgram('tsconfig.json');
-
-  return gulp
-    .src(path)
-    // used for incremental builds
-    .pipe(plugin.cached('lint'))
-    .pipe(plugin.tslint({
-      formatter: 'prose',
-      program
-    }))
-    .pipe(plugin.tslint.report({
-      emitError: false,
-      summarizeFailureOutput: true
-    }))
-    .on('error', done)
-    .on('end', done);
-}
-
-/**
- * Compiles Typescript
  * @param  {Array}    path - array of paths to compile
  * @param  {string}   dest - destination path for compiled js
  * @param  {string}   baseDir - base directory for files compiling
@@ -331,7 +301,7 @@ function tsCompile(path, dest, baseDir, done) {
     // used for incremental builds
     .pipe(plugin.cached('code'))
     .pipe(plugin.sourcemaps.init())
-    .pipe(tsProject(ts.reporter.fullReporter())).js
+    .pipe(tsProject(ts.reporter.defaultReporter())).js
     .pipe(plugin.sourcemaps.write('.'))
     .pipe(gulp.dest(dest))
     .on('error', done)

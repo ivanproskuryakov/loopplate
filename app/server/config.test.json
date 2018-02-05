@@ -1,5 +1,5 @@
 {
-  "domain": "test.application.com",
+  "domain": "test.loopplate.com",
   "port": 3000,
   "storage": {
     "provider": "mock",
@@ -19,6 +19,9 @@
     "yahoo": {
       "disable": true
     }
+  },
+  "getstream": {
+    "disable": true
   },
   "logs": {
     "transport": "mock"

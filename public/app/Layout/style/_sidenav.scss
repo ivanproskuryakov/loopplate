@@ -1,0 +1,53 @@
+.sidenav-wrapper {
+  .md-sidenav-backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+  }
+  .md-sidenav-left {
+    left: 0;
+    z-index: 9;
+    position: fixed;
+  }
+  .sidenav-header {
+    background: #df0000;
+    width: 100%;
+    display: inline-block;
+    padding: 7px 0px 2px;
+
+    .navbar-brand {
+      background: #df0000;
+    }
+  }
+
+  .navigation {
+    .sidenav-heading {
+      color: #444;
+      font-weight: 500;
+      padding: 25px 16px 10px;
+      font-size: 18px;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    md-list-item {
+
+      &.mod-separator {
+        border-top: 1px solid #eee;
+      }
+      md-item-content {
+        a, span {
+          font-weight: 400;
+          width: 100%;
+          color: #666;
+          font-size: 14px;
+        }
+      }
+      md-icon {
+        margin-right: 10px !important;
+        margin-top: 11px !important;
+      }
+    }
+  }
+}

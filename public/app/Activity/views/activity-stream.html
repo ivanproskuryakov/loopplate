@@ -1,0 +1,36 @@
+<div class="activity-stream single-column">
+
+  <div infinite-scroll="load()" infinite-scroll-disabled="loader.isBusy || loader.reachedBottom">
+    <div class="activity" ng-repeat="activity in loader.data">
+      <activity-item activity="activity"/>
+    </div>
+  </div>
+
+  <div ng-if="loader.reachedBottom && loader.currentPage == 1" class="stream-empty">
+    <div ng-if="type != 'stream'">
+      No updates, yet.
+      <br/>
+      <md-button ui-sref="trending" class="md-default md-raised">
+        <i class="material-icons">whatshot</i> Hot
+      </md-button>
+    </div>
+
+    <div ng-if="type == 'stream'">
+      No updates, since you are not following anyone.
+      <br/>
+      <md-button ui-sref="trending" class="md-default md-raised">
+        <i class="material-icons">whatshot</i> Hot
+      </md-button>
+    </div>
+  </div>
+
+  <div ng-if="!loader.reachedBottom && loader.isBusy">
+    <div class="clear" ng-show="loader.currentPage >= 1">
+      <md-button
+        class="load-more-stories md-default md-raised"
+        ng-click="loader.isBusy = false">
+        More
+      </md-button>
+    </div>
+  </div>
+</div>

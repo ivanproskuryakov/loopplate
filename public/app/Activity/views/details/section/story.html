@@ -16,5 +16,12 @@
        ng-if="activity.description"
        ng-bind-html="activity.description">
   </div>
+
+  <md-button ng-if="activity.source"
+     target="_blank"
+     href="{{activity.source}}"
+     class="read-full-story">
+    view on {{activity.user.username}}
+  </md-button>
 </div>
 

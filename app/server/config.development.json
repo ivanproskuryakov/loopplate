@@ -1,12 +1,12 @@
 {
-  "domain": "dev.application.com",
+  "domain": "dev.loopplate.com",
   "port": 8080,
   "storage": {
     "provider": "amazon",
-    "key": "amazonKey",
-    "keyId": "amazonKeyId",
+    "key": "~",
+    "keyId": "~",
     "region": "",
-    "container": "app-development"
+    "container": "loopplate-development"
   },
   "logs": {
     "transport": "console"

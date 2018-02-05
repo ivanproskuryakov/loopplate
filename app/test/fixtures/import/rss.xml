@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>site.com - News</title>
+    <link>http://www.site.com</link>
+    <description>All news about European football. Generic news, match previews, match reports and much more.
+    </description>
+    <language>en</language>
+    <copyright><![CDATA[copyrightuefa1998-2016]]></copyright>
+    <pubDate>Fri, 15 Jul 2016 18:20:00 GMT</pubDate>
+    <lastBuildDate>Fri, 15 Jul 2016 18:20:00 GMT</lastBuildDate>
+    <image>
+      <title>site.com</title>
+      <url>http://img.site.com/imgml/rssheader.gif</url>
+      <link>http://www.site.com</link>
+      <width>144</width>
+      <height>46</height>
+      <description>news_rssDescription</description>
+    </image>
+    <item>
+      <title><![CDATA[U19 EURO: Croatia v France live]]></title>
+      <link>
+        <![CDATA[http://www.site.com/article/1]]></link>
+      <description>
+        <![CDATA[England know anything other than a Croatia win would book their semi-final place while a France victory would end their opponents' hopes. Follow the action in our MatchCentre.]]></description>
+      <enclosure url="http://www.site.com/MultimediaFiles/Photo/competitions/Comp_Matches/02/39/10/64/2391064_s5.jpg"
+                 length="2000" type="image/jpeg"/>
+      <category>general</category>
+      <pubDate>Fri, 15 Jul 2016 18:20:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Champions League group stage sides' transfers]]></title>
+      <link>
+        <![CDATA[http://www.site.com/article/2]]></link>
+      <description>
+        <![CDATA[Next season's UEFA Champions League group stage teams have been busy plotting their bids ahead of the new campaign. Keep track of every deal in our round-up.]]></description>
+      <enclosure url="http://www.site.com/MultimediaFiles/Photo/competitions/DomesticLeague/02/33/49/65/2334965_s5.jpg"
+                 length="2000" type="image/jpeg"/>
+      <category>general</category>
+      <pubDate>Fri, 15 Jul 2016 17:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[JarolÃ­m handed Czech Republic reins]]></title>
+      <link>
+        <![CDATA[http://www.site.com/article/3]]></link>
+      <description>
+        <![CDATA[Karel JarolÃ­m has been appointed as the Czech Republic's new head coach after agreeing to leave MladÃ¡ Boleslav following UEFA Europa League qualifying.]]></description>
+      <enclosure url="http://www.site.com/MultimediaFiles/Photo/competitions/General/02/39/16/28/2391628_s5.jpg"
+                 length="2000" type="image/jpeg"/>
+      <category>general</category>
+      <pubDate>Fri, 15 Jul 2016 15:52:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

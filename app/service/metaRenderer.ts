@@ -1,26 +1,20 @@
 import {Promise} from 'es6-promise';
-import {Server} from 'app/server/interface/server';
-import {ActivityService} from 'app/service/activityService';
-import {UserService} from 'app/service/userService';
+import {ActivityService} from 'app/models/service/activity/activityService';
+import {UserService} from 'app/models/service/user/userService';
 import {StringHelper} from 'app/helper/stringHelper';
+import * as App from 'app/server/server';
 
-/**
- * MetaRendererService
- */
 export class MetaRendererService {
-
   /**
    * @const
    * @type {string}
    */
   private readonly META_TEMPLATE = 'app/templates/meta/index.ejs';
-
   /**
    * @property
    * @type {string}
    */
   private defaultTitle: string;
-
   /**
    * @property
    * @type {string}
@@ -29,11 +23,10 @@ export class MetaRendererService {
 
   /**
    * @constructor
-   * @param {Server} app
    */
-  constructor(private app: Server) {
-    this.defaultTitle = app.get('meta').title;
-    this.defaultDescription = app.get('meta').description;
+  constructor() {
+    this.defaultTitle = App.get('meta').title;
+    this.defaultDescription = App.get('meta').description;
   }
 
   /**
@@ -59,21 +52,21 @@ export class MetaRendererService {
   public renderActivity(slug: string): Promise<string> {
 
     return ActivityService
-      .getActivities(this.app, {where: {slug: slug}}, null)
+      .getActivities({where: {slug: slug}}, null)
       .then(activities => {
         if (!activities || activities.length === 0) {
           // if activity not founded then return default metas
           return this.renderIndex();
         }
 
-        let activity = activities[0];
+        let activity: any = activities[0];
         let html = this.generateHTML({
           title: activity.name + ' - ' + this.defaultTitle,
           description: StringHelper.toText(activity.description).substring(0, 200) + ' - ' + this.defaultDescription,
           keywords: activity.tags.map(x => x.value).join(', '),
           og: {
             type: 'article',
-            url: ActivityService.getActivityUrl(this.app, activity),
+            url: ActivityService.getActivityUrl(activity),
             image: ActivityService.getMainMediaUrl(activity, 'image'),
             publishedTime: activity.createdAt,
             author: activity.user.username,
@@ -93,7 +86,7 @@ export class MetaRendererService {
   public renderUser(username: string): Promise<string> {
 
     return UserService
-      .getUser(this.app, username, null)
+      .getUser(username, null)
       .then(user => {
         let html = this.generateHTML({
           title: user.username + ' - ' + this.defaultTitle,
@@ -101,7 +94,7 @@ export class MetaRendererService {
           keywords: user.username,
           og: {
             type: 'profile',
-            url: UserService.getUserUrl(this.app, user),
+            url: UserService.getUserUrl(user),
             image: user.avatar ? user.avatar.location : null,
             firstName: user.firstName,
             lastName: user.lastName,
@@ -118,7 +111,7 @@ export class MetaRendererService {
    * @returns {string}
    */
   private generateHTML(data: any): string {
-    let template = this.app.loopback.template(this.META_TEMPLATE);
+    let template = App.loopback.template(this.META_TEMPLATE);
 
     return template(data);
   }

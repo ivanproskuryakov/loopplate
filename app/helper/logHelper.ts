@@ -1,6 +1,6 @@
 import * as winston from 'winston';
 let Sentry = require('winston-sentry');
-// import {MockTransport} from 'app/test/mock/winstonMockTransport';
+import {MockTransport} from 'app/test/mock/winstonMockTransport';
 import * as App from 'app/server/server';
 
 export type LoggerTransport = 'sentry' | 'mock' | 'file' | 'console';
@@ -46,7 +46,7 @@ export class Logger {
       case 'sentry':
         return Sentry;
       case 'mock':
-        // return MockTransport;
+        return MockTransport;
       case 'file':
         return winston.transports.File;
       case 'console':

@@ -1,10 +1,10 @@
 {
-  "domain": "staging.application.com",
+  "domain": "staging.loopplate.com",
   "storage": {
     "provider": "amazon",
-    "key": "",
-    "keyId": "",
+    "key": "~",
+    "keyId": "~",
     "region": "",
-    "container": "app-staging"
+    "container": "loopplate-staging"
   }
 }

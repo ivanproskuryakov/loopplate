@@ -1,16 +1,21 @@
+<div ng-include="'/app/Activity/views/activity-stream.html'"></div>
+
 <div id="activity-user">
   <user-profile
     class="userinfo"
     mode="horizontal"
-    user="profile">
+    img-size="60"
+    user="user">
   </user-profile>
 
+  <div class="about">
+    {{user.about}}
+  </div>
+
   <image-uploader
+    ng-if="false"
     class="user-img-load"
     title="'Upload Profile Image'"
     ng-show="canUpdateProfile">
   </image-uploader>
-
 </div>
-
-<user-activities ng-if="profile" user="profile"></user-activities>

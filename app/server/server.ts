@@ -1,8 +1,8 @@
+import {Server} from 'app/server/interface/server';
 import * as loopback from 'loopback';
 import * as boot from 'loopback-boot';
-import {Server} from 'app/server/interface/server';
 
-let App:Server = loopback();
+let App: Server = loopback();
 
 module.exports = App;
 export = App;
@@ -21,16 +21,22 @@ App.start = () => {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(App, __dirname, (err: Error) => {
-  if (err) {
-    throw err;
-  }
+boot(
+  App,
+  {
+    'appRootDir': __dirname
+  },
+  (err: Error) => {
+    if (err) {
+      throw err;
+    }
 
-  // start the server if `$ node server.js`
-  if (require.main === module) {
-    App.start();
+    // start the server if `$ node server.js`
+    if (require.main === module) {
+      App.start();
+    }
   }
-});
+);
 
 
 if (process.env.NODE_ENV === 'development') {

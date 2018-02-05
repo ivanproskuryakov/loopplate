@@ -5,32 +5,30 @@ define([
   './config/activity',
 
   './controllers/homepage',
-  './controllers/trending',
   './controllers/stream',
-  './controllers/category',
+  './controllers/searchQuery',
+  './controllers/searchTag',
 
-  './controllers/search',
-  './controllers/activity',
-  './controllers/activityNew',
-  './controllers/activityByTag',
+  './controllers/latest',
+  './controllers/latestCategory',
+  './controllers/trending',
+
+  './controllers/activityCollection',
+  './controllers/activityNewModal',
   './controllers/activityDetails',
+
 
   './directives/tags',
   './directives/activityLike',
-  './directives/activityCard',
-  './directives/trendingActivities',
-  './directives/categoryActivities',
-  './directives/queryActivities',
-  './directives/userActivities',
-  './directives/userStream',
-
-  './services/related/twitterWidgetService',
-  './services/related/gplusWidgetService',
-
+  './directives/activityNew',
+  './directives/activityItem',
   './directives/related/relatedResource',
   './directives/related/twitterWidget',
   './directives/related/gplusWidget',
 
+  './services/twitterWidgetService',
+  './services/gplusWidgetService',
   './services/editor'
 ], function (app) {
+
 });

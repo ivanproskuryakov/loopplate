@@ -1,8 +1,9 @@
 import {Request, Response} from 'express';
 import {Server} from 'app/server/interface/server';
-import {User} from 'app/models/interface/user';
-import {Activity} from 'app/models/interface/activity';
-import {UserService} from 'app/service/userService';
+import {User} from 'app/interface/user/user';
+import {Activity} from 'app/interface/activity/activity';
+import {UserService} from 'app/models/service/user/userService';
+import {TimelineService} from 'app/models/service/user/timelineService';
 import {EmailService} from 'app/service/emailService';
 
 export function Attach(User) {
@@ -31,7 +32,7 @@ export function Attach(User) {
                                         password: string,
                                         confirmation: string,
                                         next: (err?: Error) => void) {
-    UserService.resetPassword(User.app, token, password, confirmation)
+    UserService.resetPassword(token, password, confirmation)
       .then(() => next())
       .catch(next);
   };
@@ -54,7 +55,7 @@ export function Attach(User) {
    * @param {function} next callback
    */
   User.requestWebsiteUserReset = function (email: string, next: (err?: Error) => void) {
-    UserService.requestWebsiteUserReset(User.app, email)
+    UserService.requestWebsiteUserReset(email)
       .then(() => next())
       .catch(next);
   };
@@ -82,9 +83,7 @@ export function Attach(User) {
   User.publicProfile = function (req: any,
                                  username: string,
                                  next: (err?: Error, data?: User) => void) {
-    let app = User.app;
-
-    UserService.getUserProfile(app, username, null, req.user)
+    UserService.getUserProfile(username, null, req.user)
       .then(profile => next(null, profile))
       .catch(next);
   };
@@ -115,7 +114,7 @@ export function Attach(User) {
                               filter: any,
                               req: any,
                               next: (err?: Error, result?: Activity[]) => void) {
-    UserService.getUserActivities(User.app, username, filter, req.user)
+    UserService.getUserActivities(username, filter, req.user)
       .then(activities => next(null, activities))
       .catch(next);
   };
@@ -134,13 +133,12 @@ export function Attach(User) {
   });
 
   /**
-   * delete request for user's account
    * @param {string} id
    * @param {function} next callback
    */
   User.requestAccountDelete = function (id: string,
                                         next: (err?: Error) => void) {
-    EmailService.sendAccountDeleteEmail(User.app, id)
+    EmailService.sendAccountDeleteEmail(id)
       .then(() => next())
       .catch(next);
   };
@@ -170,13 +168,113 @@ export function Attach(User) {
     const app: Server = User.app;
 
     UserService
-      .deleteAccount(app, token)
+      .deleteAccount(token)
       .then(() => {
         // redirect to frontend
         return res.redirect(
           `http://${app.get('domain')}:${app.get('port')}`
         );
       })
+      .catch(next);
+  };
+
+  /**
+   * register 'stream' as api method as route: /stream - GET
+   */
+  User.remoteMethod('stream', {
+    description: 'get user\'s stream',
+    accepts: [
+      {arg: 'req', type: 'object', http: {source: 'req'}},
+      {arg: 'filter', type: 'object', http: {source: 'query'}}
+    ],
+    returns: {
+      type: 'array', root: true,
+      description: 'user\'s stream'
+    },
+    http: {verb: 'get', path: '/stream'}
+  });
+
+
+  /**
+   * @param {Object} filter
+   * @param {Request} req express's request object
+   * @param {function} next callback
+   */
+  User.stream = function (req: Request,
+                          filter: any,
+                          next?: (err: Error, result?: Activity[]) => void) {
+    const timelineService = new TimelineService();
+
+    UserService.getUserFromRequest(req)
+      .then(user => timelineService.getTimeline(user, filter.limit, filter.skip))
+      .then(result => next(null, result))
+      .catch(next);
+  };
+
+
+  /**
+   * register 'follow' as api method as route: /{id}/followers/follow - POST
+   */
+  User.remoteMethod('follow', {
+    description: 'follow user',
+    accepts: [
+      {arg: 'id', type: 'string', required: true, description: 'follower id', http: {source: 'path'}},
+      {arg: 'req', type: 'object', http: {source: 'req'}},
+      {arg: 'res', type: 'object', http: {source: 'res'}}
+    ],
+    returns: {
+      type: 'object', root: true
+    },
+    http: {verb: 'post', path: '/:id/followers/follow'}
+  });
+
+  /**
+   * @param {string} id
+   * @param {Request} req express's request object
+   * @param {Response} res express's response object
+   * @param {function} next callback
+   */
+  User.follow = function (id: string,
+                          req: Request,
+                          res: Response,
+                          next: (err?: Error) => void) {
+    const timelineService = new TimelineService();
+
+    UserService.getUserFromRequest(req)
+      .then(user => timelineService.follow(user.id, id))
+      .then(() => next())
+      .catch(next);
+  };
+
+
+  /**
+   * register 'unfollow' as api method as route: /{id}/followers/follow - DELETE
+   */
+  User.remoteMethod('unfollow', {
+    description: 'unfollow user',
+    accepts: [
+      {arg: 'id', type: 'string', required: true, description: 'follower id', http: {source: 'path'}},
+      {arg: 'req', type: 'object', http: {source: 'req'}}
+    ],
+    returns: {
+      type: 'object', root: true
+    },
+    http: {verb: 'delete', path: '/:id/followers/follow'}
+  });
+
+  /**
+   * @param {string} id
+   * @param {Request} req express's request object
+   * @param {function} next callback
+   */
+  User.unfollow = function (id: string,
+                            req: Request,
+                            next: (err?: Error, result?: any) => void) {
+    const timelineService = new TimelineService();
+
+    UserService.getUserFromRequest(req)
+      .then(user => timelineService.unfollow(user.id, id))
+      .then(() => next())
       .catch(next);
   };
 

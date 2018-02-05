@@ -1,0 +1,58 @@
+{
+  "name": "Under-19 2016 - France-England – UEFA.com",
+  "description": "Europe's football website, UEFA.com, is the official site of UEFA, the Union of European Football Associations, and the governing body of football in Europe. UEFA organises some of the most famous and prestigious football competitions on the European continent including the UEFA Champions League, the UEFA Cup and the UEFA European Football Championship (UEFA EURO 2012, UEFA EURO 2016, etc). The website features live video streaming of many UEFA competitions together with an extensive video archive and mobile service. In addition, via the Football Europe section, there is coverage of the 54 national association domestic leagues, the route to UEFA's club competitions; the UEFA Organisation section covers all corporate activities at UEFA, while Training Ground promotes grassroots football initiatives and elearning modules.",
+  "tags": [
+    {
+      "value": "EURO2012",
+      "rank": 1
+    },
+    {
+      "value": "TrainingGround",
+      "rank": 1
+    },
+    {
+      "value": "UEFAChampionsLeague",
+      "rank": 1
+    },
+    {
+      "value": "ChampionsLeague",
+      "rank": 1
+    },
+    {
+      "value": "UEFACup",
+      "rank": 1
+    },
+    {
+      "value": "EURO2008",
+      "rank": 0
+    },
+    {
+      "value": "UnionEuropeenneDeAssociation",
+      "rank": 0
+    },
+    {
+      "value": "EuropeanChampionship",
+      "rank": 0
+    },
+    {
+      "value": "FIFAWorldCup",
+      "rank": 0
+    },
+    {
+      "value": "WorldCup",
+      "rank": 0
+    },
+    {
+      "value": "MichelPlatini",
+      "rank": 0
+    },
+    {
+      "value": "UnionOfEuropeanAssociations",
+      "rank": 0
+    }
+  ],
+  "image": "http://img.uefa.com/imgml/icons/social/og/uefacom.jpg",
+  "type": "link",
+  "source": "http://www.site.com/article/1",
+  "category": "football"
+}

@@ -1,0 +1,23 @@
+.new-activity-modal {
+  .activity-body {
+    width: 400px;
+    height: 300px;
+  }
+  .save-activity {
+    line-height: 1 !important;
+    border-radius: 2px;
+    color: #fff;
+    background: #df0000;
+    padding: 5px 15px;
+    font-weight: 400;
+    float: right;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 15px;
+    margin-bottom: 5px;
+
+    &:hover {
+      background: #a90000;
+    }
+  }
+}

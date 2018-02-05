@@ -1,0 +1,62 @@
+<div class="sidenav-wrapper" ng-controller="NavigationCtrl">
+  <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+  >
+    <div class="sidenav-header">
+      <div class="navbar-brand">
+        <img ng-src="/images/logo.png" class="logo"/>
+        <span class="logo-text">
+          Loopplate <small>beta</small>
+        </span>
+      </div>
+    </div>
+
+    <md-list class="navigation">
+      <md-list-item md-ink-ripple>
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityDetails({userName: activity.user.username, activitySlug: activity.slug})">Story</a>
+        </md-item-content>
+      </md-list-item>
+      <md-list-item md-ink-ripple>
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityDetailsComments({userName: activity.user.username, activitySlug: activity.slug})">Comments</a>
+        </md-item-content>
+      </md-list-item>
+      <md-list-item md-ink-ripple>
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityDetailsYouTube({userName: activity.user.username, activitySlug: activity.slug})">YouTube</a>
+        </md-item-content>
+      </md-list-item>
+      <md-list-item md-ink-ripple>
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityDetailsTwitter({userName: activity.user.username, activitySlug: activity.slug})">Twitter</a>
+        </md-item-content>
+      </md-list-item>
+      <md-list-item md-ink-ripple>
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityDetailsGooglePlus({userName: activity.user.username, activitySlug: activity.slug})">Google Plus</a>
+        </md-item-content>
+      </md-list-item>
+      <md-list-item md-ink-ripple>
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityDetailsGiphy({userName: activity.user.username, activitySlug: activity.slug})">Giphy</a>
+        </md-item-content>
+      </md-list-item>
+
+      <md-list-item md-ink-ripple class="mod-separator">
+        <md-item-content layout="row" layout-align="start center">
+          <a ui-sref="activityCollection({userName: activity.user.username})">
+            More @{{activity.user.username}}
+          </a>
+        </md-item-content>
+      </md-list-item>
+
+    </md-list>
+  </md-sidenav>
+
+
+  <md-button class="sidenav-toggle md-icon-button" ng-click="toggleSidenav()">
+    <i class="material-icons">menu</i>
+  </md-button>
+</div>

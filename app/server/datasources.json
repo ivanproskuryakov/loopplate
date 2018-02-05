@@ -2,7 +2,7 @@
   "mongo": {
     "host": "localhost",
     "port": 27017,
-    "database": "LoopbackBoilerplate",
+    "database": "loopplate",
     "username": "",
     "password": "",
     "name": "mongo",
@@ -19,8 +19,8 @@
       {
         "type": "Mailgun",
         "auth": {
-          "api_key": "key-4ed48e3b870bc826026134d77d48336e",
-          "domain": "application.com"
+          "api_key": "~",
+          "domain": "~"
         }
       }
     ]

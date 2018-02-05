@@ -1,0 +1,20 @@
+<md-dialog aria-label="Mango (Fruit)" class="modal-dialog">
+  <md-button class="modal-close md-icon-button" ng-click="close()">
+    <md-icon>close</md-icon>
+  </md-button>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+
+
+      <h2>Log In With</h2>
+      <div class="login-buttons">
+        <md-button class="btn-facebook" ng-click="oauthRedirect('facebook')">Facebook</md-button>
+        <md-button class="btn-google" ng-click="oauthRedirect('google')">Google</md-button>
+      </div>
+    </div>
+    <div class="info">
+      We may use your email for updates and tips about our products and services.
+      By signing in, you agree to our <a ui-sref="terms">Terms of Use.</a>
+    </div>
+  </md-dialog-content>
+</md-dialog>

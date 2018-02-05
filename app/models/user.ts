@@ -1,8 +1,3 @@
-// Copyright IBM Corp. 2015. All Rights Reserved.
-// Node module: loopback-getting-started-intermediate
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {UserEvent} from 'app/models/event/userEvent';
 import {Attach} from 'app/models/remote/userRemote';
 
@@ -58,6 +53,16 @@ export = function (User) {
     'prototype.__get__credentials',
     'prototype.__updateById__credentials',
     /**
+     * User -> Comment
+     */
+    'prototype.__count__comments',
+    'prototype.__create__comments',
+    'prototype.__delete__comments',
+    'prototype.__destroyById__comments',
+    'prototype.__findById__comments',
+    'prototype.__get__comments',
+    'prototype.__updateById__comments',
+    /**
      * User -> Activity
      */
     'prototype.__count__activities',
@@ -95,7 +100,7 @@ export = function (User) {
   });
 
   User.observe('after save', function (ctx, next) {
-    UserEvent.onAccountAfterSaved(User.app, ctx)
+    UserEvent.onAccountAfterSaved(ctx)
       .then(() => next())
       .catch(next);
   });
@@ -107,17 +112,17 @@ export = function (User) {
   });
 
   User.on('resetPasswordRequest', function (result) {
-    return UserEvent.onResetPasswordRequest(User.app, result.user, result.accessToken);
+    return UserEvent.onResetPasswordRequest(result.user, result.accessToken);
   });
 
   User.afterRemote('findById', function (ctx, result, next) {
-    UserEvent.onRemoteFindById(User.app, ctx)
+    UserEvent.onRemoteFindById(ctx)
       .then(() => next())
       .catch(next);
   });
 
   User.afterRemote('findOne', function (ctx, result, next) {
-    UserEvent.onRemoteFindOne(User.app, ctx)
+    UserEvent.onRemoteFindOne(ctx)
       .then(() => next())
       .catch(next);
   });

@@ -6,13 +6,25 @@
   >
   </user-profile>
   <div class="short-info" ng-class="activity.user.avatar.location ? '--userphoto' : ''">
-    <span>{{activity.createdAt | date:'d MMM yyyy @ HH:mm'}}</span>
+    <span am-time-ago="activity.createdAt"></span>
+    <span class="sep">&bull;</span>
+    {{activity.viewsCount}}&nbsp;
+    <ng-pluralize
+      count="activity.viewsCount"
+      when="{0: 'views', 1: 'view', other: 'views'}"></ng-pluralize>
 
     <span ng-if="activity.achievements">
       <span ng-repeat="achievement in activity.achievements">
         <span class="sep">&bull;</span>
         {{achievement}}
       </span>
+    </span>
+
+    <span ng-if="activity.source">
+      <span class="sep">&bull;</span>
+      <a href="{{activity.source}}" target="_blank">
+        read source
+      </a>
     </span>
   </div>
 </div>

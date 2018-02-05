@@ -13,6 +13,9 @@ define(['app'], function (app) {
                 $stateParams,
                 $rootScope,
                 Activity) {
+
+        $scope.type = 'hot';
+
       }
     ]);
 });

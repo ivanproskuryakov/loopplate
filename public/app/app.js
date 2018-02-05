@@ -43,7 +43,7 @@ define([
       'uiCropper',
     ]);
 
-    if (window.location.hostname === 'resport.today') {
+    if (window.location.hostname === 'loopplate.com') {
       app.requires.push('templates');
       app.config(['AnalyticsProvider', function (AnalyticsProvider) {
         AnalyticsProvider.setAccount('UA-80233352-1');

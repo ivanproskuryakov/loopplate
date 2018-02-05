@@ -16,17 +16,17 @@ module.exports = function (shipit) {
     default: {
       workspace: '/tmp/github-monitor',
       deployTo: dir,
-      repositoryUrl: 'https://github.com/ivanproskuryakov/resport.today',
+      repositoryUrl: 'https://github.com/ivanproskuryakov/loopplate',
       ignores: ['.git'],
       keepReleases: 2,
       shallowClone: true
     },
     staging: {
-      servers: 'root@staging.resport.today',
+      servers: 'root@staging.loopplate.com',
       branch: 'staging'
     },
     production: {
-      servers: 'root@resport.today',
+      servers: 'root@loopplate.com',
       branch: 'master'
     }
   });

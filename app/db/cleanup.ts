@@ -1,118 +1,125 @@
-import {Promise} from 'es6-promise';
 import * as faker from 'faker';
 import * as App from 'app/server/server';
 
-import {User} from 'app/models/interface/user';
-import {Activity} from 'app/models/interface/activity';
+import {User} from 'app/interface/user/user';
+import {Activity} from 'app/interface/activity/activity';
+import {Comment} from 'app/interface/comment';
+import {ActivityRepository} from 'app/models/repository/activityRepository';
+import {UserRepository} from 'app/models/repository/userRepository';
+import {CommentRepository} from 'app/models/repository/commentRepository';
 
 export class Cleanup {
 
-
   /**
-   * starts the cleanup process
    * @returns {Promise}
    */
-  public start(): Promise<void> {
+  public start(): Promise<any[]> {
     return this
-      .createUsers()
-      .then(users => this.createActivities(users));
-  }
-
-  /**
-   * creates users
-   * @returns {Promise<User[]>}
-   */
-  public createUsers(): Promise<User[]> {
-
-    return this.recreate('user')
+      .recreate('user')
       .then(() => this.recreate('userIdentity'))
-      .then(() => new Promise((resolve, reject) => {
-        App.models.user.create([{
-          email: 'foo@bar.com',
-          type: 'user',
-          password: 'foobar',
-          username: 'foo'
-        }, {
-          email: 'john@doe.com',
-          type: 'user',
-          password: 'johndoe',
-          username: 'john'
-        }, {
-          email: 'jane@doe.com',
-          type: 'user',
-          password: 'janedoe',
-          username: 'jane'
-        }], (err: Error, users: User[]) => {
-          if (err) {
-            console.log(err);
-          }
+      .then(() => this.recreate('Activity'))
+      .then(() => this.recreate('Comment'))
 
-          resolve(users);
-        });
-      }));
+      .then(() => this.createUser())
+      .then(user => this.createActivities(user))
+      .then(activities => this.createComments(activities))
   }
 
   /**
-   * creates activities
+   * @returns {Promise<User>}
+   */
+  private createUser(): Promise<User> {
+    const user: User = {
+      email: 'volgodark@gmail.com',
+      type: 'user',
+      password: 'volgodark',
+      username: 'volgodark',
+      about: faker.lorem.paragraph()
+    };
+    let userRepository = new UserRepository();
+
+    return userRepository.createForcing(user);
+  }
+
+  /**
    * @returns {Promise<Activity[]>}
    */
-  public createActivities(users: User[]): Promise<Activity[]> {
+  private createActivities(user: User): Promise<Activity[]> {
+    const activities: Activity[] = [{
+      name: 'Premier League could have no English managers - Sam Allardyce',
+      description: faker.lorem.paragraph(),
+      source: 'http://www.bbc.com/sport/football/36295573',
+      userId: user.id,
+      category: 'root',
+      tags: [{value: 'Fooball', rank: 0}, {value: 'UEFA', rank: 0}, {value: 'PremierLegue', rank: 0}],
+      type: 'rss'
+    }, {
+      name: 'Barcelona win La Liga: Real Madrid boss admits rivals deserved to win',
+      description: faker.lorem.paragraph(),
+      source: 'http://www.bbc.com/sport/football/36294900',
+      userId: user.id,
+      category: 'root',
+      tags: [{value: 'UEFA', rank: 0}, {value: 'Barcelona', rank: 0}],
+      type: 'rss'
+    }, {
+      name: 'Cristiano Ronaldo scored twice as Real Madrid',
+      description: faker.lorem.paragraph(),
+      source: 'http://www.bbc.com/sport/football/36250293',
+      userId: user.id,
+      category: 'root',
+      tags: [{value: 'Ronaldo', rank: 0}, {value: 'UEFA', rank: 0}, {value: 'Barcelona', rank: 0}],
+      type: 'rss'
+    }];
+    let activityRepository = new ActivityRepository();
 
-    return this.recreate('Activity')
-      .then(() =>
-        new Promise((resolve, reject) => {
-          App.models.Activity.create([{
-            name: 'Premier League could have no English managers - Sam Allardyce',
-            description: faker.lorem.paragraph(),
-            source: 'http://www.bbc.com/sport/football/36295573',
-            userId: users[0].id,
-            category: 'root',
-            tags: [{value: 'Fooball', rank: 0}, {value: 'UEFA', rank: 0}, {value: 'PremierLegue', rank: 0}],
-            type: 'rss'
-          }, {
-            name: 'Barcelona win La Liga: Real Madrid boss admits rivals deserved to win',
-            description: faker.lorem.paragraph(),
-            source: 'http://www.bbc.com/sport/football/36294900',
-            userId: users[1].id,
-            category: 'root',
-            tags: [{value: 'UEFA', rank: 0}, {value: 'Barcelona', rank: 0}],
-            type: 'rss'
-          }, {
-            name: 'Cristiano Ronaldo scored twice as Real Madrid',
-            description: faker.lorem.paragraph(),
-            source: 'http://www.bbc.com/sport/football/36250293',
-            userId: users[2].id,
-            category: 'root',
-            tags: [{value: 'Ronaldo', rank: 0}, {value: 'UEFA', rank: 0}, {value: 'Barcelona', rank: 0}],
-            type: 'rss'
-          }], (err: Error, activities: Activity[]) => {
-            if (err) {
-              return reject(err);
-            }
-
-            resolve(activities);
-          });
-        }));
+    return activityRepository.createMany(activities);
   }
 
 
   /**
-   * creates or recreates collection
+   * @returns {Promise<Comment[]>}
+   */
+  private createComments(activities: Activity[]): Promise<Comment[]> {
+    const DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
+    const comments: Comment[] = [{
+      createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS * 4)),
+      text: faker.lorem.sentences(),
+      userId: activities[0].userId,
+      activityId: activities[0].id
+    }, {
+      createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS * 3)),
+      text: faker.lorem.sentences(),
+      userId: activities[0].userId,
+      activityId: activities[0].id
+    }, {
+      createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS * 2)),
+      text: faker.lorem.sentences(),
+      userId: activities[0].userId,
+      activityId: activities[1].id
+    }, {
+      createdAt: new Date(Date.now() - (DAY_IN_MILLISECONDS)),
+      text: faker.lorem.sentences(),
+      userId: activities[0].userId,
+      activityId: activities[2].id
+    }];
+    let commentRepository = new CommentRepository();
+
+    return commentRepository.createMany(comments);
+  }
+
+  /**
    * @param {string} collection name of collection
    * @returns {Promise}
    */
   private recreate(collection: string): Promise<void> {
+    return App.dataSources.mongo
+      .automigrate(collection)
+      .then(() => Promise.resolve())
+      .catch((err: Error) => {
+        console.log(err);
 
-    return new Promise<void>((resolve, reject) => {
-      let db = App.dataSources.mongo;
-      db.automigrate(collection, (err: Error) => {
-        if (err) {
-          return reject(err);
-        }
-
-        resolve();
+        return Promise.resolve()
       });
-    });
   }
 
 }

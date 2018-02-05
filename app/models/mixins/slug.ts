@@ -1,5 +1,5 @@
 import * as slug from 'slug';
-import * as moment from 'moment';
+const moment = require('moment');
 
 /**
  * mixin for setting slug on model
@@ -14,7 +14,7 @@ export = function slugMixin(Model, bootOptions?: {source?: string, field?: strin
     unique: (bootOptions && bootOptions.unique) || false
   };
 
-  const slugOptions = {
+  const slugOptions: any = {
     remove: null
   };
 

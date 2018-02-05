@@ -30,75 +30,6 @@
   }
 }
 
-// Drop-down
-.user-profile-dropdown {
-  position: relative;
-
-  .user-details-dropdown {
-    position: absolute;
-    left: -60px;
-    padding: 20px 10px;
-    width: 150px;
-    border: 1px solid #eee;
-    box-shadow: 2px 2px 5px 0 rgba(153, 153, 153, 0.26);
-    text-align: center;
-    border-radius: 5px;
-    background: #fff;
-    z-index: 100;
-    opacity: 0;
-    transition: opacity .3s ease;
-    pointer-events: none;
-    top: 100%;
-
-    &:before, &:after {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      display: block;
-      content: '';
-      transform: translateX(-50%);
-    }
-    &:before {
-      @include triangle(top, lighten(#ccc, 20%), 6);
-    }
-    &:after {
-      top: -11px;
-      @include triangle(top, #fff, 6);
-    }
-
-    .user-profile {
-      margin: 0 auto;
-      margin-bottom: 10px;
-      img {
-        width: 80px;
-        height: 80px;
-      }
-    }
-    .details-user {
-      margin-bottom: 5px;
-      display: inline-block;
-    }
-    .details-item {
-      clear: both;
-      display: block;
-      font-size: 14px;
-      color: #888;
-      line-height: 1.2;
-    }
-    .follow-user,
-    .unfollow-user {
-      margin-top: 15px;
-      float: inherit;
-    }
-  }
-  &:hover {
-    .user-details-dropdown {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  }
-}
-
 // horisontal
 .user-profile-horizontal {
   .user-profile {
@@ -109,6 +40,7 @@
   .details {
     text-align: left;
     overflow: visible;
+    width: 500px;
 
     .user-profile-link {
       display: inline-block;
@@ -119,9 +51,9 @@
       }
     }
     .details-user {
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       color: #444;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 500;
       display: block;
     }
@@ -132,7 +64,7 @@
       line-height: 1;
       cursor: default;
       float: left;
-      margin-right: 10px;
+      margin-right: 20px;
       font-weight: 400;
     }
   }

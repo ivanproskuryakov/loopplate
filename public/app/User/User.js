@@ -3,8 +3,10 @@
 define(['app',
   './config/user',
   './directives/userProfile',
+  './directives/userAuth',
   './directives/userFollowing',
   './controllers/user',
+  './controllers/modalAuth',
   './controllers/social',
   './controllers/userDashboard',
   './services/user'

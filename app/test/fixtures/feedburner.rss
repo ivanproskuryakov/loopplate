@@ -1,0 +1,47 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+
+<channel>
+	<title>The LoHud Yankees Blog</title>
+
+	<link>http://yankees.lhblogs.com</link>
+	<description>A New York Yankees blog by Jennings and the staff of The Journal News</description>
+	<lastBuildDate>{{DATE}}</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.7.2</generator>
+	<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/LohudYankees" /><feedburner:info uri="lohudyankees" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><feedburner:emailServiceId>LohudYankees</feedburner:emailServiceId><feedburner:feedburnerHostname>https://feedburner.google.com</feedburner:feedburnerHostname><item>
+		<title>Heathcott hitting leadoff for second spring game</title>
+		<link>http://feedproxy.google.com/~r/LohudYankees/~3/FJhJnFBP4iI/</link>
+		<pubDate>{{DATE}}</pubDate>
+		<dc:creator><![CDATA[Jennings]]></dc:creator>
+				<category><![CDATA[Misc]]></category>
+
+		<guid isPermaLink="false">http://yankees.lhblogs.com/?p=104966</guid>
+
+				<content:encoded><![CDATA[Slade Heathcott CF Carlos Beltran RF Alex Rodriguez DH {{MONTH_NUMBER}}k Teixeira 1B Chase Headley 3B Gary Sanchez C Rob Refsnyder 2B Lane Adams LF Tyler Wade SS RHP Ivan Nova
+
+The post Heathcott hitting leadoff for second spring game appeared first on The LoHud Yankees Blog.<br/>
+<br/>
+Click on the headline for the rest of this blog post ...<img src="http://feeds.feedburner.com/~r/LohudYankees/~4/FJhJnFBP4iI" height="1" width="1" alt=""/>]]></content:encoded>
+			<feedburner:origLink>http://yankees.lhblogs.com/{{YEAR}}/03/03/heathcott-hitting-leadoff-second-spring-game/</feedburner:origLink></item>
+		<item>
+		<title>Castro, Gregorius together for spring opener</title>
+		<link>http://feedproxy.google.com/~r/LohudYankees/~3/1fjbWjxPMuA/</link>
+		<pubDate>{{DATE}}</pubDate>
+		<dc:creator><![CDATA[Chad Jennings]]></dc:creator>
+				<category><![CDATA[Misc]]></category>
+
+		<guid isPermaLink="false">http://yankees.lhblogs.com/?p=104960</guid>
+
+				<content:encoded><![CDATA[Didi Gregorius SS Starlin Castro 2B Brian McCann C {{MONTH_NUMBER}}k Teixeira 1B Aaron Hicks CF Dustin Ackley DH Aaron Judge RF Ben Gamel LF Donovan Solano 3B RHP Luis Severino
+
+The post Castro, Gregorius together for spring opener appeared first on The LoHud Yankees Blog.<br/>
+<br/>
+Click on the headline for the rest of this blog post ...<img src="http://feeds.feedburner.com/~r/LohudYankees/~4/1fjbWjxPMuA" height="1" width="1" alt=""/>]]></content:encoded>
+			<feedburner:origLink>http://yankees.lhblogs.com/{{YEAR}}/03/02/castro-gregorius-together-spring-opener/</feedburner:origLink></item>
+
+	</channel>
+</rss>

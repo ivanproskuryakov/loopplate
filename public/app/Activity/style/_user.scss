@@ -1,35 +1,26 @@
 #activity-user {
-  background: #111;
-  text-align: center;
   overflow: hidden;
-  width: 100vw !important;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 0 10px;
+  padding: 20px;
+  float: left;
+  width: 350px;
+  margin-left: 50px;
 
+  .about {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+    font-weight: 400;
+    line-height: 1.4;
+  }
   .user-img-load {
     position: absolute;
     float: left;
     right: 0;
     bottom: 0;
   }
-
   .userinfo {
-    padding-top: 30px;
     display: inline-block;
-    margin-bottom: 30px;
-    width: 320px;
-    //width: 100%;
-
-    .details-user {
-      color: #fff;
-    }
-    .counters {
-      color: #aaa;
-    }
   }
   .user-summary {
     float: left;

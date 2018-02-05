@@ -1,4 +1,4 @@
-import {UserService} from 'app/service/userService';
+import {UserService} from 'app/models/service/user/userService';
 
 /**
  * mixin for setting user to model on api 'create' call
@@ -6,7 +6,7 @@ import {UserService} from 'app/service/userService';
  * @param {object} Model
  * @param {{field: string, replace: boolean}} [bootOptions={field: 'userId', replace: false}] settings for mixin
  */
-export = function httpUserMixin(Model, bootOptions?: {field?: string, replace?: boolean}) {
+export = function httpUserMixin(Model, bootOptions?: { field?: string, replace?: boolean }) {
 
   let options = {
     field: (bootOptions && bootOptions.field) || 'userId',
@@ -14,8 +14,12 @@ export = function httpUserMixin(Model, bootOptions?: {field?: string, replace?: 
   };
 
   Model.beforeRemote('create', function (ctx, modelInstance, next) {
-    UserService.setUserFromRequest(ctx.req.app, ctx.req,
-      ctx.args.data, options.field, options.replace)
+    UserService.setUserFromRequest(
+      ctx.req,
+      ctx.args.data,
+      options.field,
+      options.replace
+    )
       .then(() => next())
       .catch(() => next());
   });

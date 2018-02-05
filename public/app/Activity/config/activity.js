@@ -3,6 +3,17 @@
 define(['app'], function (app) {
   app.config(['$stateProvider', function ($stateProvider) {
     $stateProvider
+      .state('searchQuery', {
+        url: '/search/query/:query/',
+        templateUrl: '/app/Activity/views/search-query.html',
+        controller: 'SearchQueryCtrl'
+      })
+      .state('searchTag', {
+        url: '/search/tag/:tag/',
+        templateUrl: '/app/Activity/views/search-tag.html',
+        controller: 'SearchTagCtrl'
+      })
+
       .state('homepage', {
         url: '/',
         templateUrl: '/app/Activity/views/stream.html',
@@ -16,26 +27,21 @@ define(['app'], function (app) {
           role: 'user'
         }
       })
-      .state('category', {
-        url: '/category/:category/',
-        templateUrl: '/app/Activity/views/category.html',
-        controller: 'CategoryCtrl'
+
+      .state('latest', {
+        url: '/latest/',
+        templateUrl: '/app/Activity/views/latest.html',
+        controller: 'LatestCtrl'
+      })
+      .state('latestCategory', {
+        url: '/latest/:category/',
+        templateUrl: '/app/Activity/views/latest-category.html',
+        controller: 'LatestCategoryCtrl'
       })
       .state('trending', {
         url: '/trending/',
         templateUrl: '/app/Activity/views/trending.html',
         controller: 'TrendingCtrl'
-      })
-
-      .state('searchQuery', {
-        url: '/search/query/:q/',
-        templateUrl: '/app/Activity/views/searchQuery.html',
-        controller: 'SearchCtrl'
-      })
-      .state('searchTag', {
-        url: '/search/tag/:q/',
-        templateUrl: '/app/Activity/views/searchTag.html',
-        controller: 'SearchCtrl'
       })
 
       .state('activityCollection', {
@@ -54,14 +60,25 @@ define(['app'], function (app) {
         templateUrl: '/app/Activity/views/details/comments.html',
         controller: 'ActivityDetailsCtrl'
       })
-
-      .state('activityNew', {
-        url: '/update/new/',
-        templateUrl: '/app/Activity/views/new/content.html',
-        controller: 'ActivityNewCtrl',
-        data: {
-          role: 'user'
-        }
+      .state('activityDetailsYouTube', {
+        url: '/u/:userName/a/:activitySlug/youtube/',
+        templateUrl: '/app/Activity/views/details/youtube.html',
+        controller: 'ActivityDetailsCtrl'
+      })
+      .state('activityDetailsGooglePlus', {
+        url: '/u/:userName/a/:activitySlug/gplus/',
+        templateUrl: '/app/Activity/views/details/gplus.html',
+        controller: 'ActivityDetailsCtrl'
+      })
+      .state('activityDetailsTwitter', {
+        url: '/u/:userName/a/:activitySlug/twitter/',
+        templateUrl: '/app/Activity/views/details/twitter.html',
+        controller: 'ActivityDetailsCtrl'
+      })
+      .state('activityDetailsGiphy', {
+        url: '/u/:userName/a/:activitySlug/giphy/',
+        templateUrl: '/app/Activity/views/details/giphy.html',
+        controller: 'ActivityDetailsCtrl'
       });
   }]);
 

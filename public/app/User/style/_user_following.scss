@@ -17,4 +17,32 @@
       display: none;
     }
   }
+
+  .follow-user,
+  .unfollow-user {
+    line-height: 1 !important;
+    border-radius: 2px;
+    color: #fff;
+    background: #df0000;
+    padding: 5px 15px;
+    font-weight: 400;
+    float: left;
+    cursor: pointer;
+
+    &:hover {
+      background: #a90000;
+    }
+    i {
+      font-size: 20px;
+    }
+    span {
+      cursor: pointer;
+      font-size: 12px;
+      vertical-align: bottom;
+      line-height: 1;
+      float: right;
+      display: block;
+      font-weight: 500;
+    }
+  }
 }

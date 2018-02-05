@@ -1,0 +1,83 @@
+{
+  "name": "Comment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "fullSlug": {
+      "type": "string",
+      "required": true
+    },
+    "userId": {
+      "required": true
+    },
+    "activityId": {
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "activity": {
+      "type": "belongsTo",
+      "model": "Activity",
+      "foreignKey": "activityId"
+    },
+    "replyOn": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "replyOnId"
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "indexes": {
+    "activityId_index": {
+      "activityId": 1
+    }
+  },
+  "mixins": {
+    "TimeStamp": true,
+    "Limit": true,
+    "HttpUser": {
+      "field": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

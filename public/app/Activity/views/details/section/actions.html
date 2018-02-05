@@ -1,0 +1,53 @@
+<div class="actions">
+  <ul class="related">
+    <li>
+      <activity-like activity="activity"></activity-like>
+    </li>
+    <li>
+      <a
+        ui-sref="activityDetails({userName: activity.user.username, activitySlug: activity.slug})"
+        ng-class="appState == 'activityDetails' ? 'active' : ''"
+      >
+        <md-tooltip hide-xs md-direction="right">Read the story</md-tooltip>
+        Story
+      </a>
+    </li>
+    <li>
+      <a ui-sref="activityDetailsYouTube({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-class="appState == 'activityDetailsYouTube' ? 'active' : ''"
+      >
+        <md-tooltip hide-xs md-direction="right">Related from Youtube</md-tooltip>
+        YouTube
+      </a>
+    </li>
+    <li>
+      <a ui-sref="activityDetailsTwitter({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-class="appState == 'activityDetailsTwitter' ? 'active' : ''"
+      >
+        <md-tooltip hide-xs md-direction="right">Related from Twitter</md-tooltip>
+        Twitter
+      </a>
+    </li>
+    <li>
+      <a ui-sref="activityDetailsGooglePlus({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-class="appState == 'activityDetailsGooglePlus' ? 'active' : ''"
+      >
+        <md-tooltip hide-xs md-direction="right">Related from Google</md-tooltip>
+        Google Plus
+      </a>
+    </li>
+    <li>
+      <a ui-sref="activityDetailsGiphy({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-class="appState == 'activityDetailsGiphy' ? 'active' : ''"
+      >
+        <md-tooltip hide-xs md-direction="right">Related from Giphy</md-tooltip>
+        Giphy
+      </a>
+    </li>
+  </ul>
+</div>
+
+<activity-like class="activity-details-like" activity="activity"></activity-like>
+<md-button class="page-close md-icon-button" ng-click="close()">
+  <i class="material-icons">close</i>
+</md-button>

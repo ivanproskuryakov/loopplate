@@ -1,0 +1,60 @@
+<div class="activity-item">
+  <div ng-if="activity.category" class="category">From
+    <span ui-sref="latestCategory({category: activity.category})">
+      {{activity.category}}
+      <md-tooltip hide-xs md-direction="right" ng-if="!activity.isLiked">
+        Hot in {{activity.category|uppercase}}
+      </md-tooltip>
+    </span>
+  </div>
+
+  <div class="media cover"
+       ng-if="activityImagePath(activity)"
+       ui-sref="activityDetails({userName: activity.user.username, activitySlug: activity.slug})"
+       style="background: url({{activityImagePath(activity)}})">
+  </div>
+
+  <div class="shortinfo">
+    <user-profile
+      class="userinfo"
+      mode="simple"
+      img-size="30px"
+      user="activity.user"
+      ng-if="activity.user.avatar.location"
+      ng-if="mode == 'stream'">
+    </user-profile>
+
+    <div class="info" ng-if="mode == 'stream'">
+      <a class="user-name"
+         ui-sref="activityCollection({userName: activity.user.username})">
+        {{activity.user.username}}
+      </a>
+      <span am-time-ago="activity.createdAt"></span>
+    </div>
+    <div class="info" ng-if="mode != 'stream'">
+      <a class="user-name"
+         ui-sref="activityCollection({userName: activity.user.username})">
+        {{activity.user.username}}
+      </a>
+      <span am-time-ago="activity.createdAt"></span>
+      {{ activity.viewsCount}}
+      <ng-pluralize count="activity.viewsCount" when="{0: 'views', 1: 'view', other: 'views'}"></ng-pluralize>
+    </div>
+    <div class="actions">
+      <activity-like activity="activity"></activity-like>
+    </div>
+  </div>
+
+  <tags data="activity.tags"></tags>
+
+  <div ng-if="activity.description">
+    <h2 class="post-heading">
+      <a ui-sref="activityDetails({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-bind-html="activity.name">
+      </a>
+    </h2>
+    <div class="activity-rich description" ng-bind-html="activity.shortDescription">
+    </div>
+  </div>
+</div>
+

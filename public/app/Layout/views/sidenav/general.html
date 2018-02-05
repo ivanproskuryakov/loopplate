@@ -1,0 +1,20 @@
+<div class="sidenav-wrapper">
+  <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+  >
+    <div class="sidenav-header">
+      <div class="navbar-brand">
+        <img ng-src="/images/logo.png" class="logo"/>
+        <span class="logo-text">
+          Loopplate <small>beta</small>
+        </span>
+      </div>
+    </div>
+    <md-list class="navigation">
+      <div ng-include="'/app/Layout/views/sidenav/section/activities.html'"></div>
+      <div ng-if="!user" ng-include="'/app/Layout/views/sidenav/section/guest.html'"></div>
+      <div ng-include="'/app/Layout/views/sidenav/section/help.html'"></div>
+    </md-list>
+  </md-sidenav>
+</div>

@@ -1,0 +1,28 @@
+<div id="activity-details"
+     md-swipe-right="showActivityPage('')"
+     md-swipe-left="showActivityPage('YouTube')"
+>
+  <div class="single-column">
+    <div ng-include="'/app/Activity/views/details/section/user.html'"></div>
+
+    <div id="activity-content">
+      <h1 id="story" class="post-heading">
+        {{activity.name}}
+      </h1>
+      <tags ng-if="activity.tags"
+            data="activity.tags"
+            max="10">
+      </tags>
+    </div>
+
+    <div id="comments" class="mod-mobile">
+      <comments ng-if="activity" activity="activity"></comments>
+    </div>
+  </div>
+
+  <nav ng-include="'/app/Activity/views/details/section/actions.html'"></nav>
+  <nav ng-include="'/app/Activity/views/details/section/sidenav.html'"></nav>
+
+  <md-progress-linear class="progress" md-mode="determinate" ng-value="30"></md-progress-linear>
+</div>
+

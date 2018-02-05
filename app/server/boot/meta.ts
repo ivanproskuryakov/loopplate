@@ -30,7 +30,7 @@ export = function (app) {
         return next();
       }
 
-      let renderer = new MetaRendererService(app);
+      let renderer = new MetaRendererService();
       return metaRenderer(renderer, req)
         .then(html => {
 

@@ -5,9 +5,9 @@
     md-diameter="40">
   </md-progress-circular>
 
-  <h3 ng-if="!busy && data.length" class="heading">
-    {{type}}
-  </h3>
+  <div ng-if="!busy && data.length === 0" class="noting-found">
+    Nothing from {{type}} ...
+  </div>
 
   <div ng-repeat="item in data" class="related">
     <div ng-if="type == 'youtube'" ng-include="'/app/Activity/views/directives/related/related-youtube-card.html'"></div>

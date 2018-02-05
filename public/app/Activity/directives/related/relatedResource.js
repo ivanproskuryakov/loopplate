@@ -33,7 +33,7 @@ function RelatedResourceController($scope, $sce, Activity) {
         .getRelatedResource({
           id: $scope.activity.id,
           resource: $scope.type,
-          quantity: 3
+          quantity: 10
         })
         .$promise
         .then(function (response) {

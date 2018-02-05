@@ -45,6 +45,7 @@
         "/exception/*",
         "/activity/*",
         "/update/*",
+        "/latest/*",
         "/trending/*",
         "/"
       ],
