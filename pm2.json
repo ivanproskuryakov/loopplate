@@ -19,26 +19,6 @@
       "out_file": "./logs/send-summary-worker-out.log",
       "pid_file": "./logs/send-summary-worker.pid",
       "watch": false
-    },
-    {
-      "name": "trending-cache-worker",
-      "script": "./build/worker/cache/trending.js",
-      "node_args": "--harmony",
-      "log_file": "./logs/trending-cache-worker-logs.log",
-      "error_file": "./logs/trending-cache-worker-errs.log",
-      "out_file": "./logs/trending-cache-worker-out.log",
-      "pid_file": "./logs/trending-cache-worker.pid",
-      "watch": false
-    },
-    {
-      "name": "import-rss-worker",
-      "script": "./build/worker/import/rss.js",
-      "node_args": "--harmony",
-      "log_file": "./logs/import-rss-worker-logs.log",
-      "error_file": "./logs/import-rss-worker-errs.log",
-      "out_file": "./logs/import-rss-worker-out.log",
-      "pid_file": "./logs/import-rss-worker.pid",
-      "watch": false
     }
   ]
 }

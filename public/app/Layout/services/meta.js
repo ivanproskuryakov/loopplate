@@ -5,8 +5,8 @@ define(['app'], function (app) {
     .service('metaService', [
       '$rootScope',
       function ($rootScope) {
-        var defaultTitle = 'Loopback Node.js framework boilerplate - loopplate.com';
-        var defaultDescription = 'Loopback Node.js framework - loopplate.com';
+        var defaultTitle = 'Loopplate - Node.js boilerplate with Loopback, Typescript and AngularJS ';
+        var defaultDescription = 'Loopplate - Node.js boilerplate with Loopback, Typescript and AngularJS ';
 
         function cleanHTML(html) {
           if (!html) {
