@@ -5,7 +5,7 @@ import {UserUtils} from 'app/test/utils/userUtils';
 import {ActivityUtils} from 'app/test/utils/activityUtils';
 import * as activityMock from 'app/test/fixtures/models/activity';
 import {HttpMock} from 'app/test/mock/httpMock';
-import {UserServiceTest} from 'app/test/models/service/userService.test';
+import {UserServiceTest} from 'app/test/models/service/user/userService.test';
 
 import * as App from 'app/server/server';
 import {ActivityEvent} from 'app/models/event/activityEvent';

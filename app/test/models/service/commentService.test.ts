@@ -5,7 +5,7 @@ import * as commentMock from 'app/test/fixtures/models/comment';
 import * as activityMock from 'app/test/fixtures/models/activity';
 import { UserUtils } from 'app/test/utils/userUtils';
 import { ActivityUtils } from 'app/test/utils/activityUtils';
-import { UserServiceTest } from 'app/test/models/service/userService.test';
+import { UserServiceTest } from 'app/test/models/service/user/userService.test';
 
 import * as App from 'app/server/server';
 import { CommentService } from 'app/models/service/commentService';

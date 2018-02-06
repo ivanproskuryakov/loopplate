@@ -4,7 +4,6 @@ import {db} from 'loopback-crud';
 import {LoggerTransport} from 'app/helper/logHelper';
 import {Activity} from 'app/interface/activity/activity';
 import {AccessToken} from 'app/interface/accessToken';
-import {SocialProfile} from 'app/interface/socialProfile';
 import {UserIdentity} from 'app/interface/user/userIdentity';
 import {Contact} from 'app/interface/contact';
 import {Comment} from 'app/interface/comment';
@@ -32,7 +31,6 @@ export interface Server extends LoopBackApplication {
     Activity: db.DataAccessObject<Activity>;
     user: db.DataAccessObject<User>;
     Comment: db.DataAccessObject<Comment>;
-    SocialProfile: db.DataAccessObject<SocialProfile>;
     accessToken: db.DataAccessObject<AccessToken>;
     userIdentity: db.DataAccessObject<UserIdentity>;
     userCredential: db.DataAccessObject<any>;

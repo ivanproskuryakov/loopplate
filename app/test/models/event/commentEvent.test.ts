@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { UserUtils } from 'app/test/utils/userUtils';
 import * as commentMock from 'app/test/fixtures/models/comment';
 import { HttpMock } from 'app/test/mock/httpMock';
-import { UserServiceTest } from 'app/test/models/service/userService.test';
+import { UserServiceTest } from 'app/test/models/service/user/userService.test';
 
 import * as App from 'app/server/server';
 import { CommentEvent } from 'app/models/event/commentEvent';

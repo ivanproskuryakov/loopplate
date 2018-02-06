@@ -30,7 +30,7 @@ export class Cleanup {
    */
   private createUser(): Promise<User> {
     const user: User = {
-      email: 'volgodark@gmail.com',
+      email: 'volgodark@loopplate.com',
       type: 'user',
       password: 'volgodark',
       username: 'volgodark',
