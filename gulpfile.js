@@ -243,7 +243,7 @@ gulp.task('backend:watch:code', function () {
 });
 
 gulp.task('backend:watch:files', function () {
-  const watcher = gulp.watch(appFilesRelativeGlob, ['backend:files']);
+  const watcher = gulp.watch([appFilesRelativeGlob], ['backend:files']);
 
   watcher.on('change', function (event) {
     // if a file is deleted, forget about it

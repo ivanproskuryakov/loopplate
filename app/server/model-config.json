@@ -48,10 +48,6 @@
     "dataSource": "mongo",
     "public": true
   },
-  "SocialProfile": {
-    "dataSource": "mongo",
-    "public": false
-  },
   "Email": {
     "dataSource": "mailgun"
   },

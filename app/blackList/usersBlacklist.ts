@@ -1,6 +1,6 @@
 import {join} from 'path';
 import * as _ from 'lodash';
-import {BlacklistInterface} from 'app/blackList/blacklistInterface';
+import {BlacklistInterface} from 'app/interface/blacklistInterface';
 import {User} from 'app/interface/user/user';
 
 export class UsersBlackList implements BlacklistInterface<User> {

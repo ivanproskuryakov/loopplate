@@ -7,7 +7,7 @@ let Boilerpipe = require('boilerpipe');
 import {Activity} from 'app/interface/activity/activity';
 import {Tag} from 'app/interface/activity/tag';
 import {YahooClient} from 'app/client/yahooClient';
-import {BlacklistInterface} from 'app/blackList/blacklistInterface';
+import {BlacklistInterface} from 'app/interface/blacklistInterface';
 import {TagsBlackList} from 'app/blackList/tagsBlacklist';
 
 export class TagsAnalyzer {
