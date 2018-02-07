@@ -35,15 +35,9 @@ define(['app'], function (app) {
       })
       .state('latestCategory', {
         url: '/latest/:category/',
-        templateUrl: '/app/Activity/views/latest-category.html',
+        templateUrl: '/app/Activity/views/latest.html',
         controller: 'LatestCategoryCtrl'
       })
-      .state('trending', {
-        url: '/trending/',
-        templateUrl: '/app/Activity/views/trending.html',
-        controller: 'TrendingCtrl'
-      })
-
       .state('activityCollection', {
         url: '/u/:userName/',
         templateUrl: '/app/Activity/views/user.html',

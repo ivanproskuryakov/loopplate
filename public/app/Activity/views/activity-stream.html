@@ -10,16 +10,8 @@
     <div ng-if="type != 'stream'">
       No updates, yet.
       <br/>
-      <md-button ui-sref="trending" class="md-default md-raised">
-        <i class="material-icons">whatshot</i> Hot
-      </md-button>
-    </div>
-
-    <div ng-if="type == 'stream'">
-      No updates, since you are not following anyone.
-      <br/>
-      <md-button ui-sref="trending" class="md-default md-raised">
-        <i class="material-icons">whatshot</i> Hot
+      <md-button ui-sref="latest" class="md-default md-raised">
+        <i class="material-icons">history</i> Latest
       </md-button>
     </div>
   </div>

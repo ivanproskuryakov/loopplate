@@ -11,7 +11,6 @@ define([
 
   './controllers/latest',
   './controllers/latestCategory',
-  './controllers/trending',
 
   './controllers/activityCollection',
   './controllers/activityNewModal',

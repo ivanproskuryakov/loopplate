@@ -6,8 +6,24 @@
   margin-left: 50px;
 
   .header {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+  }
+  .intro {
+    color: #eee;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .banner {
+    background: #df0000;
+    color: #fff;
+    font-weight: 500;
+    padding: 20px;
+
+    .github {
+      margin-left: 0;
+    }
   }
 }
