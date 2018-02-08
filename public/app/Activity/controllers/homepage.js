@@ -14,6 +14,8 @@ define(['app'], function (app) {
 
         if ($rootScope.user) {
           $state.transitionTo('stream');
+        } else {
+          $state.transitionTo('latest');
         }
 
       }
