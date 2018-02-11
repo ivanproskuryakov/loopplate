@@ -3,14 +3,12 @@ Build, launch server and watch for changes
 ```
 gulp app:watch
 ``` 
-Also, the line `0.0.0.0 dev.loopplate.com` added to yours `/etc/hosts` will add some meaning to your urls, 
-where "dev.loopplate.com" is default domain on dev environment.
-
-
 Running tests
 ```
 npm test
 ```
+
+![Image of Loopback](https://raw.githubusercontent.com/ivanproskuryakov/loopplate/master/docs/screen-one.png)
 
 
 ## Detailed Description
