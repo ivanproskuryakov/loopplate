@@ -99,7 +99,7 @@ On production logs go to sentry.io, development sends logs to console, test envi
 winston npm library is used for logs transportation, https://github.com/winstonjs/winston       
 
 ### XII. Admin processes
-`node build/command/sitemap.js` - generate sitemap.xml file.
-`node build/command/sendSummary.js` - send summary email with a list of new users.
-`node build/db/updateDataSources.js` - migration command to detect difference between DB and schema, alter DB schema to match schema.
-`node build/db/cleanup.js` - truncate database and populates it with the demo data.
+ - `node build/command/sitemap.js` - generate sitemap.xml file.
+ - `node build/command/sendSummary.js` - send summary email with a list of new users.
+ - `node build/db/updateDataSources.js` - migration command to detect difference between DB and schema, alter DB schema to match schema.
+ - `node build/db/cleanup.js` - truncate database and populates it with the demo data.
