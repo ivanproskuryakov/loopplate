@@ -59,21 +59,6 @@ define(['app'], function (app) {
         templateUrl: '/app/Activity/views/details/youtube.html',
         controller: 'ActivityDetailsCtrl'
       })
-      .state('activityDetailsGooglePlus', {
-        url: '/u/:userName/a/:activitySlug/gplus/',
-        templateUrl: '/app/Activity/views/details/gplus.html',
-        controller: 'ActivityDetailsCtrl'
-      })
-      .state('activityDetailsTwitter', {
-        url: '/u/:userName/a/:activitySlug/twitter/',
-        templateUrl: '/app/Activity/views/details/twitter.html',
-        controller: 'ActivityDetailsCtrl'
-      })
-      .state('activityDetailsGiphy', {
-        url: '/u/:userName/a/:activitySlug/giphy/',
-        templateUrl: '/app/Activity/views/details/giphy.html',
-        controller: 'ActivityDetailsCtrl'
-      });
   }]);
 
   app.run([

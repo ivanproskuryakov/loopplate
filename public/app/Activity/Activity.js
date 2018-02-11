@@ -22,8 +22,6 @@ define([
   './directives/activityNew',
   './directives/activityItem',
   './directives/related/relatedResource',
-  './directives/related/twitterWidget',
-  './directives/related/gplusWidget',
 
   './services/twitterWidgetService',
   './services/gplusWidgetService',

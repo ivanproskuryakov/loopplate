@@ -1,5 +1,8 @@
 <div class="comment" ng-class="data.replyTo ? 'mod-reply' : ''">
-  <user-profile user="data.user" shape="square" img-size="35px"></user-profile>
+  <user-profile user="data.user"
+                ng-if="user.avatar.location"
+                img-size="35px">
+  </user-profile>
 
   <div class="comment-body" ng-mouseenter="options.active=true" ng-mouseleave="options.active=false">
 

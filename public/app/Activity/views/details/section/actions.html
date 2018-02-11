@@ -21,27 +21,11 @@
       </a>
     </li>
     <li>
-      <a ui-sref="activityDetailsTwitter({userName: activity.user.username, activitySlug: activity.slug})"
-         ng-class="appState == 'activityDetailsTwitter' ? 'active' : ''"
+      <a ui-sref="activityDetailsYouTube({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-class="appState == 'activityDetailsYouTube' ? 'active' : ''"
       >
-        <md-tooltip hide-xs md-direction="right">Related from Twitter</md-tooltip>
-        Twitter
-      </a>
-    </li>
-    <li>
-      <a ui-sref="activityDetailsGooglePlus({userName: activity.user.username, activitySlug: activity.slug})"
-         ng-class="appState == 'activityDetailsGooglePlus' ? 'active' : ''"
-      >
-        <md-tooltip hide-xs md-direction="right">Related from Google</md-tooltip>
-        Google Plus
-      </a>
-    </li>
-    <li>
-      <a ui-sref="activityDetailsGiphy({userName: activity.user.username, activitySlug: activity.slug})"
-         ng-class="appState == 'activityDetailsGiphy' ? 'active' : ''"
-      >
-        <md-tooltip hide-xs md-direction="right">Related from Giphy</md-tooltip>
-        Giphy
+        <md-tooltip hide-xs md-direction="right">Related stories</md-tooltip>
+        YouTube
       </a>
     </li>
   </ul>

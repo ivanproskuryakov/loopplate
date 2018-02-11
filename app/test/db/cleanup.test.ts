@@ -24,7 +24,7 @@ export class CleanupTest {
 
               expect(usersCount).to.be.equal(1);
               expect(activitiesCount).to.be.equal(3);
-              expect(commentsCount).to.be.equal(4);
+              expect(commentsCount).to.be.equal(3);
 
               done();
             });

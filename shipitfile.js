@@ -1,10 +1,9 @@
 // see: https://github.com/shipitjs/shipit-deploy#workflow-tasks
-
 let request = require('request');
 let pack = require('./package.json');
 
 const slackWebhookURL = 'https://hooks.slack.com/services/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';
-const dir = '/var/www/';
+const dir = '/var/www/demo.loopplate.com/';
 const currentPath = dir + 'current';
 
 
@@ -26,7 +25,7 @@ module.exports = function (shipit) {
       branch: 'staging'
     },
     production: {
-      servers: 'root@loopplate.com',
+      servers: 'root@demo.loopplate.com',
       branch: 'master'
     }
   });
