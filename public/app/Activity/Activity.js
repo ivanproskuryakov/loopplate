@@ -23,8 +23,6 @@ define([
   './directives/activityItem',
   './directives/related/relatedResource',
 
-  './services/twitterWidgetService',
-  './services/gplusWidgetService',
   './services/editor'
 ], function (app) {
 

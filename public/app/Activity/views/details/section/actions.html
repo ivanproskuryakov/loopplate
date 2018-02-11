@@ -21,11 +21,11 @@
       </a>
     </li>
     <li>
-      <a ui-sref="activityDetailsYouTube({userName: activity.user.username, activitySlug: activity.slug})"
-         ng-class="appState == 'activityDetailsYouTube' ? 'active' : ''"
+      <a ui-sref="activityDetailsRelated({userName: activity.user.username, activitySlug: activity.slug})"
+         ng-class="appState == 'activityDetailsRelated' ? 'active' : ''"
       >
         <md-tooltip hide-xs md-direction="right">Related stories</md-tooltip>
-        YouTube
+        Related Stories
       </a>
     </li>
   </ul>

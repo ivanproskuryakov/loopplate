@@ -59,6 +59,11 @@ define(['app'], function (app) {
         templateUrl: '/app/Activity/views/details/youtube.html',
         controller: 'ActivityDetailsCtrl'
       })
+      .state('activityDetailsRelated', {
+        url: '/u/:userName/a/:activitySlug/related/',
+        templateUrl: '/app/Activity/views/details/related.html',
+        controller: 'ActivityDetailsCtrl'
+      })
   }]);
 
   app.run([
