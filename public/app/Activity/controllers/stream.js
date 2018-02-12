@@ -14,14 +14,6 @@ define(['app'], function (app) {
         $scope.type = 'stream';
 
         $scope.load = function () {
-          if (!$scope.loader) {
-            $scope.loader = ModelPageLoader.create(
-              User.stream,
-              null
-            );
-          }
-
-          return $scope.loader.nextPage();
         };
 
       }

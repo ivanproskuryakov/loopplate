@@ -1,8 +1,10 @@
-## Quick start
+Quick start
+------------
 Build, launch server and watch for changes
 ```
 gulp app:watch
-``` 
+```
+ 
 Running tests
 ```
 npm test
@@ -11,7 +13,13 @@ npm test
 ![Image of Loopback](https://raw.githubusercontent.com/ivanproskuryakov/loopplate/master/docs/screen-one.png)
 
 
-## Detailed Description
+Dependencies
+-------------
+https://github.com/ivanproskuryakov/loopplate/wiki/Packages-&-dependencies
+
+
+Detailed Description
+-------------
 NOTE: Boilerplate in active developing process. https://12factor.net/
 
 ### I. Codebase
@@ -44,37 +52,37 @@ Builds done with https://github.com/shipitjs/shipit - it is simple, does the job
 Commands ```shipit production deploy``` and ```shipit staging deploy``` deploy production and staging accordingly.
 
 On deployment git repo, and runs the commands in the following steps:
-1. `npm install` - installs backend node dependencies on remote server
-2. `npm rebuild node-sass` - rebuilding `node-sass` vendor otherwise node-sass is broken and can't be used
-3. `bower install --allow-root` - frontend dependencies using bower
-4. `gulp app:build`- the actual build of the app, once the required vendors are in place
-5. `pm2 delete all` - kills/removes the actual node app and workers from the list, no mater if there any or not
-6. `pm2 start pm2.json` - start the app and workers based on settings from pm2.json file
-7. `node build/command/sitemap.js` - generates sitemap.xml file
-8. In the end  update to slack
+1. `npm install` - installs backend node dependencies on remote server.
+2. `npm rebuild node-sass` - rebuilding `node-sass` vendor otherwise node-sass is broken and can't be used.
+3. `bower install --allow-root` - frontend dependencies using bower.
+4. `gulp app:build`- the actual build of the app, once the required vendors are in place.
+5. `pm2 delete all` - kills/removes the actual node app and workers from the list, no mater if there any or not.
+6. `pm2 start pm2.json` - start the app and workers based on settings from pm2.json file.
+7. `node build/command/sitemap.js` - generates sitemap.xml file.
+8. Update slack on successful deployment. 
 
 
 ### VI. Processes
 Commands needed both for dev and deployment made with gulp, see `gulpfile.js`.
 
-- `gulp app:build` - build the app
+- `gulp app:build` - build the app.
 - `gulp app:watch` - watch for changes both in frontend and backend codebase, compile, run "server:watch".
-- `gulp server:watch` - launch server.js in background and restarts if changes were done in "/build" directory
+- `gulp server:watch` - launch server.js in background and restarts if changes were done in "/build" directory.
 
 Frontend:
-- `gulp frontend:sass` - compile sass
-- `gulp frontend:sass` - compile sass + watch for changes
-- `gulp frontend:loopback` - generate Angular $resource services based on backend code, see https://github.com/strongloop/loopback-sdk-angular
-- `gulp frontend:rjs` - compiles javascript into a single file using RequireJS
-- `gulp frontend:templatecache` - concatenate and register AngularJS templates in the $templateCache
-- `gulp frontend:clean` - concatenate and register AngularJS templates in the $templateCache
+- `gulp frontend:sass` - compile sass.
+- `gulp frontend:sass` - compile sass + watch for changes.
+- `gulp frontend:loopback` - generate Angular $resource services based on backend code, see https://github.com/strongloop/loopback-sdk-angular.
+- `gulp frontend:rjs` - compiles javascript into a single file using RequireJS.
+- `gulp frontend:templatecache` - concatenate and register AngularJS templates in the $templateCache.
+- `gulp frontend:clean` - concatenate and register AngularJS templates in the $templateCache.
 
 Backend:
-- `gulp backend:symlink` - symlink /node_modules/app with /node_modules, needed for absolute paths
-- `gulp backend:build` - clean and rebuild
-- `gulp backend:watch` - watch for changes and recompile
+- `gulp backend:symlink` - symlink /node_modules/app with /node_modules, needed for absolute paths.
+- `gulp backend:build` - clean and rebuild.
+- `gulp backend:watch` - watch for changes and recompile.
 
-Db:
+DB:
 - `mongodump_mongorestore.sh` - shell script to restore db from remote production to local development environment.
 
 
@@ -87,19 +95,19 @@ Due the nature of Node event-loop repeatedly takes a one single event at the tim
 Parallelism can be achieved by starting several workers(server/server.js), see http://pm2.keymetrics.io/docs/usage/cluster-mode/
 
 ### IX. Disposability
-pm2-start stop
+`shipit production pm2-start` & `shipit production pm2-stop` 
 http://pm2.keymetrics.io/docs/usage/signals-clean-restart/
 
 ### X. Dev/prod parity
-Backup production database to your local frequently manually or using `mongodump_mongorestore.sh`, 
-since manifest tells us to have identical production, development and environments.
+Manifest recommends have identical production, development and environments.
+Backup production database to your local frequently manually or with `mongodump_mongorestore.sh`, 
 
 ### XI. Logs
 On production logs go to sentry.io, development sends logs to console, test environment do not output any logs(mock).
-winston npm library is used for logs transportation, https://github.com/winstonjs/winston       
+`winston` npm library is used for logs transportation, https://github.com/winstonjs/winston       
 
 ### XII. Admin processes
  - `node build/command/sitemap.js` - generate sitemap.xml file.
  - `node build/command/sendSummary.js` - send summary email with a list of new users.
  - `node build/db/updateDataSources.js` - migration command to detect difference between DB and schema, alter DB schema to match schema.
- - `node build/db/cleanup.js` - truncate database and populates it with the demo data.
+ - `node build/db/cleanup.js` - truncate database and populate demo data.

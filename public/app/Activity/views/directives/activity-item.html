@@ -47,14 +47,15 @@
 
   <tags data="activity.tags"></tags>
 
-  <div ng-if="activity.description">
-    <h2 class="post-heading">
-      <a ui-sref="activityDetails({userName: activity.user.username, activitySlug: activity.slug})"
-         ng-bind-html="activity.name">
-      </a>
-    </h2>
-    <div class="activity-rich description" ng-bind-html="activity.shortDescription">
-    </div>
+  <h2 class="post-heading"
+      ng-if="activity.name">
+    <a ui-sref="activityDetails({userName: activity.user.username, activitySlug: activity.slug})"
+       ng-bind-html="activity.name">
+    </a>
+  </h2>
+  <div class="activity-rich description"
+       ng-if="activity.description"
+       ng-bind-html="activity.shortDescription">
   </div>
 </div>
 
