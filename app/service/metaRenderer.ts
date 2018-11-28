@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import {ActivityService} from 'app/models/service/activity/activityService';
 import {UserService} from 'app/models/service/user/userService';
 import {StringHelper} from 'app/helper/stringHelper';

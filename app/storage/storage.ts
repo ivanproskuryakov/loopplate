@@ -1,7 +1,6 @@
 let pkgcloud = require('pkgcloud');
 let random = require('randomstring');
 
-import {Promise} from 'es6-promise';
 import {WriteStream} from 'fs';
 import {extname} from 'path';
 import {StorageConfigInterface} from 'app/interface/storageConfigInterface';

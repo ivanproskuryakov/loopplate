@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 const moment = require('moment');
 import * as _ from 'lodash';
 import * as bluebird from 'bluebird';

@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import {ServerError} from 'app/error/serverError';
 import {MediaRelation} from 'app/interface/media/media';
 

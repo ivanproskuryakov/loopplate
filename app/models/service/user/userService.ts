@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import {promisify} from 'bluebird';
 import {ServerError} from 'app/error/serverError';
 import {User} from 'app/interface/user/user';

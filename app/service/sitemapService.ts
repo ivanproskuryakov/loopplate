@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import * as bluebird from 'bluebird';
 import {writeFile} from 'fs';
 import {UserService} from 'app/models/service/user/userService';
