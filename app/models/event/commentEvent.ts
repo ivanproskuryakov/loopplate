@@ -21,7 +21,7 @@ export class CommentEvent {
   public static onCommentSaving(app: Server, ctx: any): Promise<void> {
     if (!ctx.instance || !ctx.isNewInstance) {
 
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return CommentService.getSlugs(ctx.instance)

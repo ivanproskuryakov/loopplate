@@ -103,7 +103,7 @@ export class MediaService {
       );
     }
 
-    return Promise.resolve<void>();
+    return Promise.resolve();
   }
 
   /**

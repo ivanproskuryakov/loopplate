@@ -19,7 +19,7 @@ export class ActivityEvent {
    */
   public static onActivitySaved(ctx: any): Promise<void> {
     if (!ctx.instance || !ctx.isNewInstance) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return new TimelineService().add(ctx.instance);
@@ -34,7 +34,7 @@ export class ActivityEvent {
     // fix filter if `username` filter is applied
     let where = (ctx.args.filter || {}).where;
     if (!where || !where.username) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return App.models.user

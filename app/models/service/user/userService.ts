@@ -262,7 +262,7 @@ export class UserService {
                                    field: string,
                                    replace = false): Promise<void> {
     if (instance[field] && !replace) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return UserService.getUserFromRequest(req)

@@ -14,7 +14,7 @@ export class ContactEvent {
    */
   public static onSaved(ctx: any): Promise<void> {
     if (!ctx.instance || !ctx.isNewInstance) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return EmailService.sendContactUsEmail(ctx.instance);

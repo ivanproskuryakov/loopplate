@@ -18,7 +18,7 @@ export class UserEvent {
       ctx.instance.importedAt = new Date();
     }
 
-    return Promise.resolve<void>();
+    return Promise.resolve();
   }
 
   /**
@@ -29,7 +29,7 @@ export class UserEvent {
    */
   public static onAccountAfterSaved(ctx: any): Promise<void> {
     if (!ctx.instance || !ctx.isNewInstance) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return EmailService.sendWelcomeEmail(ctx.instance);

@@ -64,7 +64,7 @@ export class EmailService {
    */
   public static sendWelcomeEmail(user: User): Promise<void> {
     if (user.type !== 'user') {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return new Promise<void>((resolve, reject) => {

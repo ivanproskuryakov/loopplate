@@ -133,11 +133,11 @@ export class ActivityService {
     const activityRepository = new ActivityRepository();
 
     if (!activity) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     if (isbot(req.headers['user-agent'])) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     let ip = req.headers['x-forwarded-for'] ||
@@ -146,7 +146,7 @@ export class ActivityService {
       req.connection.socket.remoteAddress;
 
     if (!ip) {
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     let view = {

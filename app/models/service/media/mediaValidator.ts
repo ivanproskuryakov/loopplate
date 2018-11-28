@@ -62,7 +62,7 @@ export class MediaValidator {
       );
     }
 
-    return Promise.resolve<void>();
+    return Promise.resolve();
   }
 
   /**

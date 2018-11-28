@@ -47,7 +47,7 @@ export class Storage {
   public remove(filename: string): Promise<void> {
     if (!filename) {
 
-      return Promise.resolve<void>();
+      return Promise.resolve();
     }
 
     return new Promise<void>((resolve, reject) => {
@@ -68,7 +68,7 @@ export class Storage {
   public bulkDelete(files: string[]): Promise<void> {
     return files.reduce((chain, file) =>
         chain.then(() => this.remove(file)),
-      Promise.resolve<void>());
+      Promise.resolve());
   }
 
   /**
