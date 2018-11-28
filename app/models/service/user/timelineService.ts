@@ -1,6 +1,6 @@
 import {Promise} from 'es6-promise';
 
-let stream = require('getstream');
+// let stream = require('getstream');
 import {ObjectID} from 'mongodb';
 import {ServerError} from 'app/error/serverError';
 import {User} from 'app/interface/user/user';
@@ -128,15 +128,15 @@ export class TimelineService {
    */
   private getClient(): any {
     // if disabled then return dummy object
-    if (App.get('getstream').disable) {
-
+    // if (App.get('getstream').disable) {
+    //
       return this.mockClient();
-    } else {
-      // Instantiate a new client (server side)
-      return stream.connect(App.get('getstream').apiKey,
-        App.get('getstream').apiSecret,
-        App.get('getstream').appId);
-    }
+    // } else {
+    //   // Instantiate a new client (server side)
+    //   return stream.connect(App.get('getstream').apiKey,
+    //     App.get('getstream').apiSecret,
+    //     App.get('getstream').appId);
+    // }
   }
 
   /**

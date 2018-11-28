@@ -23,7 +23,6 @@ gulp.doneCallback = function (err) {
 // Backend tasks
 //////////////////////////////////////////////
 
-
 gulp.task('backend:symlink', [], function (done) {
   const appDir = path.join(dir, '/app');
   const modulesDir = path.join(dir, '/node_modules/app');
