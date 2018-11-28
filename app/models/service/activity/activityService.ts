@@ -13,8 +13,6 @@ import {ActivityType} from 'app/interface/activity/activityType';
 import {MediaType} from 'app/interface/media/media';
 import {UserService} from 'app/models/service/user/userService';
 import {CommentService} from 'app/models/service/commentService';
-import {TagsAnalyzer} from 'app/models/service/activity/tagsAnalyzer';
-import {MetaExtractor} from 'app/import/extractor/metaExtractor';
 import * as App from 'app/server/server';
 
 const moment = require('moment');
@@ -52,31 +50,6 @@ export class ActivityService {
           media: payload.media,
           userId: user.id
         };
-      })
-      .then(activity => {
-        if (payload.tags) {
-          new TagsAnalyzer().analyzeAndUpdateActivityTags(activity, payload.tags);
-        }
-
-        if (<ActivityType>payload.type !== 'link') {
-          return Promise.resolve(activity);
-        }
-
-        // run extractor
-        let extractor = new MetaExtractor();
-
-        return extractor
-          .setSource(activity.source)
-          .extractActivity(user, activity.category, activity.type)
-          .then(result => new TagsAnalyzer().setActivityTags(result, extractor.getHTML()))
-          .then(result => {
-            activity.name = activity.name || result.name;
-            activity.description = activity.description || result.description;
-            activity.tags = _.isEmpty(activity.tags) ? result.tags : activity.tags;
-            activity.media = activity.media || result.media;
-
-            return activity;
-          });
       })
       .then(activity => activityRepository.create(activity))
       .then(activity => activity.toJSON());

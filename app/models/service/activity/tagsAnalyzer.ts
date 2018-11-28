@@ -6,9 +6,7 @@ let Boilerpipe = require('boilerpipe');
 
 import {Activity} from 'app/interface/activity/activity';
 import {Tag} from 'app/interface/activity/tag';
-import {YahooClient} from 'app/client/yahooClient';
 import {BlacklistInterface} from 'app/interface/blacklistInterface';
-import {TagsBlackList} from 'app/blackList/tagsBlacklist';
 
 export class TagsAnalyzer {
 
@@ -23,13 +21,7 @@ export class TagsAnalyzer {
       .then(html => this.getArticleText(html))
       .then(text => {
 
-        return new YahooClient()
-          .analyzeText(activity.name + '. ' + (text || activity.description))
-          .then(keywords => {
-            this.analyzeAndUpdateActivityTags(activity, keywords, new TagsBlackList());
-
-            return Promise.resolve(activity);
-          });
+        return Promise.resolve(activity);
       });
   }
 
