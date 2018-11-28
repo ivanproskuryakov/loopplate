@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import {join} from 'path';
 import {Request} from 'express';
 import * as bluebird from 'bluebird';

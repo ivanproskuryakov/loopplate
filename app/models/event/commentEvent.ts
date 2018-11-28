@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import * as bluebird from 'bluebird';
 import {Server} from 'app/server/interface/server';
 import {CommentService} from 'app/models/service/commentService';

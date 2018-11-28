@@ -1,6 +1,3 @@
-import {Promise} from 'es6-promise';
-
-// let stream = require('getstream');
 import {ObjectID} from 'mongodb';
 import {ServerError} from 'app/error/serverError';
 import {User} from 'app/interface/user/user';

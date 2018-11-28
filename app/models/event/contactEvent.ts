@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import {EmailService} from 'app/service/emailService';
 
 /**

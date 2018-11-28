@@ -1,5 +1,4 @@
 import {IncomingMessage} from 'http';
-import {Promise} from 'es6-promise';
 import {parse} from 'url';
 import * as _ from 'lodash';
 import * as request from 'request';

@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import {User} from 'app/interface/user/user';
 import {AccessToken} from 'app/interface/accessToken';
 import {EmailService} from 'app/service/emailService';

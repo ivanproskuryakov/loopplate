@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import * as bluebird from 'bluebird';
 import {ServerError} from 'app/error/serverError';
 import {TimelineService} from 'app/models/service/user/timelineService';

@@ -1,4 +1,3 @@
-import {Promise} from 'es6-promise';
 import * as multer from 'multer';
 import {ServerError} from 'app/error/serverError';
 import {Storage} from 'app/storage/storage';
