@@ -1,6 +1,6 @@
 {
   "mailgun": {
-    "name": "MailgunEmail",
+    "name": "mailgun",
     "connector": "mail",
     "transports": [
       {
