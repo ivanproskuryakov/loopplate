@@ -6,8 +6,7 @@ const gulp = require('gulp'),
   del = require('del'),
   sequence = require('run-sequence'),
   pump = require('pump'),
-  plugin = require('gulp-load-plugins')({lazy: true}),
-  tslint = require('tslint');
+  plugin = require('gulp-load-plugins')({lazy: true});
 
 const dir = path.dirname(fs.realpathSync(__filename));
 
@@ -19,40 +18,19 @@ gulp.doneCallback = function (err) {
   process.exit(err ? 1 : 0);
 };
 
+
 //////////////////////////////////////////////
-// App tasks
+// Backend tasks
 //////////////////////////////////////////////
 
-gulp.task('app:build', function (done) {
-  sequence(
-    'backend:symlink',
-    'backend:build',
-    'frontend:build',
-    done
-  );
-});
 
-gulp.task('app:watch', ['app:build'], function (done) {
-  // first time build all by app:build,
-  // then compile/copy by changing
-  gulp
-    .start([
-      'frontend:sass:watch',
-      'backend:watch:code',
-      'backend:watch:files',
-      'server:watch'
-    ], done);
-});
+gulp.task('backend:symlink', [], function (done) {
+  const appDir = path.join(dir, '/app');
+  const modulesDir = path.join(dir, '/node_modules/app');
 
-gulp.task('server:watch', function (done) {
-  plugin.nodemon({
-    script: 'build/server/server.js',
-    ignore: ['build/test/*'],
-    ext: '*',
-    watch: ['build/'],
-    env: {'NODE_ENV': 'development'},
-    delay: '300'
-  });
+  fs.symlinkSync(appDir, modulesDir, 'dir');
+
+  done();
 });
 
 
@@ -172,137 +150,9 @@ gulp.task('frontend:clean', function (done) {
 
 
 //////////////////////////////////////////////
-// Backend tasks
-//////////////////////////////////////////////
-
-const appSourceDir = path.join(dir, '/app');
-const appSourceGlob = `${appSourceDir}/**/*.*`;
-const appSourceRelativeGlob = 'app/**/*.*';
-const appCodeGlob = `${appSourceDir}/**/*.ts`;
-const appCodeRelativeGlob = 'app/**/*.ts';
-const appFilesGlob = [appSourceGlob, `!${appCodeGlob}`];
-const appFilesRelativeGlob = [appSourceRelativeGlob, `!${appCodeRelativeGlob}`];
-const appBuildDir = path.join(dir, '/build');
-
-
-gulp.task('backend:symlink', [], function (done) {
-  const appTargetDir = path.join(dir, '/node_modules/app');
-  // symlink for app
-  fs.exists(appTargetDir, function (err) {
-    if (!err) {
-      fs.symlinkSync(appBuildDir, appTargetDir, 'dir');
-    }
-  });
-
-  done();
-});
-
-gulp.task('backend:clean', function (done) {
-  clean([appBuildDir + '/**/*', '!.gitkeep'], done);
-});
-
-gulp.task('backend:compile', function (done) {
-  tsCompile([appCodeGlob], appBuildDir, appSourceDir, done);
-});
-
-gulp.task('backend:files', function () {
-  // copy fixtures and other non ts files
-  // from app directory to build directory
-  return gulp
-    .src(appFilesGlob)
-    .pipe(plugin.cached('files'))
-    .pipe(gulp.dest(appBuildDir));
-});
-
-gulp.task('backend:build', function (done) {
-  sequence(
-    'backend:clean',
-    'backend:compile',
-    'backend:files',
-    done
-  );
-});
-
-gulp.task('backend:watch:code', function () {
-  const watcher = gulp.watch([appCodeRelativeGlob], ['backend:compile']);
-
-  watcher.on('change', function (event) {
-    // if a file is deleted, forget about it
-    if (event.type === 'deleted') {
-      // gulp-cached remove api
-      delete plugin.cached.caches.code[event.path];
-      delete plugin.event.caches.lint[event.path];
-      // delete in build
-      del(getPathFromSourceToBuild(event.path, appSourceDir, appBuildDir));
-    }
-  });
-});
-
-gulp.task('backend:watch:files', function () {
-  const watcher = gulp.watch([appFilesRelativeGlob], ['backend:files']);
-
-  watcher.on('change', function (event) {
-    // if a file is deleted, forget about it
-    if (event.type === 'deleted') {
-      // gulp-cached remove api
-      delete plugin.cached.caches.files[event.path];
-      delete plugin.event.caches.lint[event.path];
-      // delete in build
-      del(getPathFromSourceToBuild(event.path, appSourceDir, appBuildDir));
-    }
-  });
-});
-
-gulp.task('backend:watch', ['backend:build'], function (done) {
-  // first time build all by backend:build,
-  // then compile/copy by changing
-  gulp
-    .start([
-      'backend:watch:code',
-      'backend:watch:files'
-    ], done);
-});
-
-//////////////////////////////////////////////
 // Helpers
 //////////////////////////////////////////////
 
-/**
- * remaps file path from source directory to destination directory
- * @param {string} file path
- * @param {string} source directory path
- * @param {string} destination directory path
- * @returns {string} new file path (remapped)
- */
-function getPathFromSourceToBuild(file, source, destination) {
-  // Simulating the {base: 'src'} used with gulp.src in the scripts task
-  const filePathFromSrc = path.relative(path.resolve(source), file);
-  // Concatenating the 'destination' absolute
-  // path used by gulp.dest in the scripts task
-  return path.resolve(destination, filePathFromSrc);
-}
-
-/**
- * @param  {Array}    path - array of paths to compile
- * @param  {string}   dest - destination path for compiled js
- * @param  {string}   baseDir - base directory for files compiling
- * @param  {Function} done - callback when complete
- */
-function tsCompile(path, dest, baseDir, done) {
-  const ts = plugin.typescript;
-  const tsProject = ts.createProject('tsconfig.json');
-
-  gulp
-    .src(path, {base: baseDir})
-    // used for incremental builds
-    .pipe(plugin.cached('code'))
-    .pipe(plugin.sourcemaps.init())
-    .pipe(tsProject(ts.reporter.defaultReporter())).js
-    .pipe(plugin.sourcemaps.write('.'))
-    .pipe(gulp.dest(dest))
-    .on('error', done)
-    .on('end', done);
-}
 
 /**
  * Delete all files in a given path
