@@ -22,7 +22,7 @@ export class UserRepository {
   /**
    * @param {string} id
    * @param {Object} filter
-   * @returns {any}
+   * @returns {Promise<User>}
    */
   public findById(id: string, filter?: Object): Promise<User> {
     if (filter) {

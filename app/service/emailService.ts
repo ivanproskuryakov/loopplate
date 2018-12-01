@@ -4,6 +4,7 @@ import {AccessToken} from 'app/interface/accessToken';
 import {Contact} from 'app/interface/contact';
 
 import * as App from 'app/server/server';
+import * as loopback from 'loopback';
 
 export class EmailService {
   /**
@@ -67,12 +68,12 @@ export class EmailService {
     }
 
     return new Promise<void>((resolve, reject) => {
-      let template = App.loopback.template(EmailService.WELCOME_EMAIL_TEMPLATE);
-      let html = template({
+      let render: any = loopback.loopback.template(EmailService.WELCOME_EMAIL_TEMPLATE);
+      let html = render({
         user: user,
         host: `http://${App.get('domain')}`
       });
-      App.models.Email.send({
+      App.model['Email'].send({
         to: user.email,
         from: App.get('email'),
         subject: EmailService.WELCOME_EMAIL_SUBJECT,
@@ -92,14 +93,14 @@ export class EmailService {
    * @param {AccessToken} accessToken token which was created by reset request
    * @returns {Promise}
    */
-  public static sendPasswordResetEmail(user: User|any, accessToken: AccessToken): Promise<void> {
+  public static sendPasswordResetEmail(user: User | any, accessToken: AccessToken): Promise<void> {
     return new Promise<void>(resolve => {
       let resetUri = `http://${App.get('domain')}/user/password/reset?token=${accessToken.id}`;
-      let template = App.loopback.template(EmailService.PASSWORD_RESET_EMAIL_TEMPLATE);
+      let template: any = loopback.loopback.template(EmailService.PASSWORD_RESET_EMAIL_TEMPLATE);
       let html = template({
         resetUri: resetUri
       });
-      App.models.Email.send({
+      App.model['Email'].send({
         to: user.email,
         from: App.get('email'),
         subject: EmailService.PASSWORD_RESET_EMAIL_SUBJECT,
@@ -124,13 +125,13 @@ export class EmailService {
           .then(token => {
             let apiUrl = `http://${App.get('domain')}:${App.get('port')}${App.get('restApiRoot')}`;
             let deleteUri = `${apiUrl}/users/delete?token=${token.id}`;
-            let template = App.loopback.template(EmailService.ACCOUNT_DELETE_EMAIL_TEMPLATE);
+            let template: any = loopback.loopback.template(EmailService.ACCOUNT_DELETE_EMAIL_TEMPLATE);
             let html = template({
               deleteUri: deleteUri
             });
 
             return new Promise((resolve, reject) => {
-              App.models.Email.send({
+              App.model['Email'].send({
                 to: user.email,
                 from: App.get('email'),
                 subject: EmailService.ACCOUNT_DELETE_EMAIL_SUBJECT,
@@ -154,11 +155,11 @@ export class EmailService {
   public static sendAccountDeleteConfirmationEmail(user: User): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let host = `http://${App.get('domain')}`;
-      let template = App.loopback.template(EmailService.ACCOUNT_DELETE_CONFIRMATION_EMAIL_TEMPLATE);
+      let template: any = loopback.loopback.template(EmailService.ACCOUNT_DELETE_CONFIRMATION_EMAIL_TEMPLATE);
       let html = template({
         host: host
       });
-      App.models.Email.send({
+      App.model['Email'].send({
         to: user.email,
         from: App.get('email'),
         subject: EmailService.ACCOUNT_DELETE_CONFIRMATION_EMAIL_SUBJECT,
@@ -180,14 +181,14 @@ export class EmailService {
    */
   public static sendContactUsEmail(contact: Contact): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      let template = App.loopback.template(EmailService.CONTACT_US_EMAIL_TEMPLATE);
+      let template: any = loopback.loopback.template(EmailService.CONTACT_US_EMAIL_TEMPLATE);
       let html = template({
         name: contact.name,
         email: contact.email,
         message: contact.message,
         phone: contact.phone
       });
-      App.models.Email.send({
+      App.model['Email'].send({
         to: App.get('email'),
         from: contact.email,
         subject: EmailService.CONTACT_US_EMAIL_SUBJECT,

@@ -39,7 +39,7 @@ export class MediaService {
    */
   public deleteUserMedia(user: User): Promise<void> {
 
-    return App.models.Media.find({
+    return App.model['Media'].find({
       where: {userId: user.id},
       fields: ['name']
     }).then(files => {
@@ -47,7 +47,7 @@ export class MediaService {
       return this.storage.bulkDelete(files.map(file => file.name));
     }).then(() => {
 
-      return App.models.Media.destroyAll({
+      return App.model['Media'].destroyAll({
         userId: user.id
       });
     });
@@ -63,7 +63,7 @@ export class MediaService {
 
     return this.initialize(req, res)
       .then(() => this.upload())
-      .then(media => App.models.Media.create(media));
+      .then(media => App.model['Media'].create(media));
   }
 
   /**

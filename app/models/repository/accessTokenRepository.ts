@@ -8,7 +8,7 @@ export class AccessTokenRepository {
    * @returns {Promise<AccessToken>}
    */
   public findById(id: string): Promise<AccessToken> {
-    return App.models.accessToken.findById(id)
+    return App.model['accessToken'].findById(id)
   }
 
   /**
@@ -16,7 +16,7 @@ export class AccessTokenRepository {
    * @returns {Promise<AccessToken>}
    */
   public create(accessToken: AccessToken): Promise<AccessToken> {
-    return App.models.accessToken.create(accessToken)
+    return App.model['accessToken'].create(accessToken)
   }
 
 }

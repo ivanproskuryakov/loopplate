@@ -8,7 +8,7 @@ export class CommentRepository {
    * @returns {Promise<Comment[]>}
    */
   public create(activity: Comment): Promise<Comment> {
-    return App.models.Comment.create(activity);
+    return App.model['Comment'].create(activity);
   }
 
   /**
@@ -16,7 +16,7 @@ export class CommentRepository {
    * @returns {Promise<Comment[]>}
    */
   public createMany(activities: Comment[]): Promise<Comment[]> {
-    return App.models.Comment.create(activities);
+    return App.model['Comment'].create(activities);
   }
 
   /**
@@ -26,10 +26,10 @@ export class CommentRepository {
    */
   public findById(id: string, filter?: Object): Promise<Comment> {
     if (filter) {
-      return App.models.Comment.findById(id, filter);
+      return App.model['Comment'].findById(id, filter);
     }
 
-    return App.models.Comment.findById(id);
+    return App.model['Comment'].findById(id);
   }
 
   /**
@@ -37,7 +37,7 @@ export class CommentRepository {
    * @returns {any}
    */
   public find(filter: Object): Promise<Comment[]> {
-    return App.models.Comment.find(filter);
+    return App.model['Comment'].find(filter);
   }
 
   /**
@@ -45,7 +45,7 @@ export class CommentRepository {
    * @returns {any}
    */
   public findByFilter(filter: Object): Promise<Comment[]> {
-    return App.models.Comment.find(filter);
+    return App.model['Comment'].find(filter);
   }
 
 }

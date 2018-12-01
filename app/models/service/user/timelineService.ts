@@ -64,7 +64,7 @@ export class TimelineService {
       description: activity.description,
       category: activity.category
     })
-      .then(result => App.models.Activity.update(
+      .then(result => App.model['Activity'].update(
         {id: activity.id},
         {timelineId: result.id})
       );

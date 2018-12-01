@@ -11,7 +11,7 @@ export class ActivityRepository {
    * @returns {Promise<Activity[]>}
    */
   public create(activity: Activity): Promise<Activity> {
-    return App.models.Activity.create(activity);
+    return App.model['Activity'].create(activity);
   }
 
   /**
@@ -19,7 +19,7 @@ export class ActivityRepository {
    * @returns {Promise<Activity[]>}
    */
   public createMany(activities: Activity[]): Promise<Activity[]> {
-    return App.models.Activity.create(activities);
+    return App.model['Activity'].create(activities);
   }
 
   /**
@@ -59,7 +59,7 @@ export class ActivityRepository {
       query.where.and.push({category: category});
     }
 
-    return App.models.Activity
+    return App.model['Activity']
       .find(query)
       .then((activities: Activity[]) => _.uniqBy(activities, activity => activity.source));
   }
@@ -69,7 +69,7 @@ export class ActivityRepository {
    * @returns {any}
    */
   public findById(id: string): Promise<Activity> {
-    return App.models.Activity.findById(id);
+    return App.model['Activity'].findById(id);
   }
 
   /**
@@ -77,7 +77,7 @@ export class ActivityRepository {
    * @returns {any}
    */
   public findByFilter(filter: Object): Promise<Activity[]> {
-    return App.models.Activity.find(filter);
+    return App.model['Activity'].find(filter);
   }
 
   /**
@@ -91,7 +91,7 @@ export class ActivityRepository {
       }
     };
 
-    return App.models.Activity.destroyAll(filter);
+    return App.model['Activity'].destroyAll(filter);
   }
 
   /**
@@ -101,7 +101,7 @@ export class ActivityRepository {
    * @returns {any}
    */
   public update(where: Object, activity: Object, options: Object): Promise<Activity> {
-    return App.models.Activity.update(where, activity, options);
+    return App.model['Activity'].update(where, activity, options);
   }
 
 }

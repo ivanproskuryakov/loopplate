@@ -110,7 +110,7 @@ export class ActivityService {
    * @param {User} currentUser
    * @returns {Promise<Activity[]>}
    */
-  public static getActivities(filter: any, currentUser: User): Promise<(void | Activity)[]> {
+  public static getActivities(filter: any, currentUser: User): Promise<void|Activity[]> {
     const activityRepository = new ActivityRepository();
 
     return activityRepository
@@ -128,7 +128,7 @@ export class ActivityService {
    * @param {Request} req
    * @returns {Promise}
    */
-  public static updateActivityViews(activity: Activity, req: any): Promise<void | Activity> {
+  public static updateActivityViews(activity: Activity, req: any): Promise<Activity | void> {
     const activityRepository = new ActivityRepository();
 
     if (!activity) {
@@ -166,10 +166,10 @@ export class ActivityService {
    * @param {User} currentUser
    * @returns {Promise<Activity>}
    */
-  public static activityDetailsInjections(activity: Activity, currentUser: User): bluebird<Activity | void> {
-    if (!activity) {
-      return bluebird.resolve();
-    }
+  public static activityDetailsInjections(activity: Activity, currentUser: User): bluebird<Activity> {
+    // if (!activity) {
+    //   return bluebird.resolve();
+    // }
 
     let activityJson: any = activity.toJSON ? activity.toJSON() : activity;
 

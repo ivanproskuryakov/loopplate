@@ -5,7 +5,7 @@ export = function enableAuthentication(app) {
   app.enableAuth();
 
   app.middleware('auth', app.loopback.token({
-    model: app.models.accessToken
+    model: app.model['accessToken']
   }));
 
   new Passport(app).register();

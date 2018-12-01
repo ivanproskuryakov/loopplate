@@ -91,7 +91,7 @@ export class RelatedService {
    */
   public getRelatedResourceById(id: string, resource: string, quantity?: number): Promise<any[]> {
 
-    return App.models.Activity
+    return App.model['Activity']
       .findById(id)
       .then(activity => {
         if (!activity) {
@@ -318,7 +318,7 @@ export class RelatedService {
       limit: quantity
     };
 
-    return App.models.Activity
+    return App.model['Activity']
       .find(query)
       .then(activities => bluebird.map(
         activities,

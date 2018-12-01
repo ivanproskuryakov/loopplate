@@ -104,7 +104,7 @@ export class SummaryReporter {
       }
     };
 
-    return App.models.Activity
+    return App.model['Activity']
       .find(filter)
       .then(activities => bluebird.map(
         activities,
@@ -145,7 +145,7 @@ export class SummaryReporter {
    */
   private getTotalActivities(): Promise<number> {
 
-    return App.models.Activity.count();
+    return App.model['Activity'].count();
   }
 
   /**
@@ -163,7 +163,7 @@ export class SummaryReporter {
         moment
       });
 
-      App.models.Email.send({
+      App.model['Email'].send({
         to: App.get('email'),
         from: App.get('email'),
         subject: SummaryReporter.SUMMARY_EMAIL_SUBJECT,
