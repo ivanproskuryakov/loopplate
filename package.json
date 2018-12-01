@@ -5,7 +5,7 @@
   "main": "build/server/server.js",
   "scripts": {
     "lint": "jshint . || true",
-    "dev": "ts-node-dev --respawn --transpileOnly app/server/server.ts",
+    "dev": "ts-node-dev --respawn app/server/server.ts",
     "start": "node node_modules/ts-node/dist/bin.js app/server/server.ts",
     "test": "NODE_ENV=test ./node_modules/.bin/_mocha --compilers ts:ts-node/register app/test/**/**/**/**/*.test.ts"
   },

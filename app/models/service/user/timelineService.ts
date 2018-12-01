@@ -87,7 +87,7 @@ export class TimelineService {
     let timeline = client.feed(TimelineService.TIMELINE_NAME, userId);
 
     return timeline.follow('user', followerId)
-      .then(() => App.models.user.findById(followerId))
+      .then(() => App.model['user'].findById(followerId))
       .then(follower => follower.followers.add(userId));
   }
 
@@ -104,7 +104,7 @@ export class TimelineService {
     let timeline = client.feed(TimelineService.TIMELINE_NAME, userId);
 
     return timeline.unfollow('user', followerId, keepHistory || false)
-      .then(() => App.models.user.findById(followerId))
+      .then(() => App.model['user'].findById(followerId))
       .then(follower => {
 
         return follower.followers.exists(userId)

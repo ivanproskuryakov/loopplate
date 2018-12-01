@@ -132,7 +132,7 @@ export class SummaryReporter {
       }
     };
 
-    return App.models.user
+    return App.model['user']
       .find(filter)
       .then(result => {
         return result;

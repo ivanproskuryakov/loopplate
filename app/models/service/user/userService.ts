@@ -26,7 +26,7 @@ export class UserService {
    * returns user object for non existing user
    * @returns {User} user info
    */
-  public static getDeletedUser(): User {
+  public static getDeletedUser(): any {
     return {
       username: UserService.DELETED_USERNAME,
       password: undefined,
@@ -184,7 +184,7 @@ export class UserService {
    */
   public static getUserActivities(username: string,
                                   filter: any,
-                                  currentUser: User): Promise<Activity[]> {
+                                  currentUser: User): Promise<(void | Activity)[]> {
     const userRepository = new UserRepository();
 
     return userRepository
@@ -210,9 +210,9 @@ export class UserService {
    */
   public static getUserFromRequest(req: any): Promise<User> {
     const userRepository = new UserRepository();
-    let findForRequestAsync = promisify(App.models.accessToken.findForRequest);
+    let findForRequestAsync = promisify(App.model['accessToken'].findForRequest);
 
-    return findForRequestAsync.call(App.models.accessToken, req, {})
+    return findForRequestAsync.call(App.model['accessToken'], req, {})
       .then(token => {
         if (!token) {
           return Promise.reject(new ServerError('User not found', 404));
@@ -357,9 +357,9 @@ export class UserService {
         return App.models.Comment.updateAll({userId: user.id}, {userId: null})
           .then(() => App.models.Activity.destroyAll({userId: user.id}))
           .then(() => new MediaService().deleteUserMedia(user))
-          .then(() => App.models.userIdentity.destroyAll({userId: user.id}))
+          .then(() => App.model['userIdentity'].destroyAll({userId: user.id}))
           .then(() => App.models.accessToken.destroyAll({userId: user.id}))
-          .then(() => App.models.user.destroyById(user.id))
+          .then(() => App.model['user'].destroyById(user.id))
           // send email in last step
           .then(() => EmailService.sendAccountDeleteConfirmationEmail(user));
       });

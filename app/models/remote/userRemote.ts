@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {Server} from 'app/server/interface/server';
+import {LoopBackApplication as Server} from 'loopback';
 import {User} from 'app/interface/user/user';
 import {Activity} from 'app/interface/activity/activity';
 import {UserService} from 'app/models/service/user/userService';

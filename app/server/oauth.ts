@@ -1,6 +1,6 @@
-import {Server} from 'app/server/interface/server';
+import {LoopBackApplication} from 'loopback';
 
-export = function (app: Server) {
+export = function (app: LoopBackApplication) {
   let root = `http://${app.get('domain')}:${app.get('port')}`;
 
   return {

@@ -1,5 +1,5 @@
 import * as bluebird from 'bluebird';
-import {Server} from 'app/server/interface/server';
+import {LoopBackApplication as Server} from 'loopback';
 import {CommentService} from 'app/models/service/commentService';
 import {UserService} from 'app/models/service/user/userService';
 import {Comment} from 'app/interface/comment';

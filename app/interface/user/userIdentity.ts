@@ -1,4 +1,6 @@
-export interface UserIdentity {
+import {PersistedModel} from 'loopback';
+
+export interface UserIdentity extends PersistedModel {
   id?: any;
   createdAt?: Date;
   updatedAt?: Date;

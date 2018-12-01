@@ -92,7 +92,7 @@ export class EmailService {
    * @param {AccessToken} accessToken token which was created by reset request
    * @returns {Promise}
    */
-  public static sendPasswordResetEmail(user: User, accessToken: AccessToken): Promise<void> {
+  public static sendPasswordResetEmail(user: User|any, accessToken: AccessToken): Promise<void> {
     return new Promise<void>(resolve => {
       let resetUri = `http://${App.get('domain')}/user/password/reset?token=${accessToken.id}`;
       let template = App.loopback.template(EmailService.PASSWORD_RESET_EMAIL_TEMPLATE);
@@ -113,7 +113,7 @@ export class EmailService {
    * @returns {Promise}
    */
   public static sendAccountDeleteEmail(id: string): Promise<void> {
-    return App.models.user.findById(id)
+    return App.model['user'].findById(id)
       .then(user => {
         if (!user) {
           return Promise.reject(new ServerError('User not found', 404));

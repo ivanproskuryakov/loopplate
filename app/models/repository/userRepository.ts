@@ -8,7 +8,7 @@ export class UserRepository {
    * @returns {Promise<User[]>}
    */
   public create(user: User): Promise<User> {
-    return App.models.user.create(user);
+    return App.model['user'].create(user);
   }
 
   /**
@@ -16,7 +16,7 @@ export class UserRepository {
    * @returns {Promise<User[]>}
    */
   public createMany(users: User[]): Promise<User[]> {
-    return App.models.user.create(users);
+    return App.model['user'].create(users);
   }
 
   /**
@@ -26,10 +26,10 @@ export class UserRepository {
    */
   public findById(id: string, filter?: Object): Promise<User> {
     if (filter) {
-      return App.models.user.findById(id, filter);
+      return App.model['user'].findById(id, filter);
     }
 
-    return App.models.user.findById(id);
+    return App.model['user'].findById(id);
   }
 
   /**
@@ -37,7 +37,7 @@ export class UserRepository {
    * @returns {any}
    */
   public findOne(filter: Object): Promise<User> {
-    return App.models.user.findOne(filter);
+    return App.model['user'].findOne(filter);
   }
 
   /**
@@ -45,7 +45,7 @@ export class UserRepository {
    * @returns {any}
    */
   public find(filter: Object): Promise<User[]> {
-    return App.models.user.find(filter);
+    return App.model['user'].find(filter);
   }
 
   /**
@@ -54,7 +54,7 @@ export class UserRepository {
    */
   public createForcing(user: User): Promise<User> {
     return new Promise((resolve, reject) => {
-      App.models.user.create(user, (err: Error, user: User) => {
+      App.model['user'].create(user, (err: Error, user: User) => {
         if (err) {
           console.log(err);
         }

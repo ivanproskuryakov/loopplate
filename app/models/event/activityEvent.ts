@@ -36,7 +36,7 @@ export class ActivityEvent {
       return Promise.resolve();
     }
 
-    return App.models.user
+    return App.model['user']
       .findOne({where: {username: where.username}})
       .then(user => {
         if (!user) {

@@ -1,8 +1,11 @@
-import {Server} from 'app/server/interface/server';
 import * as loopback from 'loopback';
 import * as boot from 'loopback-boot';
 
-let App: Server = loopback();
+const config: any = {
+  'appRootDir': __dirname
+};
+
+let App: loopback.LoopBackApplication = loopback();
 
 module.exports = App;
 export = App;
@@ -23,9 +26,7 @@ App.start = () => {
 // Sub-apps like REST API are mounted via boot scripts.
 boot(
   App,
-  {
-    'appRootDir': __dirname
-  },
+  config,
   (err: Error) => {
     if (err) {
       throw err;

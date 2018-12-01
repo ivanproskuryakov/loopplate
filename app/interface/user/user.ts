@@ -2,8 +2,9 @@ import {db} from 'loopback-crud';
 import {Feed} from 'app/interface/user/feed';
 import {AccessToken} from 'app/interface/accessToken';
 import {MediaMeta} from 'app/interface/media/mediaMeta';
+import {PersistedModel} from 'loopback';
 
-export interface User {
+export interface User extends PersistedModel {
   id?: string;
   username?: string;
   password?: string;
@@ -42,7 +43,6 @@ export interface User {
    * replicate db.DataObject functions
    */
   toJSON?: () => User;
-  save?: () => Promise<User>;
   /**
    * relations
    */

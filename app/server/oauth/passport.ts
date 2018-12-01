@@ -1,7 +1,7 @@
 import {createHmac, randomBytes, HexBase64Latin1Encoding} from 'crypto';
 import * as cookieParser from 'cookie-parser';
 import slug = require('slug');
-import {Server} from 'app/server/interface/server';
+import {LoopBackApplication as Server} from 'loopback';
 import {ServerError} from 'app/error/serverError';
 import {User} from 'app/interface/user/user';
 
@@ -36,9 +36,9 @@ export class Passport {
 
     passportConfigurator.init();
     passportConfigurator.setupModels({
-      userModel: this.app.models.user,
-      userIdentityModel: this.app.models.userIdentity,
-      userCredentialModel: this.app.models.userCredential,
+      userModel: this.app.model['user'],
+      userIdentityModel: this.app.model['user']Identity,
+      userCredentialModel: this.app.model['user']Credential,
     });
 
     // configure each provider

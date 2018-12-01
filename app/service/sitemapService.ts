@@ -54,7 +54,7 @@ export class SitemapService {
   }
 
   private getUsers(): Promise<SitemapEntry[]> {
-    return App.models.user
+    return App.model['user']
       .find({
         where: {type: 'website'},
         fields: ['username']
