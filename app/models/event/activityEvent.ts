@@ -79,7 +79,7 @@ export class ActivityEvent {
    * @param {Object} ctx
    * @returns {Promise}
    */
-  public static onRemoteFind(ctx: any): Promise<void> {
+  public static onRemoteFind(ctx: any): bluebird<void> {
 
     return bluebird.map(
       ctx.result,

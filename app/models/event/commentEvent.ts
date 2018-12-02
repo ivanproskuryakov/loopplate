@@ -1,5 +1,5 @@
 import * as bluebird from 'bluebird';
-import {LoopBackApplication as Server} from 'loopback';
+import {Server} from 'app/server/interface/server';
 import {CommentService} from 'app/models/service/commentService';
 import {UserService} from 'app/models/service/user/userService';
 import {Comment} from 'app/interface/comment';
@@ -37,7 +37,7 @@ export class CommentEvent {
    * @param {Object} ctx
    * @returns {Promise}
    */
-  public static onRemoteFindOne(app: Server, ctx: any): Promise<void> {
+  public static onRemoteFindOne(app: Server, ctx: any): bluebird<void> {
     return this.commentInjections(app, ctx.req, ctx.result)
       .then<void>(result => {
         ctx.result = result;
@@ -50,21 +50,7 @@ export class CommentEvent {
    * @param {Object} ctx
    * @returns {Promise}
    */
-  public static onRemoteFindById(app: Server, ctx: any): Promise<void> {
-
-    return this.commentInjections(app, ctx.req, ctx.result)
-      .then<void>(result => {
-        ctx.result = result;
-      });
-  }
-
-  /**
-   * @static
-   * @param {Server} app
-   * @param {Object} ctx
-   * @returns {Promise}
-   */
-  public static onRemoteFindOrCreate(app: Server, ctx: any): Promise<void> {
+  public static onRemoteFindById(app: Server, ctx: any): bluebird<void> {
 
     return this.commentInjections(app, ctx.req, ctx.result)
       .then<void>(result => {
@@ -78,7 +64,21 @@ export class CommentEvent {
    * @param {Object} ctx
    * @returns {Promise}
    */
-  public static onRemoteFind(app: Server, ctx: any): Promise<void> {
+  public static onRemoteFindOrCreate(app: Server, ctx: any): bluebird<void> {
+
+    return this.commentInjections(app, ctx.req, ctx.result)
+      .then<void>(result => {
+        ctx.result = result;
+      });
+  }
+
+  /**
+   * @static
+   * @param {Server} app
+   * @param {Object} ctx
+   * @returns {Promise}
+   */
+  public static onRemoteFind(app: Server, ctx: any): bluebird<void> {
 
     return bluebird.map(
       ctx.result,
@@ -97,9 +97,9 @@ export class CommentEvent {
    * @param {Comment} comment
    * @returns {Promise<Comment>}
    */
-  private static commentInjections(app: Server, req: any, comment: Comment): Promise<Comment> {
+  private static commentInjections(app: Server, req: any, comment: Comment): bluebird<Comment> {
     if (!comment) {
-      return Promise.resolve(null);
+      return bluebird.resolve(null);
     }
     let commentJson = comment.toJSON();
 

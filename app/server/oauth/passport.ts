@@ -37,8 +37,8 @@ export class Passport {
     passportConfigurator.init();
     passportConfigurator.setupModels({
       userModel: this.app.model['user'],
-      userIdentityModel: this.app.model['user']Identity,
-      userCredentialModel: this.app.model['user']Credential,
+      userIdentityModel: this.app.model['userIdentity'],
+      userCredentialModel: this.app.model['userCredential'],
     });
 
     // configure each provider
@@ -79,7 +79,7 @@ export class Passport {
    * @param {object} options provider options
    * @returns {User} user model
    */
-  private profileToUser(provider: string, profile: any, options: any): User {
+  private profileToUser(provider: string, profile: any, options: any): User|any {
     let password = this.generatePassword(this.PASSWORD);
     let id = profile.id;
     let email = profile.emails && profile.emails[0] && profile.emails[0].value;

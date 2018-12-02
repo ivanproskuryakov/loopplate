@@ -180,11 +180,11 @@ export class UserService {
    * @param {string} username
    * @param {Object} filter
    * @param {User} currentUser
-   * @returns {Promise<void | Activity[]>}
+   * @returns {Promise<Activity[]>}
    */
   public static getUserActivities(username: string,
                                   filter: any,
-                                  currentUser: User): Promise<(void | Activity)[]> {
+                                  currentUser: User): Promise<( Activity)[]> {
     const userRepository = new UserRepository();
 
     return userRepository

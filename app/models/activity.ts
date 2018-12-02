@@ -58,7 +58,7 @@ export = function (Activity) {
 
   Activity.validate('media', function (err) {
     let isValid = (this.media || []).findIndex(media =>
-        !Activity.app.model['Media']Meta(media).isValid()
+        !Activity.app.model['MediaMeta'](media).isValid()
       ) === -1;
 
     if (!isValid) {

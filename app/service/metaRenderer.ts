@@ -2,6 +2,7 @@ import {ActivityService} from 'app/models/service/activity/activityService';
 import {UserService} from 'app/models/service/user/userService';
 import {StringHelper} from 'app/helper/stringHelper';
 import * as App from 'app/server/server';
+import * as loopback from 'loopback';
 
 export class MetaRendererService {
   /**
@@ -110,7 +111,7 @@ export class MetaRendererService {
    * @returns {string}
    */
   private generateHTML(data: any): string {
-    let template = App.loopback.template(this.META_TEMPLATE);
+    let template: any = loopback.loopback.template(this.META_TEMPLATE);
 
     return template(data);
   }
